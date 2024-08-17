@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 4497405477941266216}
   - component: {fileID: 7942057916826868786}
   - component: {fileID: 5143267840778939802}
+  - component: {fileID: -5695413303399468818}
+  - component: {fileID: -4325889238147315388}
   m_Layer: 0
   m_Name: BombExplosionZone
   m_TagString: Untagged
@@ -107,3 +109,34 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!114 &-5695413303399468818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5000138064661524430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 993e482d64c0ff0499fe0a4c2f210c69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosionDamage: 3
+--- !u!114 &-4325889238147315388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5000138064661524430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ed535601666c0f4081aeb516a63d4e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damagesOnTouch: 0
+  damageDealtOnTouch: 1
+  damageCooldown_sec: 1
+  OnDealingDamage:
+    m_PersistentCalls:
+      m_Calls: []
