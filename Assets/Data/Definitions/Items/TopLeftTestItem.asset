@@ -15,7 +15,7 @@ MonoBehaviour:
   Name: '!!TOP LEFT TEST ITEM!!'
   ItemModelPrefab: {fileID: 919132149155446097, guid: 9e5c36301a986c44692efc948b609ccb,
     type: 3}
-  Icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  Icon: {fileID: 21300000, guid: 9cbaf9d97cc38334cab143ad3390c2df, type: 3}
   shape:
     gridSize: {x: 5, y: 5}
     cellSize: {x: 16, y: 16}
