@@ -170,7 +170,17 @@ MonoBehaviour:
   CharacterInventory: {fileID: 99226181}
   timer: 0
   index: 0
-  Timeline: []
+  Timeline:
+  - Delay: 0
+    Action: 0
+    Position: {x: 0, y: 0}
+    Position2: {x: 0, y: 0}
+    ItemPrefab: {fileID: 11400000, guid: 18df69ad563cdc345a99813f0865c74f, type: 2}
+  - Delay: 1
+    Action: 0
+    Position: {x: 0, y: 15}
+    Position2: {x: 0, y: 0}
+    ItemPrefab: {fileID: 11400000, guid: 3e52ca351b2aaee46a06e96daef69407, type: 2}
   InventoryStatus:
     gridSize: {x: 10, y: 20}
     cellSize: {x: 64, y: 16}
@@ -192,9 +202,9 @@ MonoBehaviour:
     - row: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
     - row: 01000000010000000100000001000000010000000100000001000000010000000100000001000000
     - row: 01000000010000000100000001000000010000000100000001000000010000000100000001000000
-    - row: 01000000010000000100000001000000010000000100000001000000010000000100000001000000
-    - row: 01000000010000000100000001000000010000000100000001000000010000000100000001000000
-    - row: 01000000010000000100000001000000010000000100000001000000010000000100000001000000
+    - row: 01000000010000000100000001000000010000000100000001000000020000000200000002000000
+    - row: 01000000010000000100000001000000010000000100000001000000020000000300000003000000
+    - row: 01000000010000000100000001000000010000000100000001000000020000000300000003000000
   UpdateRange:
     x: 0
     y: 15
@@ -212,10 +222,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3933efc7923623d47873c5d6a77b8106, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LockedSlotIcon: {fileID: 0}
-  EmptySlotIcon: {fileID: 0}
-  DamagedSlotIcon: {fileID: 0}
-  BrokenSlotIcon: {fileID: 0}
+  LockedSlotIcon: {fileID: 21300000, guid: f7adc828ed70a485db62c459bdf09525, type: 3}
+  EmptySlotIcon: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
+  DamagedSlotIcon: {fileID: 21300000, guid: a14e6ee680df42f4c99bf69bc3d6b9ca, type: 3}
+  BrokenSlotIcon: {fileID: 21300000, guid: cc27e95868ab32345b74b8338c01ebed, type: 3}
+  InventoryScreenPosition: {x: 0, y: 0}
+  EnableDebugGUI: 1
   inventory:
     _gridSize: {x: 10, y: 20}
     Rows:
@@ -768,44 +780,13 @@ MonoBehaviour:
       - CellState: 1
         Item:
           Definition: {fileID: 0}
-      - CellState: 1
+      - CellState: 2
         Item:
           Definition: {fileID: 0}
-      - CellState: 1
+      - CellState: 2
         Item:
           Definition: {fileID: 0}
-      - CellState: 1
-        Item:
-          Definition: {fileID: 0}
-    - Columns:
-      - CellState: 1
-        Item:
-          Definition: {fileID: 0}
-      - CellState: 1
-        Item:
-          Definition: {fileID: 0}
-      - CellState: 1
-        Item:
-          Definition: {fileID: 0}
-      - CellState: 1
-        Item:
-          Definition: {fileID: 0}
-      - CellState: 1
-        Item:
-          Definition: {fileID: 0}
-      - CellState: 1
-        Item:
-          Definition: {fileID: 0}
-      - CellState: 1
-        Item:
-          Definition: {fileID: 0}
-      - CellState: 1
-        Item:
-          Definition: {fileID: 0}
-      - CellState: 1
-        Item:
-          Definition: {fileID: 0}
-      - CellState: 1
+      - CellState: 2
         Item:
           Definition: {fileID: 0}
     - Columns:
@@ -830,6 +811,16 @@ MonoBehaviour:
       - CellState: 1
         Item:
           Definition: {fileID: 0}
+      - CellState: 2
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 3
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 3
+        Item:
+          Definition: {fileID: 0}
+    - Columns:
       - CellState: 1
         Item:
           Definition: {fileID: 0}
@@ -837,6 +828,27 @@ MonoBehaviour:
         Item:
           Definition: {fileID: 0}
       - CellState: 1
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 1
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 1
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 1
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 1
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 2
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 3
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 3
         Item:
           Definition: {fileID: 0}
 --- !u!1 &203844586

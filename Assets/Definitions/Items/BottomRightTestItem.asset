@@ -18,8 +18,8 @@ MonoBehaviour:
     gridSize: {x: 5, y: 5}
     cellSize: {x: 16, y: 16}
     cells:
-    - row: 0000000000
     - row: 0000000101
     - row: 0000000101
-    - row: 0001010101
-    - row: 0001010101
+    - row: 0000000101
+    - row: 0101010101
+    - row: 0101010101
