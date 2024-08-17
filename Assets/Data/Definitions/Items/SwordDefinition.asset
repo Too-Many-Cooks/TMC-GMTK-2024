@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SwordDefinition
   m_EditorClassIdentifier: 
   Name: Sword.exe
-  ItemModelPrefab: {fileID: 919132149155446097, guid: 9e5c36301a986c44692efc948b609ccb,
+  ItemModelPrefab: {fileID: 919132149155446097, guid: 005c0d7b483e33c479094618abeaf406,
     type: 3}
   Icon: {fileID: 21300000, guid: 6891a4d03955ec94aa64063385d1f4be, type: 3}
   shape:
