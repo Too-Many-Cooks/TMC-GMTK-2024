@@ -40,7 +40,6 @@ public class EnemySpawner : MonoBehaviour
     private void SpawnRandomEnemy()
     {
         SpawnableEnemy chosenEnemy = ChooseRandomEnemy();
-        print("Spawning enemy: " + chosenEnemy.enemyPrefab.name);
         SpawnSpecificEnemy(chosenEnemy);
     }
 
