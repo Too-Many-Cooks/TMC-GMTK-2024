@@ -8,28 +8,41 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(CharacterController))]
 public class CharacterMovementController : MonoBehaviour
 {
+    [Header("Object References")]
+    [SerializeField] Transform cameraTransform;
+
+    [Header("Variable Values")]
+    [SerializeField] private float characterSpeed = 10f;
+
+
     private CharacterController characterController;
 
-    [SerializeField]
-    private float speed = 10f;
-
-    private Vector2 moveInput;
+    private Vector2 movementInput;
 
     public void MovePerformed(InputAction.CallbackContext value)
     {
-        Vector2 moveInput = value.ReadValue<Vector2>();
-        this.moveInput = moveInput;
+        movementInput = value.ReadValue<Vector2>();
     }
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         characterController = GetComponent<CharacterController>();
     }
 
-    // Update is called once per frame
-    void Update()
+    // FixedUpdate is more consistent than Update, since it always gets called a similar ammount of times.
+    void FixedUpdate()
     {
-        characterController.Move(new Vector3(moveInput.x, 0, moveInput.y) * speed * Time.deltaTime);
+        // Calculating the direction of movement.
+        Vector3 cameraOrientedMoveInput = 
+            movementInput.x * cameraTransform.right + movementInput.y * cameraTransform.forward;
+
+        // Removing movement along the Y-Axis.
+        cameraOrientedMoveInput = new Vector3(cameraOrientedMoveInput.x, 0, cameraOrientedMoveInput.z);
+
+        // Normalizing the movement input.
+        cameraOrientedMoveInput = cameraOrientedMoveInput.normalized;
+
+        // Moving the character.
+        characterController.Move(cameraOrientedMoveInput * characterSpeed * 0.02f);
     }
 }

@@ -180,10 +180,10 @@ public class SecondOrderTransform : MonoBehaviour
         UpdateOldTransform();
 
         /* Old check for wrong values
-        if (speed.magnitude < 100)
+        if (characterSpeed.magnitude < 100)
         {
 
-            Vector3 newPosition = GetPositionDyna().Update(Time.deltaTime, followTransform.position, speed);
+            Vector3 newPosition = GetPositionDyna().Update(Time.deltaTime, followTransform.position, characterSpeed);
 
             // We prevent a Vector3(NaN, NaN, NaN) from being applied to our position. I don't know why, but sometimes the Update() function returns that.
             if (newPosition != new Vector3(float.NaN, float.NaN, float.NaN))
