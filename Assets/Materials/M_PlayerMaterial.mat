@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: PlayerMaterial
+  m_Name: M_PlayerMaterial
   m_Shader: {fileID: -6465566751694194690, guid: dc0d6962d7665724eab84ebd9b2019f1,
     type: 3}
   m_Parent: {fileID: 0}
