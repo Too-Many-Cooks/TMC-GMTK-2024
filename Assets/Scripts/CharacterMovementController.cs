@@ -29,8 +29,8 @@ public class CharacterMovementController : MonoBehaviour
         characterController = GetComponent<CharacterController>();
     }
 
-    // FixedUpdate is more consistent than Update, since it always gets called a similar ammount of times.
-    void FixedUpdate()
+    // Needs to be Update for the camera position to be updated properly.
+    void Update()
     {
         // Calculating the direction of movement.
         Vector3 cameraOrientedMoveInput = 
@@ -43,6 +43,6 @@ public class CharacterMovementController : MonoBehaviour
         cameraOrientedMoveInput = cameraOrientedMoveInput.normalized;
 
         // Moving the character.
-        characterController.Move(cameraOrientedMoveInput * characterSpeed * 0.02f);
+        characterController.Move(cameraOrientedMoveInput * characterSpeed * Time.deltaTime);
     }
 }

@@ -38,7 +38,7 @@ public class SecondOrderTransform : MonoBehaviour
     public enum typeOfSpace { localSpace, worldSpace };
 
     // The properties Restart the dynamics if obtain/apply local/world space variables change.
-    typeOfSpace obtainFromLocalOrWorld = typeOfSpace.localSpace;
+    [SerializeField] typeOfSpace obtainFromLocalOrWorld = typeOfSpace.localSpace;
     public typeOfSpace ObtainFromLocalOrWorld
     {
         get { return obtainFromLocalOrWorld; }
@@ -51,7 +51,7 @@ public class SecondOrderTransform : MonoBehaviour
         }
     }
 
-    typeOfSpace applyToLocalOrWorld = typeOfSpace.localSpace;
+    [SerializeField] typeOfSpace applyToLocalOrWorld = typeOfSpace.localSpace;
     public typeOfSpace ApplyToLocalOrWorld
     {
         get { return applyToLocalOrWorld; }
