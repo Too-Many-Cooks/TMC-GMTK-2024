@@ -384,7 +384,7 @@ Transform:
   m_GameObject: {fileID: 492131983}
   serializedVersion: 2
   m_LocalRotation: {x: 0.38268346, y: 0.000000029802322, z: -0.000000014901161, w: 0.92387956}
-  m_LocalPosition: {x: 0, y: 20, z: -20}
+  m_LocalPosition: {x: 0, y: 20.31, z: -19.69}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -690,7 +690,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraTransform: {fileID: 492131986}
-  characterSpeed: 10
+  characterSpeed: 12.5
+  secondOrderFrequency: 1.9
+  secondOrderDamping: 0.9
+  secondOrderInitialResponse: 0.76
 --- !u!114 &1100549091
 MonoBehaviour:
   m_ObjectHideFlags: 0
