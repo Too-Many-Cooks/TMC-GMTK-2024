@@ -12,12 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be388c3a1ac5f4f4d8eafccdf2516df2, type: 3}
   m_Name: BottomRightTestItem
   m_EditorClassIdentifier: 
-  Name: 
-  Icon: {fileID: 0}
+  Name: '!!BOTTOM RIGHT TEST ITEM!!'
+  Icon: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   shape:
-    gridSize: {x: 3, y: 3}
+    gridSize: {x: 5, y: 5}
     cellSize: {x: 16, y: 16}
     cells:
-    - row: 000000
-    - row: 000000
-    - row: 000000
+    - row: 0000000101
+    - row: 0000000101
+    - row: 0000000101
+    - row: 0101010101
+    - row: 0101010101
