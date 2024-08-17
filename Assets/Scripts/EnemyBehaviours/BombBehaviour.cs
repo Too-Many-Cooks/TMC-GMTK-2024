@@ -45,7 +45,7 @@ public class BombBehaviour : EnemyBehaviourBase
         /*Vector3 distanceToPlayer = (-transform.position + playerTransform.position);
         if (distanceToPlayer.sqrMagnitude > bombingRange * bombingRange)
         {
-            characterController.Move(distanceToPlayer.normalized * speed * Time.deltaTime);
+            characterController.Move(distanceToPlayer.normalized * characterSpeed * Time.deltaTime);
         }
         else
         {
