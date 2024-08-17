@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6645059974052799709}
   - component: {fileID: 6604566374456880639}
   m_Layer: 0
-  m_Name: LaserTrails
+  m_Name: PS_LaserTrails
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
