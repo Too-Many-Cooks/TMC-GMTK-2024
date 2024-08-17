@@ -10,18 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: be388c3a1ac5f4f4d8eafccdf2516df2, type: 3}
-  m_Name: BottomRightTestItem
+  m_Name: OrbDefiniton
   m_EditorClassIdentifier: 
-  Name: '!!BOTTOM RIGHT TEST ITEM!!'
-  ItemModelPrefab: {fileID: 919132149155446097, guid: 9e5c36301a986c44692efc948b609ccb,
+  Name: Orb.exe
+  ItemModelPrefab: {fileID: 919132149155446097, guid: 1c77be737107df645b27a387e7339c19,
     type: 3}
-  Icon: {fileID: 21300000, guid: 11e59a7fd99f1814f9a6923d5b4321bb, type: 3}
+  Icon: {fileID: 21300000, guid: e1a3d31ab978de84dafa1d88fb2b1863, type: 3}
   shape:
-    gridSize: {x: 5, y: 5}
+    gridSize: {x: 3, y: 3}
     cellSize: {x: 16, y: 16}
     cells:
-    - row: 0000000000
-    - row: 0000000101
-    - row: 0000000101
-    - row: 0001010101
-    - row: 0001010101
+    - row: 000100
+    - row: 010101
+    - row: 000100
