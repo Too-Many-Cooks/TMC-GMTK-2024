@@ -17,6 +17,8 @@ public class BombBehaviour : EnemyBehaviourBase
     private float explosionSize = 5f;
     //bool isExploding = false;
 
+    GameObject explosionZone;
+
     new void Start()
     {
         base.Start();
@@ -32,9 +34,9 @@ public class BombBehaviour : EnemyBehaviourBase
             characterController.Move(distanceToPlayer.normalized * speed * Time.deltaTime);
             yield return null;
         } while (distanceToPlayer.sqrMagnitude > bombingRange * bombingRange);
-        GameObject explosionZone = Instantiate(explosionZonePrefab, transform.position, transform.rotation, transform);
+        explosionZone = Instantiate(explosionZonePrefab, transform.position, transform.rotation, transform);
         explosionZone.transform.localScale = new Vector3(explosionSize, explosionZone.transform.localScale.y, explosionSize);
-        StartCoroutine(WaitForExplosion(timeToExplode_sec));
+        StartCoroutine(WaitForExplosion(timeToExplode_sec, explosionZone.GetComponent<BombExplosionZoneBehaviour>()));
     }
 
     // Update is called once per frame
@@ -52,9 +54,10 @@ public class BombBehaviour : EnemyBehaviourBase
         }*/
     }
 
-    private IEnumerator WaitForExplosion(float timeToExplode_sec)
+    private IEnumerator WaitForExplosion(float timeToExplode_sec, BombExplosionZoneBehaviour bombExplosionZoneBehaviour)
     {
         yield return new WaitForSeconds(timeToExplode_sec);
+        bombExplosionZoneBehaviour.Explode();
         Destroy(gameObject);
     }
 }
