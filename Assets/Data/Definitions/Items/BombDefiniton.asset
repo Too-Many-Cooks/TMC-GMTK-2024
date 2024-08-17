@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: BombDefiniton
   m_EditorClassIdentifier: 
   Name: Bomb.exe
+  ItemModelPrefab: {fileID: 919132149155446097, guid: 9e5c36301a986c44692efc948b609ccb,
+    type: 3}
   Icon: {fileID: 21300000, guid: 238edb4dd1f26ff4a94aac639f9024ff, type: 3}
   shape:
     gridSize: {x: 2, y: 2}

@@ -13,11 +13,13 @@ MonoBehaviour:
   m_Name: OrbDefiniton
   m_EditorClassIdentifier: 
   Name: Orb.exe
-  Icon: {fileID: 0}
+  ItemModelPrefab: {fileID: 919132149155446097, guid: 9e5c36301a986c44692efc948b609ccb,
+    type: 3}
+  Icon: {fileID: 21300000, guid: e1a3d31ab978de84dafa1d88fb2b1863, type: 3}
   shape:
     gridSize: {x: 3, y: 3}
     cellSize: {x: 16, y: 16}
     cells:
-    - row: 000000
-    - row: 000000
-    - row: 000000
+    - row: 000100
+    - row: 010101
+    - row: 000100

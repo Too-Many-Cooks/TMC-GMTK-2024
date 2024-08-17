@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: TopLeftTestItem
   m_EditorClassIdentifier: 
   Name: '!!TOP LEFT TEST ITEM!!'
+  ItemModelPrefab: {fileID: 919132149155446097, guid: 9e5c36301a986c44692efc948b609ccb,
+    type: 3}
   Icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   shape:
     gridSize: {x: 5, y: 5}
