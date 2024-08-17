@@ -512,16 +512,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1d6cb5531a99aa4caa163b2d4658de8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnsPerSec: 0.5
   playerTransform: {fileID: 1100549089}
+  spawnsPerSec: 0.5
+  spawnDistance: 25
   spawnableEnemies:
   - enemyPrefab: {fileID: 580967043222428643, guid: 15260a7f9e98a0a488a19d8c4862ae72,
+      type: 3}
+    spawnWeight: 4
+  - enemyPrefab: {fileID: 2919480991887057869, guid: bb90fc778059eb64e9ba80b947b9e2f5,
       type: 3}
     spawnWeight: 2
   - enemyPrefab: {fileID: 7780912737094454424, guid: c2e368914b3a7b34ba4b3063bf15a739,
       type: 3}
     spawnWeight: 1
-  spawnDistance: 25
 --- !u!4 &638595719
 Transform:
   m_ObjectHideFlags: 0
@@ -554,7 +557,7 @@ GameObject:
   - component: {fileID: 1100549091}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
