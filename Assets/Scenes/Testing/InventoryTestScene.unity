@@ -181,9 +181,9 @@ MonoBehaviour:
     Position: {x: 1, y: 16}
     Position2: {x: 0, y: 0}
     ItemPrefab: {fileID: 11400000, guid: b2b94da766d5cb443adc7b6cf89c0db9, type: 2}
-  - Delay: 3
-    Action: 2
-    Position: {x: 0, y: 0}
+  - Delay: 1
+    Action: 0
+    Position: {x: 2, y: 15}
     Position2: {x: 1, y: 1}
     ItemPrefab: {fileID: 11400000, guid: b2b94da766d5cb443adc7b6cf89c0db9, type: 2}
   InventoryStatus:
@@ -227,6 +227,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3933efc7923623d47873c5d6a77b8106, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentlyDraggedItem:
+    inventoryItem:
+      Definition: {fileID: 0}
+    worldItem: {fileID: 0}
+  isDraggingItem: 0
   LockedSlotIcon: {fileID: 21300000, guid: f7adc828ed70a485db62c459bdf09525, type: 3}
   EmptySlotIcon: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
   DamagedSlotIcon: {fileID: 21300000, guid: a14e6ee680df42f4c99bf69bc3d6b9ca, type: 3}
@@ -856,11 +861,15 @@ MonoBehaviour:
       - CellState: 3
         Item:
           Definition: {fileID: 0}
+  Test_hideItemVisualsWhileDragging: 1
+  Test_allowReplacingItems: 1
   gridCellVisualsPrefab: {fileID: 9036787652601822030, guid: bf85d6aaaaee1124a8abae9db38c233a,
     type: 3}
   inventoryItemVisualsPrefab: {fileID: 5142002623630870100, guid: 9655c1f5bfe657c4cbe0e9d94527e58d,
     type: 3}
   inventoryAnchor: {fileID: 1042059357}
+  gridCellVisualsAnchor: {fileID: 1691986093}
+  itemVisualsAnchor: {fileID: 2016457577}
   cellSize: 32
 --- !u!1 &203844586
 GameObject:
@@ -1172,6 +1181,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!224 &1691986093 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 917502199287466527, guid: 0380d2db79eb7d84fa00383dd809f231,
+    type: 3}
+  m_PrefabInstance: {fileID: 3712023137595582090}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &2016457577 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1948815842310630628, guid: 0380d2db79eb7d84fa00383dd809f231,
+    type: 3}
+  m_PrefabInstance: {fileID: 3712023137595582090}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &149011420035298391
 PrefabInstance:
   m_ObjectHideFlags: 0

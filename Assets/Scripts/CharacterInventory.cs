@@ -25,11 +25,20 @@ public class CharacterInventory : MonoBehaviour
     public GridInventory inventory;
 
     [SerializeField]
+    private bool Test_hideItemVisualsWhileDragging = true;
+    [SerializeField]
+    private bool Test_allowReplacingItems = true;
+
+    [SerializeField]
     private GameObject gridCellVisualsPrefab;
     [SerializeField]
     private GameObject inventoryItemVisualsPrefab;
     [SerializeField]
     private RectTransform inventoryAnchor;
+    [SerializeField]
+    private RectTransform gridCellVisualsAnchor;
+    [SerializeField]
+    private RectTransform itemVisualsAnchor;
     [SerializeField]
     private float cellSize = 32f;
     private InventoryGridCell[,] gridCellVisuals;
@@ -57,6 +66,12 @@ public class CharacterInventory : MonoBehaviour
     public bool BeginDraggingItem(InventoryItem inventoryItem, WorldItem worldItem = null) {
         if(isDraggingItem) return false;
 
+        if (Test_hideItemVisualsWhileDragging)
+        {
+            //itemVisuals.Find(x => x.inventoryItem == itemInCell).gameObject.SetActive(false);
+            inventory.TryRemoveItem(inventoryItem);
+        }
+
         isDraggingItem = true;
         currentlyDraggedItem = new DraggedItem() { inventoryItem = inventoryItem, worldItem = worldItem };
 
@@ -66,7 +81,9 @@ public class CharacterInventory : MonoBehaviour
 
     private void CreateVisuals()
     {
-        foreach (Transform child in inventoryAnchor)
+        foreach (Transform child in gridCellVisualsAnchor)
+            Destroy(child.gameObject);
+        foreach (Transform child in itemVisualsAnchor)
             Destroy(child.gameObject);
 
         gridCellVisuals = new InventoryGridCell[inventory.GridSize.x, inventory.GridSize.y];
@@ -79,7 +96,7 @@ public class CharacterInventory : MonoBehaviour
         {
             GameObject rowGO = new GameObject("CellRow " + row);
             rowGO.AddComponent<RectTransform>();
-            rowGO.transform.SetParent(inventoryAnchor);
+            rowGO.transform.SetParent(gridCellVisualsAnchor);
             rowGO.transform.localPosition = new Vector3(0f, -y * cellSize, 0f);
 
             foreach (var (cell, x) in row.Columns.Select((v, i) => (v, i)))
@@ -89,7 +106,7 @@ public class CharacterInventory : MonoBehaviour
                 InventoryGridCell invGridCell = gridCell.GetComponent<InventoryGridCell>();
                 gridCellVisuals[x, y] = invGridCell;
 
-                invGridCell.Init(new Vector2(x, y), cellSize, cell.CellState, OnCellClick, OnCellHoverChange);
+                invGridCell.Init(new Vector2Int(x, y), cellSize, cell.CellState, OnCellClick, OnCellHoverChange);
             }
         }
         itemVisuals = new List<InventoryItemVisual>();
@@ -123,12 +140,12 @@ public class CharacterInventory : MonoBehaviour
         {
             if(!itemVisuals.Exists(x => x.inventoryItem == item))
             {
-                GameObject inventoryItem = Instantiate(inventoryItemVisualsPrefab, inventoryAnchor);
+                GameObject inventoryItem = Instantiate(inventoryItemVisualsPrefab, itemVisualsAnchor);
                 inventoryItem.transform.localPosition = new Vector3(pos.x * cellSize, -pos.y * cellSize, 0f);
                 InventoryItemVisual invItemVisual = inventoryItem.GetComponent<InventoryItemVisual>();
                 itemVisuals.Add(invItemVisual);
 
-                invItemVisual.Init(cellSize, item, OnItemClicked);
+                invItemVisual.Init(cellSize, item);//, OnItemClicked);
             }
             else
             {
@@ -152,37 +169,89 @@ public class CharacterInventory : MonoBehaviour
         }
     }
 
-    private void OnItemClicked(InventoryItem item)
-    {
-        BeginDraggingItem(item);
-        print("Item " + item.Definition.Name + " clicked");
-    }
-
     private bool DropDraggedItemOnCell(Vector2 cell)
     {
         if(!isDraggingItem) return false;
 
-        var dropped = inventory.TryAddOrMoveItem(cell.x.RoundToInt(), cell.y.RoundToInt(), currentlyDraggedItem.inventoryItem);
-        if(dropped && currentlyDraggedItem.worldItem != null) {
-            Destroy(currentlyDraggedItem.worldItem.gameObject);
-        }
-        currentlyDraggedItem = null;
-        isDraggingItem = false;
+        if (inventory.CanAddOrMoveItem(cell.x.RoundToInt(), cell.y.RoundToInt(), currentlyDraggedItem.inventoryItem))
+        {
+            // Deactivate hover visuals
+            ChangeHoverCellHighlights(new Vector2Int(cell.x.RoundToInt(), cell.y.RoundToInt()), false);
 
-        return dropped;
+            var dropped = inventory.TryAddOrMoveItem(cell.x.RoundToInt(), cell.y.RoundToInt(), currentlyDraggedItem.inventoryItem);
+            if (dropped && currentlyDraggedItem.worldItem != null)
+            {
+                Destroy(currentlyDraggedItem.worldItem.gameObject);
+            }
+            currentlyDraggedItem = null;
+            isDraggingItem = false;
+
+            
+            return dropped;
+        }
+        else if (Test_allowReplacingItems)
+        {
+            InventoryItem toBeReplacedItem;
+            if (inventory.CanReplaceItem(cell.x.RoundToInt(), cell.y.RoundToInt(), currentlyDraggedItem.inventoryItem, out toBeReplacedItem))
+            {
+                // Deactivate hover visuals
+                ChangeHoverCellHighlights(new Vector2Int(cell.x.RoundToInt(), cell.y.RoundToInt()), false);
+
+                bool replaced = inventory.TryRemoveItem(toBeReplacedItem);
+                replaced &= inventory.TryAddOrMoveItem(cell.x.RoundToInt(), cell.y.RoundToInt(), currentlyDraggedItem.inventoryItem);
+
+                currentlyDraggedItem = new DraggedItem() { inventoryItem = toBeReplacedItem, worldItem = null };
+                isDraggingItem = true;
+
+                return replaced;
+            }
+        }
+        return false;
     }
 
-    private void OnCellClick(Vector2 id)
+    private void OnCellClick(Vector2Int id)
     {
         if(isDraggingItem) {
             DropDraggedItemOnCell(id);
         }
-        print("Cell " + id + " clicked");
+        else
+        {
+            InventoryItem itemInCell = inventory.GetInventoryItemAt(id.x, id.y);
+            if(itemInCell.Definition != null)
+            {
+                BeginDraggingItem(itemInCell);
+            }
+        }
+        //print("Cell " + id + " clicked");
     }
 
-    private void OnCellHoverChange(Vector2 id, bool enter)
+    private void OnCellHoverChange(Vector2Int id, bool enter)
     {
-        // TODO: Do something with this (e.g. item dragging)
+        if (!isDraggingItem) return;
+
+        ChangeHoverCellHighlights(id, enter);
+    }
+
+    private void ChangeHoverCellHighlights(Vector2Int id, bool activate)
+    {
+
+        Array2DEditor.Array2DBool draggedItemShape = currentlyDraggedItem.inventoryItem.Definition.shape;
+        bool possibleToPlace = inventory.CanAddOrMoveItem(id.x, id.y, currentlyDraggedItem.inventoryItem);
+        if (Test_allowReplacingItems)
+            possibleToPlace |= inventory.CanReplaceItem(id.x, id.y, currentlyDraggedItem.inventoryItem, out _);
+
+        for (int shapeX = 0; shapeX < draggedItemShape.GridSize.x; ++shapeX)
+        {
+            for (int shapeY = 0; shapeY < draggedItemShape.GridSize.y; ++shapeY)
+            {
+                if (!draggedItemShape.GetCell(shapeX, shapeY))
+                    continue;
+                if (id.x + shapeX >= gridCellVisuals.GetLength(0) || id.y + shapeY >= gridCellVisuals.GetLength(1))
+                    continue;
+
+                gridCellVisuals[id.x + shapeX, id.y + shapeY].SetHighlight(activate, possibleToPlace);
+            }
+        }
     }
 
     void OnGUI()
