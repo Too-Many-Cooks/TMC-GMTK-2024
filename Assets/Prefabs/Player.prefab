@@ -232,10 +232,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3933efc7923623d47873c5d6a77b8106, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LockedSlotIcon: {fileID: 0}
-  EmptySlotIcon: {fileID: 0}
-  DamagedSlotIcon: {fileID: 0}
-  BrokenSlotIcon: {fileID: 0}
+  LockedSlotIcon: {fileID: 21300000, guid: 55747841a2e3b47dab36dc8d5e0dc4df, type: 3}
+  EmptySlotIcon: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
+  DamagedSlotIcon: {fileID: 21300000, guid: a14e6ee680df42f4c99bf69bc3d6b9ca, type: 3}
+  BrokenSlotIcon: {fileID: 21300000, guid: cc27e95868ab32345b74b8338c01ebed, type: 3}
   InventoryScreenPosition: {x: 0, y: 0}
   EnableDebugGUI: 0
   inventory:
