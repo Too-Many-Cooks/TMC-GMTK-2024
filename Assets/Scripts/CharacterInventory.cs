@@ -63,7 +63,7 @@ public class CharacterInventory : MonoBehaviour
         {
             GameObject rowGO = new GameObject("CellRow " + row);
             rowGO.AddComponent<RectTransform>();
-            rowGO.transform.parent = inventoryAnchor;
+            rowGO.transform.SetParent(inventoryAnchor);
             rowGO.transform.localPosition = new Vector3(0f, -y * cellSize, 0f);
 
             foreach (var (cell, x) in row.Columns.Select((v, i) => (v, i)))
