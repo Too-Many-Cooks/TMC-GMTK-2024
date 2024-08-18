@@ -7,6 +7,7 @@ using Array2DEditor;
 public class ItemDefinition : ScriptableObject
 {
     public string Name;
+    public GameObject ItemModelPrefab;
     public Sprite Icon;
     public Array2DBool shape;
 }
