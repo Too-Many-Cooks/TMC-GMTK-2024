@@ -87,6 +87,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: -8252881786268594575}
+    - targetCorrespondingSourceObject: {fileID: 6317969124517117552, guid: e12e053f80cff114b9bcdec9edb1cc37,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5343234167127112548}
   m_SourcePrefab: {fileID: 100100000, guid: e12e053f80cff114b9bcdec9edb1cc37, type: 3}
 --- !u!1 &2919480991887057869 stripped
 GameObject:
@@ -111,3 +115,22 @@ MonoBehaviour:
   laserCooldown_sec: 3
   laserPrefab: {fileID: 5001261604206903819, guid: 8d5ae199d725f2148857ccf89dc533da,
     type: 3}
+--- !u!114 &5343234167127112548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2919480991887057869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 278b544b222a1bb41bb6334bb2c70e06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Laser
+    clip: {fileID: 8300000, guid: b5221d163b3f39d40a0d3f330c2fdff9, type: 3}
+    volume: 0.461
+    pitch: 0.76
+    loop: 0
+    source: {fileID: 0}

@@ -122,6 +122,37 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &130293326 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2919480991887057869, guid: bb90fc778059eb64e9ba80b947b9e2f5,
+    type: 3}
+  m_PrefabInstance: {fileID: 632787029}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &130293327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 130293326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7587a1cd7aa7bc94f9a26003e5020a58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AudioManager: {fileID: 130293328}
+--- !u!114 &130293328 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5343234167127112548, guid: bb90fc778059eb64e9ba80b947b9e2f5,
+    type: 3}
+  m_PrefabInstance: {fileID: 632787029}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 130293326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 278b544b222a1bb41bb6334bb2c70e06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &591860512
 GameObject:
   m_ObjectHideFlags: 0
@@ -301,7 +332,7 @@ PrefabInstance:
     - target: {fileID: 3137875524800418294, guid: 80a83fcae4352e547bf78ae49100cf3d,
         type: 3}
       propertyPath: m_Name
-      value: AudioManager
+      value: GlobalAudioManager
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -312,6 +343,123 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1616647597}
   m_SourcePrefab: {fileID: 100100000, guid: 80a83fcae4352e547bf78ae49100cf3d, type: 3}
+--- !u!1001 &632787029
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8252881786268594575, guid: bb90fc778059eb64e9ba80b947b9e2f5,
+        type: 3}
+      propertyPath: OnShoot.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8252881786268594575, guid: bb90fc778059eb64e9ba80b947b9e2f5,
+        type: 3}
+      propertyPath: OnShoot.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8252881786268594575, guid: bb90fc778059eb64e9ba80b947b9e2f5,
+        type: 3}
+      propertyPath: OnShoot.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 130293327}
+    - target: {fileID: -8252881786268594575, guid: bb90fc778059eb64e9ba80b947b9e2f5,
+        type: 3}
+      propertyPath: OnShoot.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -8252881786268594575, guid: bb90fc778059eb64e9ba80b947b9e2f5,
+        type: 3}
+      propertyPath: OnShoot.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnShoot
+      objectReference: {fileID: 0}
+    - target: {fileID: -8252881786268594575, guid: bb90fc778059eb64e9ba80b947b9e2f5,
+        type: 3}
+      propertyPath: OnShoot.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: EyebatAudioControler, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: -8252881786268594575, guid: bb90fc778059eb64e9ba80b947b9e2f5,
+        type: 3}
+      propertyPath: OnShoot.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2002603710722075957, guid: bb90fc778059eb64e9ba80b947b9e2f5,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2002603710722075957, guid: bb90fc778059eb64e9ba80b947b9e2f5,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2919480991887057869, guid: bb90fc778059eb64e9ba80b947b9e2f5,
+        type: 3}
+      propertyPath: m_Name
+      value: Eyebat
+      objectReference: {fileID: 0}
+    - target: {fileID: 6161003681607539621, guid: bb90fc778059eb64e9ba80b947b9e2f5,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.7401953
+      objectReference: {fileID: 0}
+    - target: {fileID: 6161003681607539621, guid: bb90fc778059eb64e9ba80b947b9e2f5,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6161003681607539621, guid: bb90fc778059eb64e9ba80b947b9e2f5,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.6301372
+      objectReference: {fileID: 0}
+    - target: {fileID: 6161003681607539621, guid: bb90fc778059eb64e9ba80b947b9e2f5,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6161003681607539621, guid: bb90fc778059eb64e9ba80b947b9e2f5,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6161003681607539621, guid: bb90fc778059eb64e9ba80b947b9e2f5,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6161003681607539621, guid: bb90fc778059eb64e9ba80b947b9e2f5,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6161003681607539621, guid: bb90fc778059eb64e9ba80b947b9e2f5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6161003681607539621, guid: bb90fc778059eb64e9ba80b947b9e2f5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6161003681607539621, guid: bb90fc778059eb64e9ba80b947b9e2f5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2919480991887057869, guid: bb90fc778059eb64e9ba80b947b9e2f5,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 130293327}
+  m_SourcePrefab: {fileID: 100100000, guid: bb90fc778059eb64e9ba80b947b9e2f5, type: 3}
 --- !u!1 &1422429680
 GameObject:
   m_ObjectHideFlags: 0
@@ -479,11 +627,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7312746790141268, guid: 3a890361396004c4984181950cc0524b,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1886098924}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a890361396004c4984181950cc0524b, type: 3}
 --- !u!1 &1616647596 stripped
 GameObject:
@@ -503,39 +647,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 278b544b222a1bb41bb6334bb2c70e06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SoundDebug:
-    name: 
-    clip: {fileID: 0}
-    volume: 0
-    pitch: 0
-    loop: 0
-    source: {fileID: 0}
-  sounds:
-  - name: Character_Hover
-    clip: {fileID: 8300000, guid: 6b466c3bfcd75c743a0672b6bf56c630, type: 3}
-    volume: 0.431
-    pitch: 1
-    loop: 1
-    source: {fileID: 0}
---- !u!1 &1886098923 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7312746790141268, guid: 3a890361396004c4984181950cc0524b,
-    type: 3}
-  m_PrefabInstance: {fileID: 1433897316}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1886098924
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1886098923}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8bab6f38b5fba8641b4db2ff748a6f07, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AudioManager: {fileID: 1616647597}
+  sounds: []
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -544,3 +656,4 @@ SceneRoots:
   - {fileID: 591860514}
   - {fileID: 1433897316}
   - {fileID: 595284950}
+  - {fileID: 632787029}

@@ -3,9 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Timers;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EyebatBehaviour : EnemyBehaviourBase
 {
+
+    public UnityEvent OnShoot;
+
     [SerializeField]
     float speed = 2f;
     [SerializeField]
@@ -33,6 +37,8 @@ public class EyebatBehaviour : EnemyBehaviourBase
                 Instantiate(laserPrefab, transform.position, Quaternion.LookRotation(directionToPlayer, Vector3.up));
                 laserOffCooldown = false;
                 StartCoroutine(LaserCooldownCoroutine(laserCooldown_sec));
+
+                OnShoot.Invoke();
             }
         }
     }
