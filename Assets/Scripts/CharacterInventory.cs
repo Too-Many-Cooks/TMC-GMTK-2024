@@ -47,6 +47,9 @@ public class CharacterInventory : MonoBehaviour
     private Vector2Int cachedGridSize;
     private float cachedCellSize;
 
+    [SerializeField]
+    private float Debug_worldItemDistance = 10f;
+
     [ButtonMethod(order = 0)]
     private void ResizeGrid() {
         inventory.ResizeGrid();
@@ -63,7 +66,7 @@ public class CharacterInventory : MonoBehaviour
         CreateVisuals();
     }
 
-    public bool BeginDraggingItem(InventoryItem inventoryItem, WorldItem worldItem = null) {
+    public bool BeginDraggingItem(InventoryItem inventoryItem) {
         if(isDraggingItem) return false;
 
         if (Test_hideItemVisualsWhileDragging)
@@ -73,7 +76,31 @@ public class CharacterInventory : MonoBehaviour
         }
 
         isDraggingItem = true;
-        currentlyDraggedItem = new DraggedItem() { inventoryItem = inventoryItem, worldItem = worldItem };
+
+        var createdWorldItem = new GameObject(inventoryItem.Definition.Name).AddComponent<WorldItem>();
+        createdWorldItem.Definition = inventoryItem.Definition;
+        createdWorldItem.gameObject.SetActive(false);
+
+        ItemUseEffectBase itemUseEffectVisual = null;
+        if (inventoryItem.Definition.ItemUseEffectPrefab != null)
+        {
+            var itemUseEffectVisualGO = Instantiate(inventoryItem.Definition.ItemUseEffectPrefab);
+            itemUseEffectVisualGO.SetActive(false);
+            if(!itemUseEffectVisualGO.HasComponent<ItemUseEffectBase>())
+            {
+                Debug.LogError("ItemUseEffect Prefab does not contain an IItemUseEffectBase.");
+            }
+            else
+            {
+                itemUseEffectVisual = itemUseEffectVisualGO.GetComponent<ItemUseEffectBase>();
+            }
+        }
+        else
+        {
+            Debug.LogError("No itemUseEffectPrefab attached to item scriptable object");
+        }
+
+        currentlyDraggedItem = new DraggedItem() { inventoryItem = inventoryItem, worldItem = createdWorldItem, itemUseEffect = itemUseEffectVisual };
 
         return true;
     }
@@ -182,6 +209,7 @@ public class CharacterInventory : MonoBehaviour
             if (dropped && currentlyDraggedItem.worldItem != null)
             {
                 Destroy(currentlyDraggedItem.worldItem.gameObject);
+                Destroy(currentlyDraggedItem.itemUseEffect.gameObject);
             }
             currentlyDraggedItem = null;
             isDraggingItem = false;
@@ -200,8 +228,14 @@ public class CharacterInventory : MonoBehaviour
                 bool replaced = inventory.TryRemoveItem(toBeReplacedItem);
                 replaced &= inventory.TryAddOrMoveItem(cell.x.RoundToInt(), cell.y.RoundToInt(), currentlyDraggedItem.inventoryItem);
 
-                currentlyDraggedItem = new DraggedItem() { inventoryItem = toBeReplacedItem, worldItem = null };
-                isDraggingItem = true;
+                if (currentlyDraggedItem.worldItem != null)
+                {
+                    Destroy(currentlyDraggedItem.worldItem.gameObject);
+                    Destroy(currentlyDraggedItem.itemUseEffect.gameObject);
+                }
+
+                isDraggingItem = false;
+                BeginDraggingItem(toBeReplacedItem);
 
                 return replaced;
             }
@@ -230,6 +264,11 @@ public class CharacterInventory : MonoBehaviour
         if (!isDraggingItem) return;
 
         ChangeHoverCellHighlights(id, enter);
+
+        // If cell is entered/left -> change between 2d/3d dragged item (should catch leaving the inventory entirely
+        currentlyDraggedItem.currenctViewMode = enter ? DraggedItem.ViewMode.InventoryMode : DraggedItem.ViewMode.WorldMode;
+        currentlyDraggedItem.worldItem.gameObject.SetActive(!enter);
+        currentlyDraggedItem.itemUseEffect.gameObject.SetActive(!enter);
     }
 
     private void ChangeHoverCellHighlights(Vector2Int id, bool activate)
@@ -259,16 +298,46 @@ public class CharacterInventory : MonoBehaviour
         UpdateInventoryCellVisuals();
         UpdateInventoryItemVisuals();
         if(isDraggingItem) {
-            var mousePosition = Mouse.current.position;
-            var inventoryItem = currentlyDraggedItem.inventoryItem;
-            var gridSize = inventoryItem.Definition.shape.GridSize;
-            GUI.DrawTexture(
-                new Rect(
-                    mousePosition.x.value - cellSize / 2, Screen.height - mousePosition.y.value - cellSize / 2,
-                    cellSize * gridSize.x, cellSize * gridSize.y
-                ),
-                inventoryItem.Definition.Icon.texture
-            );
+            if (currentlyDraggedItem.currenctViewMode == DraggedItem.ViewMode.InventoryMode)
+            {
+                var mousePosition = Mouse.current.position;
+                var inventoryItem = currentlyDraggedItem.inventoryItem;
+                var gridSize = inventoryItem.Definition.shape.GridSize;
+                GUI.DrawTexture(
+                    new Rect(
+                        mousePosition.x.value - cellSize / 2, Screen.height - mousePosition.y.value - cellSize / 2,
+                        cellSize * gridSize.x, cellSize * gridSize.y
+                    ),
+                    inventoryItem.Definition.Icon.texture
+                );
+            }
+        }
+    }
+
+    private void Update()
+    {
+        if (currentlyDraggedItem != null && currentlyDraggedItem.currenctViewMode == DraggedItem.ViewMode.WorldMode)
+        {
+            var mousePosition = Mouse.current.position.ReadValue();
+            var ray = Camera.main.ScreenPointToRay(new Vector3(mousePosition.x, mousePosition.y, 1f));
+            Vector3 positionOnY0Plane = ray.origin - (ray.origin.y / ray.direction.y) * ray.direction;
+
+            currentlyDraggedItem.worldItem.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, Debug_worldItemDistance));
+            currentlyDraggedItem.itemUseEffect.UpdateTargetting(positionOnY0Plane);
+
+            if(Mouse.current.leftButton.wasPressedThisFrame)
+            {
+                currentlyDraggedItem.itemUseEffect.ClickActivationTrigger(out bool destroyedOnUse);
+                if(destroyedOnUse)
+                {
+                    Destroy(currentlyDraggedItem.worldItem.gameObject);
+                    Destroy(currentlyDraggedItem.itemUseEffect.gameObject);
+
+                    currentlyDraggedItem = null;
+                    isDraggingItem = false;
+                }
+            }
+
         }
     }
 }

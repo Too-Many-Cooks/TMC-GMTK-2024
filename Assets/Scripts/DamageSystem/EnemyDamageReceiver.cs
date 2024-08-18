@@ -28,9 +28,8 @@ public class EnemyDamageReceiver : MonoBehaviour
 
     public void DealDamageToEnemy(float dmg)
     {
-        Debug.Log("here");
         enemyHealth -= dmg;
-        if (enemyHealth < 0)
+        if (enemyHealth <= 0)
             KillEnemy();
         UpdateHealthBar(enemyHealth, enemyMaxHealth);
         
