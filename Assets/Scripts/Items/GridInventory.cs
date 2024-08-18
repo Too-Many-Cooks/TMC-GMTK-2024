@@ -2,9 +2,6 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 using MyBox;
-using Unity.VisualScripting;
-using System.Collections;
-using UnityEditor.Search;
 
 [System.Serializable]
 public class GridInventory
@@ -131,6 +128,27 @@ public class GridInventory
         return Rows[y].Columns[x].Item;
     }
     #nullable disable
+
+    public InventoryCell[] GetCellsWithStates(InventoryCell.CellStatus[] cellStates) {
+        var cells = new List<InventoryCell>();
+        foreach(var row in Rows) {
+            foreach(var cell in row.Columns) {
+                foreach(var cellState in cellStates) {
+                    if(cell.CellState == cellState){
+                        cells.Add(cell);
+                        break;
+                    }
+                }
+            }
+        }
+        return cells.ToArray();
+    }
+
+    public InventoryCell[] GetCellsWithState(InventoryCell.CellStatus cellState) {
+        var cellStates = new InventoryCell.CellStatus[1];
+        cellStates[0] = cellState;
+        return GetCellsWithStates(cellStates);
+    }
 
     public void ResizeGrid (int x, int y) {
         if(y > Rows.Count) {

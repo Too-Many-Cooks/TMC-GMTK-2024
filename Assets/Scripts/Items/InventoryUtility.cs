@@ -14,14 +14,14 @@ public static class InventoryUtility
     /// <param name="numberOfSlotsDamaged">The number of slots that will need to dissapear from the inventory.</param>
     /// <param name="givePriorityToIsolatedSlots">Should isolated slots be deleted before non-isolated slots?</param>
     /// <returns></returns>
-    public static Vector2[] WhatInventorySlotsBecomeDamaged(GridInventory inventory, 
+    public static Vector2Int[] WhatInventorySlotsBecomeDamaged(GridInventory inventory, 
         int numberOfSlotsDamaged = 1, bool givePriorityToIsolatedSlots = true)
     {
         if(numberOfSlotsDamaged < 1)
         {
             Debug.LogWarning("Cannot destroy [" + numberOfSlotsDamaged + "] number of slots. " +
                 "Introduce a natural number of slots to be destroyed.");
-            return new Vector2[0];
+            return new Vector2Int[0];
         }
 
         #region Processing the information in GridInventory into an adequate format.
@@ -31,8 +31,8 @@ public static class InventoryUtility
         int[][] myInventoryArray = new int[gridDimensions.x][];
 
         int leftmost_X = 0, rightmost_X = 0, upmost_Y = 0, downmost_Y = 0;
-        List<Vector2> unlockedSlots = new List<Vector2>();
-        List<Vector2> isolatedSlots = new List<Vector2>();
+        List<Vector2Int> unlockedSlots = new List<Vector2Int>();
+        List<Vector2Int> isolatedSlots = new List<Vector2Int>();
 
         // We separate this and the next "FOR LOOPs" cause rows and columns in the original data structure are INVERTED.
         for (int i = 0; i < gridDimensions.x; i++)
@@ -52,22 +52,22 @@ public static class InventoryUtility
                 if (myInventoryArray[i][j] != (int)InventoryCell.CellStatus.Unlocked)
                     continue;
 
-                unlockedSlots.Add(new Vector2(i, j));
+                unlockedSlots.Add(new Vector2Int(i, j));
 
                 // Updating the dimensions of the inventory.
-                if      (i < leftmost_X)  leftmost_X = i;
-                else if (i < rightmost_X) rightmost_X = i;
+                if (i < leftmost_X)  leftmost_X = i;
+                if (i > rightmost_X) rightmost_X = i;
 
-                if      (j < upmost_Y)    upmost_Y = j;
-                else if (j < downmost_Y)  downmost_Y = j;
+                if (j < upmost_Y)    upmost_Y = j;
+                if (j > downmost_Y)  downmost_Y = j;
 
                 // Checking if the cell is isolated, and thus should have priority when being deleted.
-                if (   (i == 0                || myInventoryArray[i - 1][j] != (int)InventoryCell.CellStatus.Unlocked)
-                    && (i == gridDimensions.x || myInventoryArray[i + 1][j] != (int)InventoryCell.CellStatus.Unlocked)
-                    && (j == 0                || myInventoryArray[i][j - 1] != (int)InventoryCell.CellStatus.Unlocked)
-                    && (j == gridDimensions.y || myInventoryArray[i][j + 1] != (int)InventoryCell.CellStatus.Unlocked))
+                if (   (i == 0                    || myInventoryArray[i - 1][j] != (int)InventoryCell.CellStatus.Unlocked)
+                    && (i == gridDimensions.x - 1 || myInventoryArray[i + 1][j] != (int)InventoryCell.CellStatus.Unlocked)
+                    && (j == 0                    || myInventoryArray[i][j - 1] != (int)InventoryCell.CellStatus.Unlocked)
+                    && (j == gridDimensions.y - 1 || myInventoryArray[i][j + 1] != (int)InventoryCell.CellStatus.Unlocked))
                 {
-                    isolatedSlots.Add(new Vector2(i, j));
+                    isolatedSlots.Add(new Vector2Int(i, j));
                 }
             }
         }
@@ -90,7 +90,7 @@ public static class InventoryUtility
         Vector2 targetInventoryPoint = inventoryCenter + RandomVector2(maxVectorLenght);
 
         // We begin to make our list of slots to be returned.
-        List<Vector2> slotsToBeDeleted = new List<Vector2>();
+        List<Vector2Int> slotsToBeDeleted = new List<Vector2Int>();
 
         #region Managing isolated slots.
 
@@ -136,14 +136,14 @@ public static class InventoryUtility
     /// <param name="numberOfNewSlots">The number of slots that will need to be added to the inventory.</param>
     /// <param name="givePriorityToSingleBlockedSlots">Should single blocked slots be unlocked before other slots?</param>
     /// <returns></returns>
-    public static Vector2[] WhatInventorySlotsToUnlock(GridInventory inventory,
+    public static Vector2Int[] WhatInventorySlotsToUnlock(GridInventory inventory,
         int numberOfNewSlots = 1, bool givePriorityToSingleBlockedSlots = false)
     {
         if (numberOfNewSlots < 1)
         {
             Debug.LogWarning("Cannot create [" + numberOfNewSlots + "] number of slots. " +
                 "Introduce a natural number of slots to be unlocked.");
-            return new Vector2[0];
+            return new Vector2Int[0];
         }
 
         #region Processing the information in GridInventory into an adequate format.
@@ -153,8 +153,8 @@ public static class InventoryUtility
         int[][] myInventoryArray = new int[gridDimensions.x][];
 
         int leftmost_X = 0, rightmost_X = 0, upmost_Y = 0, downmost_Y = 0;
-        List<Vector2> lockedSlots = new List<Vector2>();
-        List<Vector2> isolatedSlots = new List<Vector2>();
+        List<Vector2Int> lockedSlots = new List<Vector2Int>();
+        List<Vector2Int> isolatedSlots = new List<Vector2Int>();
 
         // We separate this and the next "FOR LOOPs" cause rows and columns in the original data structure are INVERTED.
         for (int i = 0; i < gridDimensions.x; i++)
@@ -175,24 +175,24 @@ public static class InventoryUtility
                 {
                     // Updating the dimensions of the inventory.
                     if (i < leftmost_X) leftmost_X = i;
-                    else if (i < rightmost_X) rightmost_X = i;
+                    if (i > rightmost_X) rightmost_X = i;
 
                     if (j < upmost_Y) upmost_Y = j;
-                    else if (j < downmost_Y) downmost_Y = j;
+                    if (j > downmost_Y) downmost_Y = j;
                 }
 
                 else if (myInventoryArray[i][j] == (int)InventoryCell.CellStatus.Locked)
                 {
-                    lockedSlots.Add(new Vector2(i, j));
+                    lockedSlots.Add(new Vector2Int(i, j));
 
 
                     // Checking if the locked cell is isolated, and thus should have priority when being unlocked.
-                    if (   (i == 0                || myInventoryArray[i - 1][j] == (int)InventoryCell.CellStatus.Unlocked)
-                        && (i == gridDimensions.x || myInventoryArray[i + 1][j] == (int)InventoryCell.CellStatus.Unlocked)
-                        && (j == 0                || myInventoryArray[i][j - 1] == (int)InventoryCell.CellStatus.Unlocked)
-                        && (j == gridDimensions.y || myInventoryArray[i][j + 1] == (int)InventoryCell.CellStatus.Unlocked))
+                    if (   (i == 0                    || myInventoryArray[i - 1][j] == (int)InventoryCell.CellStatus.Unlocked)
+                        && (i == gridDimensions.x - 1 || myInventoryArray[i + 1][j] == (int)InventoryCell.CellStatus.Unlocked)
+                        && (j == 0                    || myInventoryArray[i][j - 1] == (int)InventoryCell.CellStatus.Unlocked)
+                        && (j == gridDimensions.y - 1 || myInventoryArray[i][j + 1] == (int)InventoryCell.CellStatus.Unlocked))
                     {
-                        isolatedSlots.Add(new Vector2(i, j));
+                        isolatedSlots.Add(new Vector2Int(i, j));
                     }
                 }
             }
@@ -218,7 +218,7 @@ public static class InventoryUtility
         // that the inventory grows from the inside out.
 
         // We begin to make our list of slots to be unlocked.
-        List<Vector2> slotsToBeUnlock = new List<Vector2>();
+        List<Vector2Int> slotsToBeUnlock = new List<Vector2Int>();
 
         #region Managing single locked slots.
 
@@ -283,7 +283,7 @@ public static class InventoryUtility
     /// <param name="slotsToTest">An array of Vector2Int points.</param>
     /// <param name="targetPoint">The point that each of the slots need to be close to.</param>
     /// <returns></returns>
-    private static int ClosestSlotFromArray(Vector2[] slotsToTest, Vector2 targetPoint)
+    private static int ClosestSlotFromArray(Vector2Int[] slotsToTest, Vector2 targetPoint)
     {
         // Finding the closest isolated slot.
         float smallestDistanceToTargetZone = float.MaxValue;
