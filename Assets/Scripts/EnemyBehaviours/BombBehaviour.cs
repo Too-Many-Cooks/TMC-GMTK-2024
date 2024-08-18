@@ -3,9 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using MyBox;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class BombBehaviour : EnemyBehaviourBase
 {
+
+    public UnityEvent OnDetonate;
+
     [SerializeField]
     float speed = 10f;
     [SerializeField]
@@ -59,7 +63,8 @@ public class BombBehaviour : EnemyBehaviourBase
     {
         yield return new WaitForSeconds(timeToExplode_sec);
         bombExplosionZoneBehaviour.Explode();
-        if(gameObject.HasComponent<EnemyDamageReceiver>()) {
+        OnDetonate.Invoke();
+        if (gameObject.HasComponent<EnemyDamageReceiver>()) {
             gameObject.GetComponent<EnemyDamageReceiver>().KillEnemy();
         } else {
             Destroy(gameObject);

@@ -17,17 +17,17 @@ PrefabInstance:
     - target: {fileID: 3074185287166051864, guid: e12e053f80cff114b9bcdec9edb1cc37,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -9.41
       objectReference: {fileID: 0}
     - target: {fileID: 3074185287166051864, guid: e12e053f80cff114b9bcdec9edb1cc37,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.59
       objectReference: {fileID: 0}
     - target: {fileID: 3074185287166051864, guid: e12e053f80cff114b9bcdec9edb1cc37,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.09
       objectReference: {fileID: 0}
     - target: {fileID: 3074185287166051864, guid: e12e053f80cff114b9bcdec9edb1cc37,
         type: 3}
@@ -92,6 +92,14 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 4233348790439728918}
+    - targetCorrespondingSourceObject: {fileID: 6317969124517117552, guid: e12e053f80cff114b9bcdec9edb1cc37,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7976915158473691017}
+    - targetCorrespondingSourceObject: {fileID: 6317969124517117552, guid: e12e053f80cff114b9bcdec9edb1cc37,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5161587632648774946}
   m_SourcePrefab: {fileID: 100100000, guid: e12e053f80cff114b9bcdec9edb1cc37, type: 3}
 --- !u!1 &7780912737094454424 stripped
 GameObject:
@@ -111,9 +119,62 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0669f68e6a814b4bb2bded4a5df68e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnDetonate:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7976915158473691017}
+        m_TargetAssemblyTypeName: BombAudioController, Assembly-CSharp
+        m_MethodName: OnDetonate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   speed: 10
   bombingRange: 2
   explosionZonePrefab: {fileID: 5000138064661524430, guid: a05925e51c1060940be6c7624f1cfaee,
     type: 3}
   timeToExplode_sec: 3
   explosionSize: 5
+--- !u!114 &7976915158473691017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7780912737094454424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52be76a89db55874f8de3a92750238cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AudioManager: {fileID: 5161587632648774946}
+--- !u!114 &5161587632648774946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7780912737094454424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 278b544b222a1bb41bb6334bb2c70e06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: 
+    clip: {fileID: 0}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: Bomb
+    clip: {fileID: 8300000, guid: 778540b295e684d44921fc14dc0a8963, type: 3}
+    volume: 0.292
+    pitch: 1.54
+    loop: 0
+    source: {fileID: 0}

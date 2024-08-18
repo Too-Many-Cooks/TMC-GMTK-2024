@@ -2,7 +2,7 @@ using UnityEngine.Audio;
 using System;
 using UnityEngine;
 
-public class EyebatAudioControler : EnemyAudioController
+public class EyebatAudioController : EnemyAudioController
 {
  public void OnShoot()
     {
