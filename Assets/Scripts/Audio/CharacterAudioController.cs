@@ -2,11 +2,12 @@ using UnityEngine.Audio;
 using System;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class CharacterAudioController : MonoBehaviour
 {
+    public AudioManager AudioManager;
     void Awake()
     {
-        Play("Character_Hover");
+        AudioManager.Play("Character_Hover");
     }
 
    
