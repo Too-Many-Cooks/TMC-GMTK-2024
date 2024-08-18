@@ -12,4 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebcbd775a0f3d6c44ad4b3f2011fa358, type: 3}
   m_Name: EyebatLootTableDefinition
   m_EditorClassIdentifier: 
-  Rolls: []
+  Rolls:
+  - NoDropWeight: 7
+    ItemEntries:
+    - DropWeight: 4
+      Item: {fileID: 11400000, guid: 506079ee45063da43bd2985080433282, type: 2}
+    - DropWeight: 1
+      Item: {fileID: 11400000, guid: e01a1d4c263c9cf4980e21e6c775398d, type: 2}
+  - NoDropWeight: 7
+    ItemEntries:
+    - DropWeight: 4
+      Item: {fileID: 11400000, guid: 506079ee45063da43bd2985080433282, type: 2}
+    - DropWeight: 1
+      Item: {fileID: 11400000, guid: e01a1d4c263c9cf4980e21e6c775398d, type: 2}

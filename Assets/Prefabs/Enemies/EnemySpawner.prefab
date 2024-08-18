@@ -44,8 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1d6cb5531a99aa4caa163b2d4658de8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerTransform: {fileID: 3481036058409734900, guid: 3a890361396004c4984181950cc0524b,
-    type: 3}
   spawnsPerSec: 0.1
   spawnDistance: 25
   spawnableEnemies:

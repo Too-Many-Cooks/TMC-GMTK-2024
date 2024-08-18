@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: BombLootTableDefinition
   m_EditorClassIdentifier: 
   Rolls:
-  - NoDropWeight: 0
+  - NoDropWeight: 2
     ItemEntries:
     - DropWeight: 1
       Item: {fileID: 11400000, guid: e01a1d4c263c9cf4980e21e6c775398d, type: 2}
-  - NoDropWeight: 18
+  - NoDropWeight: 13
     ItemEntries:
     - DropWeight: 1
       Item: {fileID: 11400000, guid: e01a1d4c263c9cf4980e21e6c775398d, type: 2}

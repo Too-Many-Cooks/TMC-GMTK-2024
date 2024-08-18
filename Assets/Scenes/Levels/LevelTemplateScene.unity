@@ -517,6 +517,53 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1485641983}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1724368029
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1724368031}
+  - component: {fileID: 1724368030}
+  m_Layer: 0
+  m_Name: OrbDefiniton
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1724368030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1724368029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cf34423d1b8bac4d8d7d55c80cfb059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Definition: {fileID: 11400000, guid: 506079ee45063da43bd2985080433282, type: 2}
+  ItemModel: {fileID: 0}
+  rotationSpeed: 60
+--- !u!4 &1724368031
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1724368029}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.082561, y: 0.49999976, z: 2.7810197}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1791239446
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -806,3 +853,4 @@ SceneRoots:
   - {fileID: 1485641983}
   - {fileID: 1791239446}
   - {fileID: 304251903}
+  - {fileID: 1724368031}

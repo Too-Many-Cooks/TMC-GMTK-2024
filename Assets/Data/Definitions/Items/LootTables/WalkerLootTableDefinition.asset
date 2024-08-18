@@ -12,4 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebcbd775a0f3d6c44ad4b3f2011fa358, type: 3}
   m_Name: WalkerLootTableDefinition
   m_EditorClassIdentifier: 
-  Rolls: []
+  Rolls:
+  - NoDropWeight: 2
+    ItemEntries:
+    - DropWeight: 1
+      Item: {fileID: 11400000, guid: b2b94da766d5cb443adc7b6cf89c0db9, type: 2}
+  - NoDropWeight: 13
+    ItemEntries:
+    - DropWeight: 1
+      Item: {fileID: 11400000, guid: b2b94da766d5cb443adc7b6cf89c0db9, type: 2}
+    - DropWeight: 1
+      Item: {fileID: 11400000, guid: bd4be08dfc2833f49be4e7a2cdf34fb2, type: 2}
