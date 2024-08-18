@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class InventoryItemVisual : MonoBehaviour, IPointerClickHandler
+public class InventoryItemVisual : MonoBehaviour
 {
     [SerializeField]
     private Image itemImage;
@@ -13,14 +13,11 @@ public class InventoryItemVisual : MonoBehaviour, IPointerClickHandler
     float cellSize = 0f;
     public InventoryItem inventoryItem;
 
-    Action<InventoryItem> OnItemClickedCallback;
-
-    public void Init(float cellSize, InventoryItem inventoryItem, Action<InventoryItem> OnItemClickedCallback)
+    public void Init(float cellSize, InventoryItem inventoryItem)
     {
         SetCellSize(cellSize);
         SetItem(inventoryItem);
         UpdateSize();
-        this.OnItemClickedCallback = OnItemClickedCallback;
     }
 
     private void SetCellSize(float size)
@@ -39,10 +36,5 @@ public class InventoryItemVisual : MonoBehaviour, IPointerClickHandler
         RectTransform rectTransform = GetComponent<RectTransform>();
         rectTransform.sizeDelta = new Vector2(inventoryItem.Definition.shape.GridSize.x, inventoryItem.Definition.shape.GridSize.y) * cellSize;
         itemImage.rectTransform.sizeDelta = rectTransform.sizeDelta;
-    }
-
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        OnItemClickedCallback.Invoke(inventoryItem);
     }
 }
