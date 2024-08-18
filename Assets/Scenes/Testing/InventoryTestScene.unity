@@ -231,6 +231,7 @@ MonoBehaviour:
     inventoryItem:
       Definition: {fileID: 0}
     worldItem: {fileID: 0}
+    currenctViewMode: 0
   isDraggingItem: 0
   LockedSlotIcon: {fileID: 21300000, guid: f7adc828ed70a485db62c459bdf09525, type: 3}
   EmptySlotIcon: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
@@ -871,6 +872,8 @@ MonoBehaviour:
   gridCellVisualsAnchor: {fileID: 1691986093}
   itemVisualsAnchor: {fileID: 2016457577}
   cellSize: 32
+  Debug_globalWorldItem: {fileID: 0}
+  Debug_worldItemDistance: 10
 --- !u!1 &203844586
 GameObject:
   m_ObjectHideFlags: 0

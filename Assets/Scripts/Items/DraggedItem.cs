@@ -8,4 +8,11 @@ public class DraggedItem
 {
     public InventoryItem inventoryItem;
     public WorldItem worldItem;
+
+    public enum ViewMode
+    {
+        InventoryMode,
+        WorldMode
+    };
+    public ViewMode currenctViewMode;
 }

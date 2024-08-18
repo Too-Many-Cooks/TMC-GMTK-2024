@@ -47,6 +47,11 @@ public class CharacterInventory : MonoBehaviour
     private Vector2Int cachedGridSize;
     private float cachedCellSize;
 
+    [SerializeField]
+    private WorldItem Debug_globalWorldItem;
+    [SerializeField]
+    private float Debug_worldItemDistance = 10f;
+
     [ButtonMethod(order = 0)]
     private void ResizeGrid() {
         inventory.ResizeGrid();
@@ -73,7 +78,14 @@ public class CharacterInventory : MonoBehaviour
         }
 
         isDraggingItem = true;
-        currentlyDraggedItem = new DraggedItem() { inventoryItem = inventoryItem, worldItem = worldItem };
+
+        var createdWorldItem = new GameObject(inventoryItem.Definition.Name).AddComponent<WorldItem>();
+        createdWorldItem.Definition = inventoryItem.Definition;
+        createdWorldItem.gameObject.SetActive(false);
+        // DEBUG: Remove later
+        //worldItem = Debug_globalWorldItem;
+
+        currentlyDraggedItem = new DraggedItem() { inventoryItem = inventoryItem, worldItem = createdWorldItem };
 
         return true;
     }
@@ -200,7 +212,12 @@ public class CharacterInventory : MonoBehaviour
                 bool replaced = inventory.TryRemoveItem(toBeReplacedItem);
                 replaced &= inventory.TryAddOrMoveItem(cell.x.RoundToInt(), cell.y.RoundToInt(), currentlyDraggedItem.inventoryItem);
 
-                currentlyDraggedItem = new DraggedItem() { inventoryItem = toBeReplacedItem, worldItem = null };
+                if (currentlyDraggedItem.worldItem != null)
+                {
+                    Destroy(currentlyDraggedItem.worldItem.gameObject);
+                }
+
+                currentlyDraggedItem = new DraggedItem() { inventoryItem = toBeReplacedItem };
                 isDraggingItem = true;
 
                 return replaced;
@@ -230,6 +247,10 @@ public class CharacterInventory : MonoBehaviour
         if (!isDraggingItem) return;
 
         ChangeHoverCellHighlights(id, enter);
+
+        // If cell is entered/left -> change between 2d/3d dragged item (should catch leaving the inventory entirely
+        currentlyDraggedItem.currenctViewMode = enter ? DraggedItem.ViewMode.InventoryMode : DraggedItem.ViewMode.WorldMode;
+        currentlyDraggedItem.worldItem.gameObject.SetActive(!enter);
     }
 
     private void ChangeHoverCellHighlights(Vector2Int id, bool activate)
@@ -259,16 +280,30 @@ public class CharacterInventory : MonoBehaviour
         UpdateInventoryCellVisuals();
         UpdateInventoryItemVisuals();
         if(isDraggingItem) {
-            var mousePosition = Mouse.current.position;
-            var inventoryItem = currentlyDraggedItem.inventoryItem;
-            var gridSize = inventoryItem.Definition.shape.GridSize;
-            GUI.DrawTexture(
-                new Rect(
-                    mousePosition.x.value - cellSize / 2, Screen.height - mousePosition.y.value - cellSize / 2,
-                    cellSize * gridSize.x, cellSize * gridSize.y
-                ),
-                inventoryItem.Definition.Icon.texture
-            );
+            if (currentlyDraggedItem.currenctViewMode == DraggedItem.ViewMode.InventoryMode)
+            {
+                var mousePosition = Mouse.current.position;
+                var inventoryItem = currentlyDraggedItem.inventoryItem;
+                var gridSize = inventoryItem.Definition.shape.GridSize;
+                GUI.DrawTexture(
+                    new Rect(
+                        mousePosition.x.value - cellSize / 2, Screen.height - mousePosition.y.value - cellSize / 2,
+                        cellSize * gridSize.x, cellSize * gridSize.y
+                    ),
+                    inventoryItem.Definition.Icon.texture
+                );
+            }
+        }
+    }
+
+    private void Update()
+    {
+        if (currentlyDraggedItem.currenctViewMode == DraggedItem.ViewMode.WorldMode)
+        {
+            var mousePosition = Mouse.current.position.ReadValue();
+            print(mousePosition);
+            print(Camera.main.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, Debug_worldItemDistance)));
+            currentlyDraggedItem.worldItem.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, Debug_worldItemDistance));
         }
     }
 }
