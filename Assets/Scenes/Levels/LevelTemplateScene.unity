@@ -420,6 +420,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0380d2db79eb7d84fa00383dd809f231, type: 3}
+--- !u!224 &1485641984 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1948815842310630628, guid: 0380d2db79eb7d84fa00383dd809f231,
+    type: 3}
+  m_PrefabInstance: {fileID: 1485641983}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &1485641985 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 917502199287466527, guid: 0380d2db79eb7d84fa00383dd809f231,
+    type: 3}
+  m_PrefabInstance: {fileID: 1485641983}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1791239446
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -501,6 +513,16 @@ PrefabInstance:
       propertyPath: inventoryAnchor
       value: 
       objectReference: {fileID: 822512534}
+    - target: {fileID: -8254372430402789042, guid: 3a890361396004c4984181950cc0524b,
+        type: 3}
+      propertyPath: itemVisualsAnchor
+      value: 
+      objectReference: {fileID: 1485641984}
+    - target: {fileID: -8254372430402789042, guid: 3a890361396004c4984181950cc0524b,
+        type: 3}
+      propertyPath: gridCellVisualsAnchor
+      value: 
+      objectReference: {fileID: 1485641985}
     - target: {fileID: 7312746790141268, guid: 3a890361396004c4984181950cc0524b, type: 3}
       propertyPath: m_Name
       value: Player
