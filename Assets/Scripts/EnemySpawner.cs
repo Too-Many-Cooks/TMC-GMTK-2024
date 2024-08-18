@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField]
     Transform playerTransform;
     [SerializeField]
     float spawnsPerSec = 0.1f;
@@ -25,6 +24,7 @@ public class EnemySpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         StartCoroutine(WaitForSpawnCoroutine());
     }
 

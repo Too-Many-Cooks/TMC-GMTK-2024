@@ -11,19 +11,28 @@ public class PlayerItemDamageSender : MonoBehaviour
 
     Collider itemDamageZoneCollider;
 
-    List<EnemyDamageReceiver> enemyDamageReceiversInCollider;
+    [SerializeField]
+    List<GameObject> enemyDamageReceiversInCollider;
+    bool isPlayerInCollider = false;
+
+    GameObject playerObject;
 
     // Start is called before the first frame update
     void Start()
     {
         itemDamageZoneCollider = GetComponent<Collider>();
+        playerObject = GameObject.FindGameObjectWithTag("Player");
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.GetComponent<EnemyDamageReceiver>() != null)
         {
-            enemyDamageReceiversInCollider.Add(other.gameObject.GetComponent<EnemyDamageReceiver>());
+            enemyDamageReceiversInCollider.Add(other.gameObject);
+        }
+        else if(other.gameObject.GetComponent<PlayerDamageReceiver>() != null)
+        {
+            isPlayerInCollider = true;
         }
     }
 
@@ -31,15 +40,22 @@ public class PlayerItemDamageSender : MonoBehaviour
     {
         if (other.gameObject.GetComponent<EnemyDamageReceiver>() != null)
         {
-            enemyDamageReceiversInCollider.Remove(other.gameObject.GetComponent<EnemyDamageReceiver>());
+            enemyDamageReceiversInCollider.Remove(other.gameObject);
+        }
+        else if (other.gameObject.GetComponent<PlayerDamageReceiver>() != null)
+        {
+            isPlayerInCollider = false;
         }
     }
 
-    public void DamageEnemiesInCollider(float damage)
+    public void DamageEnemiesInCollider(float damage, float damageToPlayer = 0f)
     {
         foreach(var enemyDReceiver in enemyDamageReceiversInCollider)
         {
-            enemyDReceiver.DealDamageToEnemy(damage);
+            if(enemyDReceiver != null)
+                enemyDReceiver.GetComponent<EnemyDamageReceiver>().DealDamageToEnemy(damage);
         }
+        if (isPlayerInCollider)
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerDamageReceiver>().DealDamageToPlayer(damageToPlayer);
     }
 }

@@ -8,6 +8,7 @@ public class DraggedItem
 {
     public InventoryItem inventoryItem;
     public WorldItem worldItem;
+    public ItemUseEffectBase itemUseEffect;
 
     public enum ViewMode
     {
@@ -15,4 +16,5 @@ public class DraggedItem
         WorldMode
     };
     public ViewMode currenctViewMode;
+
 }
