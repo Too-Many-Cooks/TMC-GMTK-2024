@@ -2,10 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(Collider))]
 public class EnemyDamageReceiver : MonoBehaviour
 {
+    public UnityEvent OnDeath;
+
     [SerializeField]
     bool canBeDamaged = true;
     [SerializeField]
@@ -25,6 +28,7 @@ public class EnemyDamageReceiver : MonoBehaviour
 
     public void DealDamageToEnemy(float dmg)
     {
+        Debug.Log("here");
         enemyHealth -= dmg;
         if (enemyHealth < 0)
             KillEnemy();
@@ -39,6 +43,7 @@ public class EnemyDamageReceiver : MonoBehaviour
 
     public void KillEnemy()
     {
+        OnDeath.Invoke();
         // TODO: Maybe do something cooler
         Destroy(gameObject);
     }

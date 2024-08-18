@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebcbd775a0f3d6c44ad4b3f2011fa358, type: 3}
+  m_Name: TestMultiItemDropTableDefinition
+  m_EditorClassIdentifier: 
+  Rolls:
+  - NoDropWeight: 0
+    ItemEntries:
+    - DropWeight: 1
+      Item: {fileID: 11400000, guid: e01a1d4c263c9cf4980e21e6c775398d, type: 2}
+    - DropWeight: 1
+      Item: {fileID: 11400000, guid: bd4be08dfc2833f49be4e7a2cdf34fb2, type: 2}
+    - DropWeight: 1
+      Item: {fileID: 11400000, guid: 506079ee45063da43bd2985080433282, type: 2}
+    - DropWeight: 1
+      Item: {fileID: 11400000, guid: b2b94da766d5cb443adc7b6cf89c0db9, type: 2}
+  - NoDropWeight: 0
+    ItemEntries:
+    - DropWeight: 1
+      Item: {fileID: 11400000, guid: 3e52ca351b2aaee46a06e96daef69407, type: 2}
+    - DropWeight: 1
+      Item: {fileID: 11400000, guid: 18df69ad563cdc345a99813f0865c74f, type: 2}
+  - NoDropWeight: 0
+    ItemEntries:
+    - DropWeight: 1
+      Item: {fileID: 11400000, guid: e01a1d4c263c9cf4980e21e6c775398d, type: 2}
+    - DropWeight: 1
+      Item: {fileID: 11400000, guid: bd4be08dfc2833f49be4e7a2cdf34fb2, type: 2}
+    - DropWeight: 1
+      Item: {fileID: 11400000, guid: 506079ee45063da43bd2985080433282, type: 2}
+    - DropWeight: 1
+      Item: {fileID: 11400000, guid: b2b94da766d5cb443adc7b6cf89c0db9, type: 2}
+  - NoDropWeight: 0
+    ItemEntries:
+    - DropWeight: 1
+      Item: {fileID: 11400000, guid: e01a1d4c263c9cf4980e21e6c775398d, type: 2}
+    - DropWeight: 1
+      Item: {fileID: 11400000, guid: bd4be08dfc2833f49be4e7a2cdf34fb2, type: 2}
+    - DropWeight: 1
+      Item: {fileID: 11400000, guid: 506079ee45063da43bd2985080433282, type: 2}
+    - DropWeight: 1
+      Item: {fileID: 11400000, guid: b2b94da766d5cb443adc7b6cf89c0db9, type: 2}
+  - NoDropWeight: 0
+    ItemEntries:
+    - DropWeight: 1
+      Item: {fileID: 11400000, guid: e01a1d4c263c9cf4980e21e6c775398d, type: 2}
+    - DropWeight: 1
+      Item: {fileID: 11400000, guid: bd4be08dfc2833f49be4e7a2cdf34fb2, type: 2}
+    - DropWeight: 1
+      Item: {fileID: 11400000, guid: 506079ee45063da43bd2985080433282, type: 2}
+    - DropWeight: 1
+      Item: {fileID: 11400000, guid: b2b94da766d5cb443adc7b6cf89c0db9, type: 2}

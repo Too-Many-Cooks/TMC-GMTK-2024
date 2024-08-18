@@ -57,6 +57,16 @@ public class LootTableDefinition : ScriptableObject
     [ButtonMethod]
     private void TestRollResults() {
         var drops = RollResults();
+        Debug.Log(RollResultDebugString(drops));
+    }
+
+    [ButtonMethod]
+    private void TestRollDrops() {
+        var drops = RollDrops();
+        Debug.Log(RollDropDebugString(drops));
+    }
+
+    public static string RollResultDebugString(ItemDefinition[] drops) {
         var dropMessage = "Results from " + drops.Length + " rolls: [";
         for(int i = 0; i < drops.Length; i++) {
             dropMessage += (drops[i] != null ? drops[i].name : "Nothing");
@@ -65,12 +75,11 @@ public class LootTableDefinition : ScriptableObject
             }
         }
         dropMessage += "]";
-        Debug.Log(dropMessage);
+        return dropMessage;
+        
     }
 
-    [ButtonMethod]
-    private void TestRollDrops() {
-        var drops = RollDrops();
+    public static string RollDropDebugString(ItemDefinition[] drops) {
         var dropMessage = "" + drops.Length + " items dropped: [";
         for(int i = 0; i < drops.Length; i++) {
             dropMessage += (drops[i] != null ? drops[i].name : "Nothing");
@@ -79,6 +88,7 @@ public class LootTableDefinition : ScriptableObject
             }
         }
         dropMessage += "]";
-        Debug.Log(dropMessage);
+        return dropMessage;
+
     }
 }

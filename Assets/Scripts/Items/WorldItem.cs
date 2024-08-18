@@ -9,7 +9,7 @@ public class WorldItem : MonoBehaviour
     public GameObject ItemModel;
     public float rotationSpeed = 60.0f;
 
-    void Awake()
+    void Start()
     {
         UpdateItemModel();
     }
