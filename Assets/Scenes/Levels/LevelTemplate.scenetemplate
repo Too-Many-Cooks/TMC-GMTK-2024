@@ -101,10 +101,10 @@ MonoBehaviour:
   - dependency: {fileID: 2919480991887057869, guid: bb90fc778059eb64e9ba80b947b9e2f5,
       type: 3}
     instantiationMode: 1
-  - dependency: {fileID: -944628639613478452, guid: 6020da1970cbb794093023f286e90def,
+  - dependency: {fileID: 3431627962746024347, guid: d7790ac39ff16ce489f0cec8a67444c2,
       type: 3}
     instantiationMode: 1
-  - dependency: {fileID: 3431627962746024347, guid: d7790ac39ff16ce489f0cec8a67444c2,
+  - dependency: {fileID: -944628639613478452, guid: 6020da1970cbb794093023f286e90def,
       type: 3}
     instantiationMode: 1
   - dependency: {fileID: 11400000, guid: b143a33dc97950f4b915d9f4cf35e8c3, type: 2}
@@ -159,7 +159,7 @@ MonoBehaviour:
     instantiationMode: 1
   - dependency: {fileID: 4683367113636358929, guid: a7fdf3f037ff3574ab373155e26a6041,
       type: 3}
-    instantiationMode: 0
+    instantiationMode: 1
   - dependency: {fileID: 2100000, guid: 38cd73ae5abcdd54093150611cd03a64, type: 2}
     instantiationMode: 1
   - dependency: {fileID: 2100000, guid: cbfea0ad93847a842a66bf21e4aa29b1, type: 2}
