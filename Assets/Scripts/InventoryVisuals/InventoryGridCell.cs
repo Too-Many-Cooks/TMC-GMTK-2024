@@ -4,17 +4,29 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class InventoryGridCell : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
-    private Vector2 cellID;
-    private Action<Vector2> onPointerClickCallback;
-    private Action<Vector2, bool> onPointerHoverCallback;
+    private Vector2Int cellID;
+    private Action<Vector2Int> onPointerClickCallback;
+    private Action<Vector2Int, bool> onPointerHoverCallback;
 
     [SerializeField]
     GameObject damagedWarning;
+    [SerializeField]
+    GameObject gridCell;
 
-    public void Init(Vector2 cellID, float cellSize, GridInventory.InventoryCell.CellStatus cellState, Action<Vector2> onPointerClickCallback, Action<Vector2, bool> onPointerHoverCallback)
+    Color originalGridCellColor;
+    Vector3 originalGridCellScale;
+
+    private void Start()
+    {
+        originalGridCellColor = gridCell.GetComponent<Image>().color;
+        originalGridCellScale = gridCell.transform.localScale;
+    }
+
+    public void Init(Vector2Int cellID, float cellSize, GridInventory.InventoryCell.CellStatus cellState, Action<Vector2Int> onPointerClickCallback, Action<Vector2Int, bool> onPointerHoverCallback)
     {
         this.cellID = cellID;
         this.onPointerClickCallback = onPointerClickCallback;
@@ -65,8 +77,17 @@ public class InventoryGridCell : MonoBehaviour, IPointerClickHandler, IPointerEn
         onPointerHoverCallback.Invoke(cellID, false);
     }
 
-    internal void Init(Vector2 vector2, GridInventory.InventoryCell.CellStatus cellState, object onCellClick, Action<Vector2> onCellHoverChange)
+    internal void SetHighlight(bool activateHighlight, bool possibleToPlace)
     {
-        throw new NotImplementedException();
+        if(activateHighlight)
+        {
+            gridCell.GetComponent<Image>().color = possibleToPlace ? Color.green : Color.red;
+            //gridCell.transform.localScale = Vector3.one * 0.6f;
+        }
+        else
+        {
+            gridCell.GetComponent<Image>().color = originalGridCellColor;
+            //gridCell.transform.localScale = originalGridCellScale;
+        }
     }
 }
