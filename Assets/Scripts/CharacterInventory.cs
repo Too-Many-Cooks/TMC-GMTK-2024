@@ -4,9 +4,15 @@ using System.Collections.Generic;
 using System.Linq;
 using MyBox;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CharacterInventory : MonoBehaviour
 {
+
+    [Foldout("Debug View", true)] 
+    [SerializeField][ReadOnly]DraggedItem currentlyDraggedItem;
+    [SerializeField][ReadOnly]bool isDraggingItem;
+
     [Foldout("GUI", true)] 
     public Sprite LockedSlotIcon;
     public Sprite EmptySlotIcon;
@@ -47,6 +53,16 @@ public class CharacterInventory : MonoBehaviour
     {
         CreateVisuals();
     }
+
+    public bool BeginDraggingItem(InventoryItem inventoryItem, WorldItem worldItem = null) {
+        if(isDraggingItem) return false;
+
+        isDraggingItem = true;
+        currentlyDraggedItem = new DraggedItem() { inventoryItem = inventoryItem, worldItem = worldItem };
+
+        return true;
+    }
+
 
     private void CreateVisuals()
     {
@@ -138,13 +154,29 @@ public class CharacterInventory : MonoBehaviour
 
     private void OnItemClicked(InventoryItem item)
     {
-        // TODO: Do something with this (e.g. picking up item)
+        BeginDraggingItem(item);
         print("Item " + item.Definition.Name + " clicked");
+    }
+
+    private bool DropDraggedItemOnCell(Vector2 cell)
+    {
+        if(!isDraggingItem) return false;
+
+        var dropped = inventory.TryAddOrMoveItem(cell.x.RoundToInt(), cell.y.RoundToInt(), currentlyDraggedItem.inventoryItem);
+        if(dropped && currentlyDraggedItem.worldItem != null) {
+            Destroy(currentlyDraggedItem.worldItem.gameObject);
+        }
+        currentlyDraggedItem = null;
+        isDraggingItem = false;
+
+        return dropped;
     }
 
     private void OnCellClick(Vector2 id)
     {
-        // TODO: Do something with this (e.g. item placing)
+        if(isDraggingItem) {
+            DropDraggedItemOnCell(id);
+        }
         print("Cell " + id + " clicked");
     }
 
@@ -157,5 +189,17 @@ public class CharacterInventory : MonoBehaviour
     {
         UpdateInventoryCellVisuals();
         UpdateInventoryItemVisuals();
+        if(isDraggingItem) {
+            var mousePosition = Mouse.current.position;
+            var inventoryItem = currentlyDraggedItem.inventoryItem;
+            var gridSize = inventoryItem.Definition.shape.GridSize;
+            GUI.DrawTexture(
+                new Rect(
+                    mousePosition.x.value - cellSize / 2, Screen.height - mousePosition.y.value - cellSize / 2,
+                    cellSize * gridSize.x, cellSize * gridSize.y
+                ),
+                inventoryItem.Definition.Icon.texture
+            );
+        }
     }
 }
