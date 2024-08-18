@@ -346,6 +346,7 @@ GameObject:
   - component: {fileID: 6588836596853697155}
   - component: {fileID: 1445203019447271963}
   - component: {fileID: 4138466509053344433}
+  - component: {fileID: -1549787497673188355}
   m_Layer: 0
   m_Name: EnemyBase
   m_TagString: Untagged
@@ -478,10 +479,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19c5c9d438322fa48b8b92c285aeba5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damagesOnTouch: 1
-  diesOnDealingDamage: 0
-  damageDealtOnTouch: 1
-  damageCooldown_sec: 1
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -1549787497673188355}
+        m_TargetAssemblyTypeName: LootDropBehaviour, Assembly-CSharp
+        m_MethodName: DropDeathLoot
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   canBeDamaged: 1
   enemyMaxHealth: 100
   lifeBar: {fileID: 1492889385396974607}
@@ -497,3 +509,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ed535601666c0f4081aeb516a63d4e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damagesOnTouch: 1
+  damageDealtOnTouch: 1
+  damageCooldown_sec: 1
+  OnDealingDamage:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &-1549787497673188355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6317969124517117552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf4aaaa46ac5b7d4d9fbf890e4d5c54e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropOffset: {x: 0, y: 0, z: 0}
+  dropRange: 1
+  dropRangeIncreasePerItem: 0.25
+  DeathLootTable: {fileID: 11400000, guid: b143a33dc97950f4b915d9f4cf35e8c3, type: 2}
