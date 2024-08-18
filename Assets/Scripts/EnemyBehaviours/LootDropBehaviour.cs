@@ -13,7 +13,6 @@ public class LootDropBehaviour : MonoBehaviour
     [ButtonMethod]
     public void DropDeathLoot() {
         var drops = DeathLootTable.RollDrops();
-        Debug.Log(LootTableDefinition.RollDropDebugString(drops));
         var expandedDropRange = dropRange +  dropRangeIncreasePerItem * (drops.Length - 1);
         for(int i = 0; i < drops.Length; i++) {
             if(drops[i] == null) continue;
