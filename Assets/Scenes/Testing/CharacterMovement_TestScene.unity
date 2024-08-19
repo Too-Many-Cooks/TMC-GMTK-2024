@@ -486,7 +486,7 @@ PrefabInstance:
     - target: {fileID: 4454712368805601251, guid: a7fdf3f037ff3574ab373155e26a6041,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.02835
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4454712368805601251, guid: a7fdf3f037ff3574ab373155e26a6041,
         type: 3}
@@ -496,7 +496,7 @@ PrefabInstance:
     - target: {fileID: 4454712368805601251, guid: a7fdf3f037ff3574ab373155e26a6041,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.9912014
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4454712368805601251, guid: a7fdf3f037ff3574ab373155e26a6041,
         type: 3}
@@ -588,8 +588,9 @@ MonoBehaviour:
   - {fileID: 3554884828622285709, guid: ed158dc0a8d675c4d8e6d806207b35c0, type: 3}
   - {fileID: 2989569219167297325, guid: 24cbf4802a74a084d8e6d879e2d8362d, type: 3}
   colorGrading: {fileID: 2800000, guid: 9af2e6c60c6a70a4f8b5020364550e17, type: 3}
-  floorSize: {x: 32, y: 32}
-  tileSize: 2
+  playerTransform: {fileID: 1889442819}
+  poolSizeAroundPlayer: {x: 30, y: 30}
+  poolPositionDisplacement: {x: 5, y: 5}
 --- !u!4 &1818933807
 Transform:
   m_ObjectHideFlags: 0
@@ -605,6 +606,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1889442819 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3481036058409734900, guid: 3a890361396004c4984181950cc0524b,
+    type: 3}
+  m_PrefabInstance: {fileID: 2112694687}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2112694687
 PrefabInstance:
   m_ObjectHideFlags: 0
