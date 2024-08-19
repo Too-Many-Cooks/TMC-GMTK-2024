@@ -2,6 +2,9 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 using MyBox;
+using System.Linq;
+using System;
+using System.Data;
 
 [System.Serializable]
 public class GridInventory
@@ -13,7 +16,7 @@ public class GridInventory
     }
     [SerializeField] private Vector2Int _gridSize;
 
-    [SerializeField][ReadOnly] public List<InventoryRow> Rows;
+    [ReadOnly] public List<InventoryRow> Rows;
     [SerializeField] public Dictionary<InventoryItem, Vector2Int> ItemDrawPositions = new Dictionary<InventoryItem, Vector2Int>();
 
     public bool CanAddOrMoveItem(int x, int y, InventoryItem item)
@@ -121,13 +124,19 @@ public class GridInventory
         return TryRemoveItem(item);
     }
 
-    #nullable enable
-    public InventoryItem? GetInventoryItemAt(int x, int y) {
+    public InventoryCell GetCell(int x, int y) {
         if(y < 0 || x < 0 || y >= Rows.Count || x >= Rows[y].Columns.Count)
             return null;
-        return Rows[y].Columns[x].Item;
+        return Rows[y].Columns[x];
     }
-    #nullable disable
+
+    public InventoryCell GetCell(Vector2Int pos) {
+        return GetCell(pos.x, pos.y);
+    }
+
+    public InventoryItem GetInventoryItemAt(int x, int y) {
+        return GetCell(x, y)?.Item;
+    }
 
     public InventoryCell[] GetCellsWithStates(InventoryCell.CellStatus[] cellStates) {
         var cells = new List<InventoryCell>();
@@ -148,6 +157,27 @@ public class GridInventory
         var cellStates = new InventoryCell.CellStatus[1];
         cellStates[0] = cellState;
         return GetCellsWithStates(cellStates);
+    }
+
+    public Vector2Int[] GetCellIndexesWithStates(InventoryCell.CellStatus[] cellStates) {
+        var cellIndexes = new List<Vector2Int>();
+        foreach(var (row, y) in Rows.Select((v, i) => (v, i))) {
+            foreach(var (cell, x) in row.Columns.Select((v, i) => (v, i))) {
+                foreach(var cellState in cellStates) {
+                    if(cell.CellState == cellState){
+                        cellIndexes.Add(new Vector2Int(x, y));
+                        break;
+                    }
+                }
+            }
+        }
+        return cellIndexes.ToArray();
+    }
+
+    public Vector2Int[] GetCellIndexesWithState(InventoryCell.CellStatus cellState) {
+        var cellStates = new InventoryCell.CellStatus[1];
+        cellStates[0] = cellState;
+        return GetCellIndexesWithStates(cellStates);
     }
 
     public void ResizeGrid (int x, int y) {
@@ -179,6 +209,16 @@ public class GridInventory
             for(int row = 0; row < _gridSize.y; row++) {
                 _gridSize.x = math.min(_gridSize.x, Rows[row].Columns.Count);
             }
+    }
+
+    internal void ClearInventory()
+    {
+        foreach(var row in Rows) {
+            foreach(var cell in row.Columns) {
+                cell.Item = null;
+                ItemDrawPositions.Clear();
+            }
+        }
     }
 
     [System.Serializable]
