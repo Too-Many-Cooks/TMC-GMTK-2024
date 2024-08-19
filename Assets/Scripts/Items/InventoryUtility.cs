@@ -58,8 +58,8 @@ public static class InventoryUtility
                 if (i < leftmost_X)  leftmost_X = i;
                 if (i > rightmost_X) rightmost_X = i;
 
-                if (j < upmost_Y)    upmost_Y = j;
-                if (j > downmost_Y)  downmost_Y = j;
+                if (j > upmost_Y)    upmost_Y = j;
+                if (j < downmost_Y)  downmost_Y = j;
 
                 // Checking if the cell is isolated, and thus should have priority when being deleted.
                 if (   (i == 0                    || myInventoryArray[i - 1][j] != (int)InventoryCell.CellStatus.Unlocked)
@@ -177,8 +177,8 @@ public static class InventoryUtility
                     if (i < leftmost_X) leftmost_X = i;
                     if (i > rightmost_X) rightmost_X = i;
 
-                    if (j < upmost_Y) upmost_Y = j;
-                    if (j > downmost_Y) downmost_Y = j;
+                    if (j > upmost_Y) upmost_Y = j;
+                    if (j < downmost_Y) downmost_Y = j;
                 }
 
                 else if (myInventoryArray[i][j] == (int)InventoryCell.CellStatus.Locked)
@@ -209,7 +209,9 @@ public static class InventoryUtility
 
         // Approximating the location of the inventory center.
         Vector2 inventoryCenter =
-            new Vector2(leftmost_X + (rightmost_X - leftmost_X) / 2, upmost_Y - (upmost_Y - downmost_Y) / 2);
+            new Vector2(leftmost_X + (rightmost_X - leftmost_X) / 2f, upmost_Y - (upmost_Y - downmost_Y) / 2f);
+
+        Debug.Log(inventoryCenter);
 
         // Obtaining an approximate directionality for our unlocking efforts.
         float maxVectorLenght = new Vector2(rightmost_X - inventoryCenter.x, upmost_Y - inventoryCenter.y).magnitude;
@@ -264,6 +266,7 @@ public static class InventoryUtility
     private static Vector2 ObtainRandomUnitVector2()
     {
         float angle = Random.Range(0, Mathf.PI * 2);
+
         return new Vector2(Mathf.Sin(angle), Mathf.Cos(angle));
     }
 
