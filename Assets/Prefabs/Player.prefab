@@ -279,10 +279,10 @@ MonoBehaviour:
           Definition: {fileID: 0}
       - CellState: 1
         Item:
-          Definition: {fileID: 11400000, guid: bd4be08dfc2833f49be4e7a2cdf34fb2, type: 2}
+          Definition: {fileID: 0}
       - CellState: 1
         Item:
-          Definition: {fileID: 11400000, guid: bd4be08dfc2833f49be4e7a2cdf34fb2, type: 2}
+          Definition: {fileID: 0}
     - Columns:
       - CellState: 0
         Item:
@@ -310,10 +310,10 @@ MonoBehaviour:
           Definition: {fileID: 0}
       - CellState: 1
         Item:
-          Definition: {fileID: 11400000, guid: bd4be08dfc2833f49be4e7a2cdf34fb2, type: 2}
+          Definition: {fileID: 0}
       - CellState: 1
         Item:
-          Definition: {fileID: 11400000, guid: bd4be08dfc2833f49be4e7a2cdf34fb2, type: 2}
+          Definition: {fileID: 0}
     - Columns:
       - CellState: 0
         Item:
