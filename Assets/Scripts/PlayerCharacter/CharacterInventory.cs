@@ -57,6 +57,9 @@ public class CharacterInventory : MonoBehaviour
     [SerializeField]
     private float Debug_worldItemDistance = 10f;
 
+    private bool worldItemPickedUpThisFrame = false;
+
+
     [ButtonMethod(order = 0)]
     private void ResizeGrid() {
         inventory.ResizeGrid();
@@ -79,13 +82,13 @@ public class CharacterInventory : MonoBehaviour
 
         if (Test_hideItemVisualsWhileDragging)
         {
-            //itemVisuals.Find(x => x.inventoryItem == itemInCell).gameObject.SetActive(false);
             inventory.TryRemoveItem(inventoryItem);
         }
 
         isDraggingItem = true;
 
-        var createdWorldItem = new GameObject(inventoryItem.Definition.Name).AddComponent<WorldItem>();
+        //var createdWorldItem = new GameObject(inventoryItem.Definition.Name).AddComponent<WorldItem>();
+        var createdWorldItem = Instantiate(inventoryItem.Definition.WorldItemPrefab).GetComponent<WorldItem>();
         createdWorldItem.Definition = inventoryItem.Definition;
         createdWorldItem.gameObject.SetActive(false);
 
@@ -108,11 +111,44 @@ public class CharacterInventory : MonoBehaviour
             Debug.LogError("No itemUseEffectPrefab attached to item scriptable object");
         }
 
-        currentlyDraggedItem = new DraggedItem() { inventoryItem = inventoryItem, worldItem = createdWorldItem, itemUseEffect = itemUseEffectVisual };
+        currentlyDraggedItem = new DraggedItem() { inventoryItem = inventoryItem, worldItem = createdWorldItem, itemUseEffect = itemUseEffectVisual, currenctViewMode = DraggedItem.ViewMode.InventoryMode };
 
         return true;
     }
 
+    public bool BeginDraggingItem(WorldItem worldItem)
+    {
+        if (isDraggingItem) return false;
+
+        isDraggingItem = true;
+
+        InventoryItem createdInventoryItem = new InventoryItem(worldItem.Definition);
+        
+        ItemUseEffectBase itemUseEffectVisual = null;
+        if (worldItem.Definition.ItemUseEffectPrefab != null)
+        {
+            var itemUseEffectVisualGO = Instantiate(worldItem.Definition.ItemUseEffectPrefab);
+            itemUseEffectVisualGO.SetActive(true);
+            if (!itemUseEffectVisualGO.HasComponent<ItemUseEffectBase>())
+            {
+                Debug.LogError("ItemUseEffect Prefab does not contain an IItemUseEffectBase.");
+            }
+            else
+            {
+                itemUseEffectVisual = itemUseEffectVisualGO.GetComponent<ItemUseEffectBase>();
+            }
+        }
+        else
+        {
+            Debug.LogError("No itemUseEffectPrefab attached to item scriptable object");
+        }
+
+        currentlyDraggedItem = new DraggedItem() { inventoryItem = createdInventoryItem, worldItem = worldItem, itemUseEffect = itemUseEffectVisual, currenctViewMode = DraggedItem.ViewMode.WorldMode };
+
+        worldItemPickedUpThisFrame = true;
+
+        return true;
+    }
 
     private void CreateVisuals()
     {
@@ -332,10 +368,10 @@ public class CharacterInventory : MonoBehaviour
             var ray = Camera.main.ScreenPointToRay(new Vector3(mousePosition.x, mousePosition.y, 1f));
             Vector3 positionOnY0Plane = ray.origin - (ray.origin.y / ray.direction.y) * ray.direction;
 
-            currentlyDraggedItem.worldItem.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, Debug_worldItemDistance));
+            currentlyDraggedItem.worldItem.transform.position = positionOnY0Plane;//Camera.main.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, Debug_worldItemDistance));
             currentlyDraggedItem.itemUseEffect.UpdateTargetting(positionOnY0Plane);
 
-            if (Mouse.current.leftButton.wasPressedThisFrame)
+            if (!worldItemPickedUpThisFrame && Mouse.current.leftButton.wasPressedThisFrame)
             {
                 currentlyDraggedItem.itemUseEffect.ClickActivationTrigger(out bool destroyedOnUse);
                 if (destroyedOnUse)
@@ -347,8 +383,9 @@ public class CharacterInventory : MonoBehaviour
                     isDraggingItem = false;
                 }
             }
-
         }
+
+        worldItemPickedUpThisFrame = false;
     }
 
     private void HandleDamagedSlots()
@@ -386,4 +423,10 @@ public class CharacterInventory : MonoBehaviour
             damagedSlotTimers.Remove(damagedSlot);
         }
     }
+
+    internal void PickUpWorldItem(WorldItem worldItem)
+    {
+        BeginDraggingItem(worldItem);
+    }
+
 }

@@ -13,17 +13,19 @@ public class WorldItem : ItemUseEffectBase
     {
         destroyedOnUse = true;
 
+        gameObject.SetActive(true);
         Instantiate(gameObject, transform.position, transform.rotation);
     }
 
     public override void UpdateTargetting(Vector3 targettingPositionOnPlane)
     {
+        gameObject.SetActive(false);
         transform.position = targettingPositionOnPlane;
     }
 
     void Start()
     {
-        UpdateItemModel();
+        //UpdateItemModel();
     }
 
     void Update() {
