@@ -52,14 +52,26 @@ public static class InventoryUtility
                 if (myInventoryArray[i][j] != (int)InventoryCell.CellStatus.Unlocked)
                     continue;
 
+                // The first time we find an unlocked slot, we need to assign these values.
+                if (unlockedSlots.Count == 0)
+                {
+                    leftmost_X = i;
+                    rightmost_X = i;
+                    upmost_Y = j;
+                    downmost_Y = j;
+                }
+                else // Afterwards, we update the dimensions of the inventory as normal.
+                {
+                    if (i < leftmost_X) leftmost_X = i;
+                    if (i > rightmost_X) rightmost_X = i;
+
+                    if (j > upmost_Y) upmost_Y = j;
+                    if (j < downmost_Y) downmost_Y = j;
+                }
+
+
                 unlockedSlots.Add(new Vector2Int(i, j));
 
-                // Updating the dimensions of the inventory.
-                if (i < leftmost_X)  leftmost_X = i;
-                if (i > rightmost_X) rightmost_X = i;
-
-                if (j > upmost_Y)    upmost_Y = j;
-                if (j < downmost_Y)  downmost_Y = j;
 
                 // Checking if the cell is isolated, and thus should have priority when being deleted.
                 if (   (i == 0                    || myInventoryArray[i - 1][j] != (int)InventoryCell.CellStatus.Unlocked)
@@ -83,7 +95,7 @@ public static class InventoryUtility
 
         // Approximating the location of the inventory center.
         Vector2 inventoryCenter =
-            new Vector2(leftmost_X + (rightmost_X - leftmost_X) / 2, upmost_Y - (upmost_Y - downmost_Y) / 2);
+            new Vector2(leftmost_X + (rightmost_X - leftmost_X) / 2f, upmost_Y - (upmost_Y - downmost_Y) / 2f);
 
         // Obtaining an approximate directionality for our deleting efforts.
         float maxVectorLenght = new Vector2(rightmost_X - inventoryCenter.x, upmost_Y - inventoryCenter.y).magnitude;
@@ -152,6 +164,7 @@ public static class InventoryUtility
         Vector2Int gridDimensions = inventory.GridSize; // gridDimensions[X][Y] isn't necessarily the X & Y of the inventory.
         int[][] myInventoryArray = new int[gridDimensions.x][];
 
+        bool foundFirstUnlockedSlot = false;
         int leftmost_X = 0, rightmost_X = 0, upmost_Y = 0, downmost_Y = 0;
         List<Vector2Int> lockedSlots = new List<Vector2Int>();
         List<Vector2Int> isolatedSlots = new List<Vector2Int>();
@@ -173,12 +186,26 @@ public static class InventoryUtility
                 // If the slot is unlocked
                 if (myInventoryArray[i][j] == (int)InventoryCell.CellStatus.Unlocked)
                 {
-                    // Updating the dimensions of the inventory.
-                    if (i < leftmost_X) leftmost_X = i;
-                    if (i > rightmost_X) rightmost_X = i;
+                    if (!foundFirstUnlockedSlot)
+                    {
+                        foundFirstUnlockedSlot = true;
 
-                    if (j > upmost_Y) upmost_Y = j;
-                    if (j < downmost_Y) downmost_Y = j;
+                        // The first time we find an unlocked slot, we need to assign these values.
+                        leftmost_X = i;
+                        rightmost_X = i;
+                        upmost_Y = j;
+                        downmost_Y = j;
+                    }
+
+                    else
+                    {
+                        // Updating the dimensions of the inventory.
+                        if (i < leftmost_X) leftmost_X = i;
+                        if (i > rightmost_X) rightmost_X = i;
+
+                        if (j > upmost_Y) upmost_Y = j;
+                        if (j < downmost_Y) downmost_Y = j;
+                    }
                 }
 
                 else if (myInventoryArray[i][j] == (int)InventoryCell.CellStatus.Locked)
@@ -210,8 +237,6 @@ public static class InventoryUtility
         // Approximating the location of the inventory center.
         Vector2 inventoryCenter =
             new Vector2(leftmost_X + (rightmost_X - leftmost_X) / 2f, upmost_Y - (upmost_Y - downmost_Y) / 2f);
-
-        Debug.Log(inventoryCenter);
 
         // Obtaining an approximate directionality for our unlocking efforts.
         float maxVectorLenght = new Vector2(rightmost_X - inventoryCenter.x, upmost_Y - inventoryCenter.y).magnitude;
