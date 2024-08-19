@@ -19,7 +19,7 @@ public class CharacterMovementController : MonoBehaviour
 
     Quaternion targetOrientationQuat;
     [SerializeField]
-    float maxRotationDegreesPerSec = 5f;
+    float maxRotationDegreesPerSec = 350f;
 
     // [Header("Debug")]
 

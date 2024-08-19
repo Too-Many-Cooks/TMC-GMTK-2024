@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 8138141458428624030}
   - component: {fileID: 5432281383488461165}
   - component: {fileID: 5730483052155837756}
+  - component: {fileID: 1067736372338194887}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -163,6 +164,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: c5859f63-faff-4898-8d88-4f7413246885
     m_ActionName: Movement/Move
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1067736372338194887}
+        m_TargetAssemblyTypeName: PauseMenuManager, Assembly-CSharp
+        m_MethodName: TogglePauseMenu
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: c648aeaf-f4c8-4de5-9181-b1760176b150
+    m_ActionName: Movement/OpenPauseMenu[/Keyboard/escape]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Movement
@@ -1037,6 +1054,23 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1067736372338194887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7312746790141268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c08571ad9e860d488d484d70388056c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseMenu:
+    Scene: {fileID: 102900000, guid: 4392dc3e3699e8a4eb4bd7b82a466e20, type: 3}
+    SceneName: PauseScene
+    sceneIndex: 3
+    sceneEnabled: 1
 --- !u!1 &3039515459357500525
 GameObject:
   m_ObjectHideFlags: 0
