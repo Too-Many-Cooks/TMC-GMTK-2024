@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LookAtCameraBillboard : MonoBehaviour
 {
-    private void Start()
+    private void Update()
     {
         transform.rotation = Quaternion.LookRotation(Camera.main.transform.forward, Camera.main.transform.up);
     }
