@@ -12,8 +12,8 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 829a86ba161cdd840842063447f41aab
   - enabled: 1
-    path: Assets/Scenes/CharacterMovement_TestScene.unity
-    guid: a554741939d5579429a8a9f91c489f3d
+    path: Assets/Scenes/Levels/BasicLevel.unity
+    guid: d0304db315970fc40957bf41abb1b1e5
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 9c82df0abdb463e4d9e47b686d3d6380,
       type: 2}
