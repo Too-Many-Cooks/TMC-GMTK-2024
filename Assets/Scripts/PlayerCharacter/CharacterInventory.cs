@@ -3,8 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using MyBox;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static GridInventory;
+using static GridInventory.InventoryCell;
 
 public class CharacterInventory : MonoBehaviour
 {
@@ -23,6 +26,9 @@ public class CharacterInventory : MonoBehaviour
     public bool EnableDebugGUI = false;
 
     public GridInventory inventory;
+    public float damagedSlotStateDuration = 5f;
+
+    private Dictionary<InventoryCell, float> damagedSlotTimers = new Dictionary<InventoryCell, float>();
 
     [SerializeField]
     private bool Test_hideItemVisualsWhileDragging = true;
@@ -316,6 +322,8 @@ public class CharacterInventory : MonoBehaviour
 
     private void Update()
     {
+        HandleDamagedSlots();
+
         if (currentlyDraggedItem != null && currentlyDraggedItem.currenctViewMode == DraggedItem.ViewMode.WorldMode)
         {
             var mousePosition = Mouse.current.position.ReadValue();
@@ -325,10 +333,10 @@ public class CharacterInventory : MonoBehaviour
             currentlyDraggedItem.worldItem.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, Debug_worldItemDistance));
             currentlyDraggedItem.itemUseEffect.UpdateTargetting(positionOnY0Plane);
 
-            if(Mouse.current.leftButton.wasPressedThisFrame)
+            if (Mouse.current.leftButton.wasPressedThisFrame)
             {
                 currentlyDraggedItem.itemUseEffect.ClickActivationTrigger(out bool destroyedOnUse);
-                if(destroyedOnUse)
+                if (destroyedOnUse)
                 {
                     Destroy(currentlyDraggedItem.worldItem.gameObject);
                     Destroy(currentlyDraggedItem.itemUseEffect.gameObject);
@@ -338,6 +346,42 @@ public class CharacterInventory : MonoBehaviour
                 }
             }
 
+        }
+    }
+
+    private void HandleDamagedSlots()
+    {
+        for (int i = 0; i < damagedSlotTimers.Count; i++)
+        {
+            var entry = damagedSlotTimers.ElementAt(i);
+            damagedSlotTimers[entry.Key] -= Time.deltaTime;
+        }
+
+        var damagedSlots = inventory.GetCellsWithState(CellStatus.Damaged);
+        foreach (var damagedSlot in damagedSlots)
+        {
+            if (!damagedSlotTimers.ContainsKey(damagedSlot))
+            {
+                damagedSlotTimers.Add(damagedSlot, damagedSlotStateDuration);
+            }
+        }
+
+        var removedCells = new List<InventoryCell>();
+        for (int i = 0; i < damagedSlotTimers.Count; i++)
+        {
+            var entry = damagedSlotTimers.ElementAt(i);
+            var timer = entry.Value;
+            if (timer < 0)
+            {
+                var damagedSlot = entry.Key;
+                damagedSlot.CellState = CellStatus.Locked;
+                inventory.TryRemoveItem(damagedSlot.Item);
+                removedCells.Add(damagedSlot);
+            }
+        }
+        foreach (var damagedSlot in removedCells)
+        {
+            damagedSlotTimers.Remove(damagedSlot);
         }
     }
 }
