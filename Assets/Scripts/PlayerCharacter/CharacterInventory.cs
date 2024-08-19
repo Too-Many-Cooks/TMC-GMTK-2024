@@ -258,7 +258,7 @@ public class CharacterInventory : MonoBehaviour
         else
         {
             InventoryItem itemInCell = inventory.GetInventoryItemAt(id.x, id.y);
-            if(itemInCell.Definition != null)
+            if(itemInCell?.Definition != null)
             {
                 BeginDraggingItem(itemInCell);
             }
