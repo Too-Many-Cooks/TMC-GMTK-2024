@@ -10,5 +10,10 @@ public class CharacterAudioController : AudioController
         AudioManager.Play("Hover");
     }
 
+    public void OnTakeDamage(int damageTaken = 1)
+    {
+        AudioManager.Play("TakeDamage", damageTaken);
+
+    }
    
 }

@@ -121,6 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canDamagePlayer: 1
+  enemyDamageReceiversInCollider: []
 --- !u!1 &3258428040452275808
 GameObject:
   m_ObjectHideFlags: 0
@@ -166,6 +167,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbdd4674ac901ad43b778a2b7066e69f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnDetonate:
+    m_PersistentCalls:
+      m_Calls: []
   damageToEnemies: 50
   damageToPlayer: 1
   range: 10
