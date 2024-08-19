@@ -6,7 +6,7 @@ using MyBox;
 using Unity.Mathematics;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewLootTableDefinition", menuName = "ScriptableObjects/LootTableDefinition")]
+[CreateAssetMenu(fileName = "NewLootTableDefinition", menuName = "Loot Table", order = 2001)]
 public class LootTableDefinition : ScriptableObject
 {
     [SerializeField] public List<LootTableRoll> Rolls;
