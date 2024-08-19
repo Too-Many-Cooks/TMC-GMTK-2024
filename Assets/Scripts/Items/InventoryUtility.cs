@@ -1,10 +1,18 @@
+using MyBox;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using static GridInventory;
 
 public static class InventoryUtility
 {
+    #region Constant Values
+
+    const float maxDistanceWithLineWhenUnlocking = 1.5f;
+
+    #endregion
+
     #region Public Static Functions
 
     /// <summary>
@@ -149,7 +157,7 @@ public static class InventoryUtility
     /// <param name="givePriorityToSingleBlockedSlots">Should single blocked slots be unlocked before other slots?</param>
     /// <returns></returns>
     public static Vector2Int[] WhatInventorySlotsToUnlock(GridInventory inventory,
-        int numberOfNewSlots = 1, bool givePriorityToSingleBlockedSlots = false)
+        int numberOfNewSlots = 1, bool givePriorityToSingleBlockedSlots = false, bool useOldUnlockMethod = false)
     {
         if (numberOfNewSlots < 1)
         {
@@ -240,12 +248,12 @@ public static class InventoryUtility
 
         // Obtaining an approximate directionality for our unlocking efforts.
         float maxVectorLenght = new Vector2(rightmost_X - inventoryCenter.x, upmost_Y - inventoryCenter.y).magnitude;
-        Vector2 targetInventoryPoint = inventoryCenter + ObtainRandomUnitVector2() * maxVectorLenght / 2.5f; 
+        Vector2 targetInventoryPoint = inventoryCenter + Random.insideUnitCircle * maxVectorLenght / 1.5f; 
         // Unlike in the delete function, the unlocking function will always use the same reduce magnitude to ensure
         // that the inventory grows from the inside out.
 
         // We begin to make our list of slots to be unlocked.
-        List<Vector2Int> slotsToBeUnlock = new List<Vector2Int>();
+        List<Vector2Int> slotsToBeUnlocked = new List<Vector2Int>();
 
         #region Managing single locked slots.
 
@@ -256,44 +264,96 @@ public static class InventoryUtility
                 int closestIsolatedSlotIndex = ClosestSlotFromArray(isolatedSlots.ToArray(), targetInventoryPoint);
 
                 // Once the closest isolated slot has been found, we add it to our list of deleted slots.
-                slotsToBeUnlock.Add(isolatedSlots[closestIsolatedSlotIndex]);
+                slotsToBeUnlocked.Add(isolatedSlots[closestIsolatedSlotIndex]);
                 lockedSlots.Remove(isolatedSlots[closestIsolatedSlotIndex]);
                 isolatedSlots.RemoveAt(closestIsolatedSlotIndex);
 
                 // Repeat until we ran out of isolated slots or we find enough slots to be deleted.
             }
-            while (slotsToBeUnlock.Count < numberOfNewSlots && isolatedSlots.Count != 0);
+            while (slotsToBeUnlocked.Count < numberOfNewSlots && isolatedSlots.Count != 0);
 
 
             // If we have completed the number of slots to be unlocked, we return it.
-            if (slotsToBeUnlock.Count == numberOfNewSlots)
-                return slotsToBeUnlock.ToArray();
+            if (slotsToBeUnlocked.Count == numberOfNewSlots)
+                return slotsToBeUnlocked.ToArray();
         }
 
         #endregion
 
-        // Finding slots to delete the regular way.
-        while (slotsToBeUnlock.Count < numberOfNewSlots)
+        if (useOldUnlockMethod)
         {
-            int closestSlotIndex = ClosestSlotFromArray(lockedSlots.ToArray(), targetInventoryPoint);
+            // Finding slots to unlock the regular way.
+            while (slotsToBeUnlocked.Count < numberOfNewSlots)
+            {
+                int closestSlotIndex = ClosestSlotFromArray(lockedSlots.ToArray(), targetInventoryPoint);
 
-            slotsToBeUnlock.Add(lockedSlots[closestSlotIndex]);
-            lockedSlots.RemoveAt(closestSlotIndex);
+                slotsToBeUnlocked.Add(lockedSlots[closestSlotIndex]);
+                lockedSlots.RemoveAt(closestSlotIndex);
+            }
+        }
+        else // New method
+        {
+            int attemptsBeforeIGiveUp = 0;
+            Vector2 directionInWhichToFindSlots = targetInventoryPoint - inventoryCenter;
+
+            while (slotsToBeUnlocked.Count < numberOfNewSlots)
+            {
+                List<Vector2Int> possibleSlots = new List<Vector2Int>();
+
+                // Checking if any tiles in that direction are close enough and ready to be unlocked.
+                for(int index = 0; index < lockedSlots.Count; index++)
+                {
+                    float distanceToLine = CalculateDistanceOfPointToLine(lockedSlots[index], 
+                        inventoryCenter, directionInWhichToFindSlots + inventoryCenter);
+
+                    if (distanceToLine < maxDistanceWithLineWhenUnlocking)
+                        possibleSlots.Add(lockedSlots[index]);
+                }
+
+                // If we have too many slots, we prioritize those that are closer to the centre.
+                while (possibleSlots.Count > numberOfNewSlots - slotsToBeUnlocked.Count)
+                {
+                    possibleSlots.RemoveAt(FurthestSlotFromArray(possibleSlots.ToArray(), inventoryCenter));
+                }
+
+                // Adding the tiles to our list.
+                if (possibleSlots.Count != 0)
+                {
+                    slotsToBeUnlocked.AddRange(possibleSlots);
+
+                    foreach (Vector2Int slot in possibleSlots)
+                        lockedSlots.Remove(slot);
+                }
+
+                // Preparing the next loop
+                if(slotsToBeUnlocked.Count < numberOfNewSlots)
+                {
+                    directionInWhichToFindSlots = Random.insideUnitCircle * maxVectorLenght * 0.9f;
+                    attemptsBeforeIGiveUp++;
+
+                    // Giving up cause too many tries.
+                    if (attemptsBeforeIGiveUp >= 15)
+                    {
+                        // If we give up, we find slots to unlock the regular way.
+                        while (slotsToBeUnlocked.Count < numberOfNewSlots)
+                        {
+                            int closestSlotIndex = ClosestSlotFromArray(lockedSlots.ToArray(), 
+                                inventoryCenter + directionInWhichToFindSlots);
+
+                            slotsToBeUnlocked.Add(lockedSlots[closestSlotIndex]);
+                            lockedSlots.RemoveAt(closestSlotIndex);
+                        }
+                    }
+                }
+            }
         }
 
-        return slotsToBeUnlock.ToArray();
+        return slotsToBeUnlocked.ToArray();
     }
 
     #endregion
 
     #region Private Functions
-
-    private static Vector2 ObtainRandomUnitVector2()
-    {
-        float angle = Random.Range(0, Mathf.PI * 2);
-
-        return new Vector2(Mathf.Sin(angle), Mathf.Cos(angle));
-    }
 
     private static Vector2 RandomVector2(float maxVectorLenght)
     {
@@ -302,7 +362,15 @@ public static class InventoryUtility
         // Applying a higher probability to the outside of the inventory.
         magnitude = EasingFunctions.ApplyEase(magnitude, EasingFunctions.Functions.OutQuart);
 
-        return ObtainRandomUnitVector2() * magnitude;
+        return Random.insideUnitCircle * magnitude;
+    }
+
+    private static float CalculateDistanceOfPointToLine(Vector2 point, Vector2 lineBeginning, Vector2 lineEnd)
+    {
+        return HandleUtility.DistancePointLine(
+            new Vector3(point.x, 0, point.y),
+            new Vector3(lineBeginning.x, 0, lineBeginning.y),
+            new Vector3(lineEnd.x, 0, lineEnd.y));
     }
 
     /// <summary>
@@ -329,6 +397,31 @@ public static class InventoryUtility
         }
 
         return closestIsolatedSlot;
+    }
+
+    /// <summary>
+    /// Returns the index of the furthest slot in the array to a point
+    /// </summary>
+    /// <param name="slotsToTest">An array of Vector2Int points.</param>
+    /// <param name="targetPoint">The point that each of the slots need to be far away from.</param>
+    /// <returns></returns>
+    private static int FurthestSlotFromArray(Vector2Int[] slotsToTest, Vector2 targetPoint)
+    {
+        float longestDistanceToTargetZone = 0;
+        int furthestSlot = 0;
+
+        for (int i = 0; i < slotsToTest.Length; i++)
+        {
+            float distanceFromSlotToTargetZone = (targetPoint - slotsToTest[i]).magnitude;
+
+            if (distanceFromSlotToTargetZone > longestDistanceToTargetZone)
+            {
+                furthestSlot = i;
+                longestDistanceToTargetZone = distanceFromSlotToTargetZone;
+            }
+        }
+
+        return furthestSlot;
     }
 
     #endregion
