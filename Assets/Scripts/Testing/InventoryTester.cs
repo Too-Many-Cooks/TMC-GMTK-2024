@@ -145,9 +145,9 @@ public class InventoryTester : MonoBehaviour
     [System.Serializable]
     public class ItemManipulation
     {
-        public enum ActionType { Add, Remove, Move }
+        public enum ActionType { Add, Remove, Move, Clear }
         public ActionType Action;
-        public Vector2Int Position;
+        [ConditionalField(nameof(Action), false, ActionType.Add, ActionType.Remove, ActionType.Move)]public Vector2Int Position;
         [ConditionalField(nameof(Action), false, ActionType.Move)] public Vector2Int Position2;
         [ConditionalField(nameof(Action), false, ActionType.Add)] public ItemDefinition ItemPrefab;
         public virtual void Do(GridInventory inventory)
@@ -165,6 +165,9 @@ public class InventoryTester : MonoBehaviour
                 case ActionType.Move:
                     var itemToMove = inventory.GetInventoryItemAt(Position.x, Position.y);
                     inventory.TryAddOrMoveItem(Position2.x, Position2.y, itemToMove);
+                    break;
+                case ActionType.Clear:
+                    inventory.ClearInventory();
                     break;
                 default:
                     break;

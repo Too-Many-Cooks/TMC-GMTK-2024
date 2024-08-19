@@ -3,6 +3,8 @@ using Unity.Mathematics;
 using UnityEngine;
 using MyBox;
 using System.Linq;
+using System;
+using System.Data;
 
 [System.Serializable]
 public class GridInventory
@@ -14,7 +16,7 @@ public class GridInventory
     }
     [SerializeField] private Vector2Int _gridSize;
 
-    public List<InventoryRow> Rows;
+    [ReadOnly] public List<InventoryRow> Rows;
     [SerializeField] public Dictionary<InventoryItem, Vector2Int> ItemDrawPositions = new Dictionary<InventoryItem, Vector2Int>();
 
     public bool CanAddOrMoveItem(int x, int y, InventoryItem item)
@@ -207,6 +209,16 @@ public class GridInventory
             for(int row = 0; row < _gridSize.y; row++) {
                 _gridSize.x = math.min(_gridSize.x, Rows[row].Columns.Count);
             }
+    }
+
+    internal void ClearInventory()
+    {
+        foreach(var row in Rows) {
+            foreach(var cell in row.Columns) {
+                cell.Item = null;
+                ItemDrawPositions.Clear();
+            }
+        }
     }
 
     [System.Serializable]

@@ -25,6 +25,7 @@ public class CharacterInventory : MonoBehaviour
     [Foldout("GUI")] 
     public bool EnableDebugGUI = false;
 
+    [Foldout("Debug View")] 
     public GridInventory inventory;
     public float damagedSlotStateDuration = 5f;
 
