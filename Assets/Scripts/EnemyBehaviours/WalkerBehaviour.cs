@@ -12,5 +12,6 @@ public class WalkerBehaviour : EnemyBehaviourBase
     void Update()
     {
         characterController.Move((-transform.position + playerTransform.position).normalized * speed * Time.deltaTime);
+        characterController.transform.LookAt(new Vector3(playerTransform.position.x, transform.position.y, playerTransform.position.z));
     }
 }

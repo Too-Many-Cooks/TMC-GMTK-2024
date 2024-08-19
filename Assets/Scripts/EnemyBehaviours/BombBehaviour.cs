@@ -33,6 +33,7 @@ public class BombBehaviour : EnemyBehaviourBase
         {
             distanceToPlayer = (-transform.position + playerTransform.position);
             characterController.Move(distanceToPlayer.normalized * speed * Time.deltaTime);
+            characterController.transform.LookAt(new Vector3(playerTransform.position.x, transform.position.y, playerTransform.position.z));
             yield return null;
         } while (distanceToPlayer.sqrMagnitude > bombingRange * bombingRange);
         explosionZone = Instantiate(explosionZonePrefab, transform.position, transform.rotation, transform);
