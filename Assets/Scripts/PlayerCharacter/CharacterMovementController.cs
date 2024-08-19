@@ -43,6 +43,9 @@ public class CharacterMovementController : MonoBehaviour
     // Needs to be Update for the camera position to be updated properly.
     void Update()
     {
+        if (Time.deltaTime == 0f)
+            return;
+
         // Easing the movement input.
         Vector2 easedInput = secondOrderInputSmoother.Update(Time.deltaTime, movementInput, Vector2.zero, true);
 

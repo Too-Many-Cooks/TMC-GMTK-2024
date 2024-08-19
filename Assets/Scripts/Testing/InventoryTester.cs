@@ -5,17 +5,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Events;
 using static GridInventory.InventoryCell;
 
 public class InventoryTester : MonoBehaviour
 {
     public CharacterInventory CharacterInventory;
+    [Foldout("Timeline", true)]
     public float timer = 0.0f;
     public int index = 0;
     [SerializeField] public List<TimelineEvent> Timeline;
+    
+    [Foldout("InventoryStatus", true)]
     public Array2DCellStatus InventoryStatus;
 
     public RectInt UpdateRange = new RectInt(0, 0, 0, 0);
+
+    [SerializeField]
+    public UnityEvent OnInitialItemAddedToInventory;
+    
+    [Foldout("Item Manipulation")]
+    public ItemManipulation ItemAction;
+
+    [ButtonMethod]
+    private void ApplyItemAction(){
+        ItemAction.Do(CharacterInventory.inventory);
+    }
 
     [ButtonMethod]
     private void MaxRange(){
@@ -81,6 +96,20 @@ public class InventoryTester : MonoBehaviour
     }
 
     [ButtonMethod]
+    private void ResfreshFromCharacterInventory()
+    {
+        var gridSize = CharacterInventory.inventory.GridSize;
+        InventoryStatus.SetGridSize(gridSize);
+        for (int y = 0; y < gridSize.y; y++)
+        {
+            for (int x = 0; x < gridSize.x; x++)
+            {
+                InventoryStatus.SetCell(x, y, CharacterInventory.inventory.GetCell(x, y).CellState);
+            }
+        }
+    }
+
+    [ButtonMethod]
     private void UpdateCharacterInventory()
     {
         if (CharacterInventory.inventory.Rows.Capacity < InventoryStatus.GridSize.y)
@@ -103,34 +132,28 @@ public class InventoryTester : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(index < Timeline.Count)
+        timer += Time.deltaTime;
+        while(index < Timeline.Count && timer >= Timeline[index].Delay)
         {
-            timer += Time.deltaTime;
-            if(timer >= Timeline[index].Delay)
-            {
-                timer -= Timeline[index].Delay;
-                Timeline[index].Do(CharacterInventory.inventory);
-                index++;
-            }
-        } else {
+            timer -= Timeline[index].Delay;
+            Timeline[index].Do(CharacterInventory.inventory);
+            index++;
+
+            OnInitialItemAddedToInventory.Invoke();
+        }
+        if (index >= Timeline.Count)
+        {
+            index = Timeline.Count;
             timer = 0;
         }
     }
 
     [System.Serializable]
-    public class TimelineEvent
+    public class ItemManipulation
     {
-        public TimelineEvent(float delay)
-        {
-            this.Delay = delay;
-        }
-
-        public TimelineEvent() : this(0) { }
-        public enum ActionType { Add, Remove, Move }
-
-        public float Delay;
+        public enum ActionType { Add, Remove, Move, Clear }
         public ActionType Action;
-        public Vector2Int Position;
+        [ConditionalField(nameof(Action), false, ActionType.Add, ActionType.Remove, ActionType.Move)]public Vector2Int Position;
         [ConditionalField(nameof(Action), false, ActionType.Move)] public Vector2Int Position2;
         [ConditionalField(nameof(Action), false, ActionType.Add)] public ItemDefinition ItemPrefab;
         public virtual void Do(GridInventory inventory)
@@ -149,9 +172,25 @@ public class InventoryTester : MonoBehaviour
                     var itemToMove = inventory.GetInventoryItemAt(Position.x, Position.y);
                     inventory.TryAddOrMoveItem(Position2.x, Position2.y, itemToMove);
                     break;
+                case ActionType.Clear:
+                    inventory.ClearInventory();
+                    break;
                 default:
                     break;
             }
         }
+    }
+
+    [System.Serializable]
+    public class TimelineEvent : ItemManipulation
+    {
+        public TimelineEvent(float delay)
+        {
+            this.Delay = delay;
+        }
+
+        public TimelineEvent() : this(0) { }
+
+        public float Delay;
     }
 }

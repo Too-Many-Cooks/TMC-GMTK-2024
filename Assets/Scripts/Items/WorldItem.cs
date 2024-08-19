@@ -3,15 +3,29 @@ using System.Collections.Generic;
 using MyBox;
 using UnityEngine;
 
-public class WorldItem : MonoBehaviour
+public class WorldItem : ItemUseEffectBase
 {
     public ItemDefinition Definition;
     public GameObject ItemModel;
     public float rotationSpeed = 60.0f;
 
+    public override void ClickActivationTrigger(out bool destroyedOnUse)
+    {
+        destroyedOnUse = true;
+
+        gameObject.SetActive(true);
+        Instantiate(gameObject, transform.position, transform.rotation);
+    }
+
+    public override void UpdateTargetting(Vector3 targettingPositionOnPlane)
+    {
+        gameObject.SetActive(false);
+        transform.position = targettingPositionOnPlane;
+    }
+
     void Start()
     {
-        UpdateItemModel();
+        //UpdateItemModel();
     }
 
     void Update() {

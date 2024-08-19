@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: M_WSUV_Prototype_512x512_Grey4
-  m_Shader: {fileID: -6465566751694194690, guid: a3d98986649a05c47afdc59c3f7768ca,
+  m_Shader: {fileID: -6465566751694194690, guid: 47c64917bacbae74eba966ac19a2184a,
     type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -30,8 +30,9 @@ Material:
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
+  m_CustomRenderQueue: 2000
+  stringTagMap:
+    RenderType: Opaque
   disabledShaderPasses: []
   m_LockedProperties: 
   m_SavedProperties:
@@ -59,10 +60,27 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _AlphaClip: 0
+    - _AlphaToMask: 0
     - _Blend: 1000
-    - _NormalStrength: 0.42
+    - _BlendModePreserveSpecular: 1
+    - _Blue: 1
+    - _CastShadows: 1
+    - _Cull: 2
+    - _DstBlend: 0
+    - _Green: 1
+    - _NormalStrength: 1
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _ReceiveShadows: 1
+    - _Red: 1
+    - _SrcBlend: 1
+    - _Surface: 0
     - _Tiling: 1
-    m_Colors: []
+    - _WorkflowMode: 1
+    - _ZTest: 4
+    - _ZWrite: 1
+    - _ZWriteControl: 0
+    m_Colors:
+    - _ColorVariation: {r: 256, g: 256, b: 256, a: 0}
   m_BuildTextureStacks: []

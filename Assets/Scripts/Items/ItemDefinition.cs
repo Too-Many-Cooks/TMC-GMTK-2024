@@ -8,6 +8,8 @@ public class ItemDefinition : ScriptableObject
 {
     public string Name;
     public GameObject ItemModelPrefab;
+    public GameObject WorldItemPrefab;
+    public GameObject ItemUseEffectPrefab;
     public Sprite Icon;
     public Array2DBool shape;
 }

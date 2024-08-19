@@ -15,6 +15,10 @@ MonoBehaviour:
   Name: Orb.exe
   ItemModelPrefab: {fileID: 919132149155446097, guid: 1c77be737107df645b27a387e7339c19,
     type: 3}
+  WorldItemPrefab: {fileID: 4439440234669100978, guid: 3b8826ede973bdd42a0b74e4934aea24,
+    type: 3}
+  ItemUseEffectPrefab: {fileID: 8030632996348571370, guid: cda9c3ca4b86cb0459ef8e93481c4b42,
+    type: 3}
   Icon: {fileID: 21300000, guid: e1a3d31ab978de84dafa1d88fb2b1863, type: 3}
   shape:
     gridSize: {x: 3, y: 3}

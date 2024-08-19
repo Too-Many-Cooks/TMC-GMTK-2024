@@ -8,7 +8,7 @@ namespace Array2DEditor
         public Vector2Int GridSize => gridSize;
         
         [SerializeField]
-        private Vector2Int gridSize = Vector2Int.one * Consts.defaultGridSize;
+        protected Vector2Int gridSize = Vector2Int.one * Consts.defaultGridSize;
         
         #pragma warning disable 414
         /// <summary>

@@ -6,7 +6,7 @@ namespace Array2DEditor
     public class CellRow<T>
     {
         [SerializeField]
-        private T[] row = new T[Consts.defaultGridSize];
+        public T[] row = new T[Consts.defaultGridSize];
 
         public T this[int i]
         {
