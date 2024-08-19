@@ -48,7 +48,7 @@ public class FloorManager : MonoBehaviour
 
                 MaterialPropertyBlock propertyBlock = new MaterialPropertyBlock();
                 Color newColor = colorGrading.GetPixel(x * 16, y * 16);
-                propertyBlock.SetVector("_ColorAdjustment", 
+                propertyBlock.SetVector("_ColorVariation", 
                     new Vector3(newColor.r * 255, newColor.g * 255, newColor.b * 255));
                 print(new Vector3(newColor.r * 255, newColor.g * 255, newColor.b * 255));
 
