@@ -362,8 +362,6 @@ public static class InventoryUtility
         // Applying a higher probability to the outside of the inventory.
         magnitude = EasingFunctions.ApplyEase(magnitude, EasingFunctions.Functions.OutQuart) * maxVectorLenght;
 
-        Debug.Log(magnitude);
-
         return Random.insideUnitCircle * magnitude;
     }
 

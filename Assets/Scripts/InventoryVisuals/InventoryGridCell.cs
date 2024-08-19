@@ -18,16 +18,15 @@ public class InventoryGridCell : MonoBehaviour, IPointerClickHandler, IPointerEn
     GameObject gridCell;
 
     Color originalGridCellColor;
-    Vector3 originalGridCellScale;
 
     private void Start()
     {
-        originalGridCellColor = gridCell.GetComponent<Image>().color;
-        originalGridCellScale = gridCell.transform.localScale;
     }
 
     public void Init(Vector2Int cellID, float cellSize, GridInventory.InventoryCell.CellStatus cellState, Action<Vector2Int> onPointerClickCallback, Action<Vector2Int, bool> onPointerHoverCallback)
     {
+        originalGridCellColor = gridCell.GetComponent<Image>().color;
+
         this.cellID = cellID;
         this.onPointerClickCallback = onPointerClickCallback;
         this.onPointerHoverCallback = onPointerHoverCallback;
@@ -82,12 +81,10 @@ public class InventoryGridCell : MonoBehaviour, IPointerClickHandler, IPointerEn
         if(activateHighlight)
         {
             gridCell.GetComponent<Image>().color = possibleToPlace ? Color.green : Color.red;
-            //gridCell.transform.localScale = Vector3.one * 0.6f;
         }
         else
         {
             gridCell.GetComponent<Image>().color = originalGridCellColor;
-            //gridCell.transform.localScale = originalGridCellScale;
         }
     }
 }
