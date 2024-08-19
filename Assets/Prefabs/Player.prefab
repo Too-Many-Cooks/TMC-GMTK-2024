@@ -222,6 +222,8 @@ MonoBehaviour:
       m_Calls: []
   invincibleAfterReceivingDamage: 0
   invincibilityDuration: 0.5
+  damagedCellStatus: 2
+  damageMode: 1
 --- !u!114 &-8254372430402789042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -238,6 +240,8 @@ MonoBehaviour:
     inventoryItem:
       Definition: {fileID: 0}
     worldItem: {fileID: 0}
+    itemUseEffect: {fileID: 0}
+    currenctViewMode: 0
   isDraggingItem: 0
   LockedSlotIcon: {fileID: 21300000, guid: 55747841a2e3b47dab36dc8d5e0dc4df, type: 3}
   EmptySlotIcon: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
@@ -877,7 +881,10 @@ MonoBehaviour:
   inventoryAnchor: {fileID: 0}
   gridCellVisualsAnchor: {fileID: 0}
   itemVisualsAnchor: {fileID: 0}
+  gridCellVisualsAnchor: {fileID: 0}
+  itemVisualsAnchor: {fileID: 0}
   cellSize: 32
+  Debug_worldItemDistance: 10
 --- !u!114 &1732538361642628214
 MonoBehaviour:
   m_ObjectHideFlags: 0
