@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using MyBox;
 using UnityEngine;
 
 public class BombBehaviour : EnemyBehaviourBase
@@ -58,6 +59,10 @@ public class BombBehaviour : EnemyBehaviourBase
     {
         yield return new WaitForSeconds(timeToExplode_sec);
         bombExplosionZoneBehaviour.Explode();
-        Destroy(gameObject);
+        if(gameObject.HasComponent<EnemyDamageReceiver>()) {
+            gameObject.GetComponent<EnemyDamageReceiver>().KillEnemy();
+        } else {
+            Destroy(gameObject);
+        }
     }
 }
