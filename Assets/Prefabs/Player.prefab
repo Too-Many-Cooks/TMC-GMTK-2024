@@ -10,13 +10,16 @@ GameObject:
   m_Component:
   - component: {fileID: 3481036058409734900}
   - component: {fileID: 4672378146985882360}
-  - component: {fileID: 1377335681107830308}
   - component: {fileID: 6104007882628186440}
   - component: {fileID: 6297345376305508495}
   - component: {fileID: 4376075955744297403}
   - component: {fileID: 432569659975984279}
   - component: {fileID: 9173149780488552434}
   - component: {fileID: -8254372430402789042}
+  - component: {fileID: 6577212654591694601}
+  - component: {fileID: 8138141458428624030}
+  - component: {fileID: 5432281383488461165}
+  - component: {fileID: 5730483052155837756}
   - component: {fileID: 1732538361642628214}
   - component: {fileID: 3167323838061042273}
   m_Layer: 0
@@ -40,6 +43,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3510104895990057465}
+  - {fileID: 3832403949918378098}
+  - {fileID: 6227518907268366717}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4672378146985882360
@@ -50,48 +55,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7312746790141268}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &1377335681107830308
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7312746790141268}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 578c9f2f004b02840aa8c7bc84878f9b, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!136 &6104007882628186440
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -158,6 +121,7 @@ MonoBehaviour:
   secondOrderFrequency: 1.9
   secondOrderDamping: 0.9
   secondOrderInitialResponse: 0.76
+  maxRotationDegreesPerSec: 350
 --- !u!114 &432569659975984279
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -253,143 +217,19 @@ MonoBehaviour:
     _gridSize: {x: 10, y: 20}
     Rows:
     - Columns:
-      - CellState: 1
+      - CellState: 0
         Item:
           Definition: {fileID: 0}
-      - CellState: 1
+      - CellState: 0
         Item:
           Definition: {fileID: 0}
-      - CellState: 1
+      - CellState: 0
         Item:
           Definition: {fileID: 0}
-      - CellState: 1
+      - CellState: 0
         Item:
           Definition: {fileID: 0}
-      - CellState: 1
-        Item:
-          Definition: {fileID: 0}
-      - CellState: 1
-        Item:
-          Definition: {fileID: 0}
-      - CellState: 1
-        Item:
-          Definition: {fileID: 0}
-      - CellState: 1
-        Item:
-          Definition: {fileID: 0}
-      - CellState: 1
-        Item:
-          Definition: {fileID: 0}
-      - CellState: 1
-        Item:
-          Definition: {fileID: 0}
-    - Columns:
-      - CellState: 1
-        Item:
-          Definition: {fileID: 0}
-      - CellState: 1
-        Item:
-          Definition: {fileID: 0}
-      - CellState: 1
-        Item:
-          Definition: {fileID: 0}
-      - CellState: 1
-        Item:
-          Definition: {fileID: 0}
-      - CellState: 1
-        Item:
-          Definition: {fileID: 0}
-      - CellState: 1
-        Item:
-          Definition: {fileID: 0}
-      - CellState: 1
-        Item:
-          Definition: {fileID: 0}
-      - CellState: 1
-        Item:
-          Definition: {fileID: 0}
-      - CellState: 1
-        Item:
-          Definition: {fileID: 0}
-      - CellState: 1
-        Item:
-          Definition: {fileID: 0}
-    - Columns:
-      - CellState: 1
-        Item:
-          Definition: {fileID: 0}
-      - CellState: 1
-        Item:
-          Definition: {fileID: 0}
-      - CellState: 1
-        Item:
-          Definition: {fileID: 0}
-      - CellState: 1
-        Item:
-          Definition: {fileID: 0}
-      - CellState: 1
-        Item:
-          Definition: {fileID: 0}
-      - CellState: 1
-        Item:
-          Definition: {fileID: 0}
-      - CellState: 1
-        Item:
-          Definition: {fileID: 0}
-      - CellState: 1
-        Item:
-          Definition: {fileID: 0}
-      - CellState: 1
-        Item:
-          Definition: {fileID: 0}
-      - CellState: 1
-        Item:
-          Definition: {fileID: 0}
-    - Columns:
-      - CellState: 1
-        Item:
-          Definition: {fileID: 0}
-      - CellState: 1
-        Item:
-          Definition: {fileID: 0}
-      - CellState: 1
-        Item:
-          Definition: {fileID: 0}
-      - CellState: 1
-        Item:
-          Definition: {fileID: 0}
-      - CellState: 1
-        Item:
-          Definition: {fileID: 0}
-      - CellState: 1
-        Item:
-          Definition: {fileID: 0}
-      - CellState: 1
-        Item:
-          Definition: {fileID: 0}
-      - CellState: 1
-        Item:
-          Definition: {fileID: 0}
-      - CellState: 1
-        Item:
-          Definition: {fileID: 0}
-      - CellState: 1
-        Item:
-          Definition: {fileID: 0}
-    - Columns:
-      - CellState: 1
-        Item:
-          Definition: {fileID: 0}
-      - CellState: 1
-        Item:
-          Definition: {fileID: 0}
-      - CellState: 1
-        Item:
-          Definition: {fileID: 0}
-      - CellState: 1
-        Item:
-          Definition: {fileID: 0}
-      - CellState: 1
+      - CellState: 0
         Item:
           Definition: {fileID: 0}
       - CellState: 1
@@ -423,6 +263,22 @@ MonoBehaviour:
       - CellState: 0
         Item:
           Definition: {fileID: 0}
+      - CellState: 1
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 1
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 1
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 1
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 1
+        Item:
+          Definition: {fileID: 0}
+    - Columns:
       - CellState: 0
         Item:
           Definition: {fileID: 0}
@@ -436,6 +292,83 @@ MonoBehaviour:
         Item:
           Definition: {fileID: 0}
       - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 1
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 1
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 1
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 1
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 1
+        Item:
+          Definition: {fileID: 0}
+    - Columns:
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 1
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 1
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 1
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 1
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 1
+        Item:
+          Definition: {fileID: 0}
+    - Columns:
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 1
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 1
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 1
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 1
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 1
         Item:
           Definition: {fileID: 0}
     - Columns:
@@ -872,6 +805,38 @@ MonoBehaviour:
       - CellState: 0
         Item:
           Definition: {fileID: 0}
+    - Columns:
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+  damagedSlotStateDuration: 5
   Test_hideItemVisualsWhileDragging: 1
   Test_allowReplacingItems: 1
   gridCellVisualsPrefab: {fileID: 9036787652601822030, guid: bf85d6aaaaee1124a8abae9db38c233a,
@@ -883,6 +848,248 @@ MonoBehaviour:
   itemVisualsAnchor: {fileID: 0}
   cellSize: 32
   Debug_worldItemDistance: 10
+  OnInventoryCellRemoved:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5730483052155837756}
+        m_TargetAssemblyTypeName: CharacterHealthChecker, Assembly-CSharp
+        m_MethodName: CheckNumHearts
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnItemDraggingEnded:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5730483052155837756}
+        m_TargetAssemblyTypeName: CharacterHealthChecker, Assembly-CSharp
+        m_MethodName: CheckNumHearts
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &6577212654591694601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7312746790141268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6a2f7e966e096e479f4719b545d6437, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterInventory: {fileID: -8254372430402789042}
+  OnAddInventorySlot:
+    m_PersistentCalls:
+      m_Calls: []
+  initialInventoryTimer: 5
+  timerIncreaseFactor: 1
+  slotBatchSize: 1
+  itemTimer: 0
+  nextItemTimer: 0
+--- !u!114 &8138141458428624030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7312746790141268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed4c5bc92efe405428d948f46f712743, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CharacterInventory: {fileID: -8254372430402789042}
+  timer: 0
+  index: 0
+  Timeline:
+  - Action: 0
+    Position: {x: 8, y: 0}
+    Position2: {x: 0, y: 0}
+    ItemPrefab: {fileID: 11400000, guid: bd4be08dfc2833f49be4e7a2cdf34fb2, type: 2}
+    Delay: 0
+  - Action: 0
+    Position: {x: 7, y: 2}
+    Position2: {x: 0, y: 0}
+    ItemPrefab: {fileID: 11400000, guid: b2b94da766d5cb443adc7b6cf89c0db9, type: 2}
+    Delay: 0
+  - Action: 0
+    Position: {x: 5, y: 0}
+    Position2: {x: 0, y: 0}
+    ItemPrefab: {fileID: 11400000, guid: 506079ee45063da43bd2985080433282, type: 2}
+    Delay: 0
+  - Action: 0
+    Position: {x: 5, y: 2}
+    Position2: {x: 0, y: 0}
+    ItemPrefab: {fileID: 11400000, guid: e01a1d4c263c9cf4980e21e6c775398d, type: 2}
+    Delay: 0
+  InventoryStatus:
+    gridSize: {x: 10, y: 20}
+    cellSize: {x: 64, y: 16}
+    cells:
+    - row: 00000000000000000000000000000000000000000100000001000000010000000100000001000000
+    - row: 00000000000000000000000000000000000000000100000001000000010000000100000001000000
+    - row: 00000000000000000000000000000000000000000100000001000000010000000100000001000000
+    - row: 00000000000000000000000000000000000000000100000001000000010000000100000001000000
+    - row: 00000000000000000000000000000000000000000100000001000000010000000100000001000000
+    - row: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+    - row: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+    - row: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+    - row: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+    - row: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+    - row: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+    - row: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+    - row: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+    - row: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+    - row: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+    - row: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+    - row: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+    - row: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+    - row: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+    - row: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+  UpdateRange:
+    x: 0
+    y: 0
+    width: 0
+    height: 0
+  OnInitialItemAddedToInventory:
+    m_PersistentCalls:
+      m_Calls: []
+  ItemAction:
+    Action: 3
+    Position: {x: 0, y: 0}
+    Position2: {x: 0, y: 0}
+    ItemPrefab: {fileID: 0}
+--- !u!114 &5432281383488461165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7312746790141268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb05bd9293844c2459def1375f301e82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5730483052155837756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7312746790141268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88cd7815c0fecfc48ac113bb78fdf505, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  heartItemDefinition: {fileID: 11400000, guid: bd4be08dfc2833f49be4e7a2cdf34fb2,
+    type: 2}
+  numHearts: 0
+  OnPlayerDeath:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 432569659975984279}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5432281383488461165}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6577212654591694601}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!1 &3039515459357500525
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3832403949918378098}
+  - component: {fileID: 4069394475643212633}
+  m_Layer: 0
+  m_Name: TimedItemSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3832403949918378098
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3039515459357500525}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3481036058409734900}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4069394475643212633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3039515459357500525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd16a2cc1b6f62741af8adebe7e1a5ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minItemSpawnTimeInterval_sec: 10
+  maxItemSpawnTimeInterval_sec: 30
+  spawnableItems:
+  - {fileID: 11400000, guid: e01a1d4c263c9cf4980e21e6c775398d, type: 2}
+  - {fileID: 11400000, guid: 506079ee45063da43bd2985080433282, type: 2}
+  - {fileID: 11400000, guid: b2b94da766d5cb443adc7b6cf89c0db9, type: 2}
+  - {fileID: 11400000, guid: bd4be08dfc2833f49be4e7a2cdf34fb2, type: 2}
+  spawnRange: 15
 --- !u!114 &1732538361642628214
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -946,3 +1153,82 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3481036058409734900}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &5025765278427425257
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3481036058409734900}
+    m_Modifications:
+    - target: {fileID: 919132149155446097, guid: 1526206777b1ec5459ea03f50bae65aa,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1428641187206146196, guid: 1526206777b1ec5459ea03f50bae65aa,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1428641187206146196, guid: 1526206777b1ec5459ea03f50bae65aa,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.99
+      objectReference: {fileID: 0}
+    - target: {fileID: 1428641187206146196, guid: 1526206777b1ec5459ea03f50bae65aa,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1428641187206146196, guid: 1526206777b1ec5459ea03f50bae65aa,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1428641187206146196, guid: 1526206777b1ec5459ea03f50bae65aa,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1428641187206146196, guid: 1526206777b1ec5459ea03f50bae65aa,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1428641187206146196, guid: 1526206777b1ec5459ea03f50bae65aa,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1428641187206146196, guid: 1526206777b1ec5459ea03f50bae65aa,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1428641187206146196, guid: 1526206777b1ec5459ea03f50bae65aa,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1428641187206146196, guid: 1526206777b1ec5459ea03f50bae65aa,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2364061694237673946, guid: 1526206777b1ec5459ea03f50bae65aa,
+        type: 3}
+      propertyPath: m_Name
+      value: PlayerVisuals
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1526206777b1ec5459ea03f50bae65aa, type: 3}
+--- !u!4 &6227518907268366717 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1428641187206146196, guid: 1526206777b1ec5459ea03f50bae65aa,
+    type: 3}
+  m_PrefabInstance: {fileID: 5025765278427425257}
+  m_PrefabAsset: {fileID: 0}

@@ -15,6 +15,8 @@ MonoBehaviour:
   Name: Sword.exe
   ItemModelPrefab: {fileID: 919132149155446097, guid: 005c0d7b483e33c479094618abeaf406,
     type: 3}
+  WorldItemPrefab: {fileID: 6956705993671191991, guid: ce32873dd26ab544d8e10bd6c44e3140,
+    type: 3}
   ItemUseEffectPrefab: {fileID: 3258428040452275808, guid: af6c271a2729a0e4588813d7f7e28f0a,
     type: 3}
   Icon: {fileID: 21300000, guid: 6891a4d03955ec94aa64063385d1f4be, type: 3}

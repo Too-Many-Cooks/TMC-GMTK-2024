@@ -23,6 +23,9 @@ public class FollowPlayer : MonoBehaviour
 
     private void LateUpdate()
     {
+        if (Time.deltaTime == 0f)
+            return;
+
         Vector2 newCameraPosition = secondOrderClass.Update(
             Time.deltaTime,
             new Vector2(cameraPivotTransform.position.x, cameraPivotTransform.position.z),

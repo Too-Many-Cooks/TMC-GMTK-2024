@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8488649640831259303}
   - component: {fileID: 8289347717783228615}
+  - component: {fileID: 7603020297964724639}
   m_Layer: 0
   m_Name: EnemySpawner
   m_TagString: Untagged
@@ -44,8 +45,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1d6cb5531a99aa4caa163b2d4658de8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerTransform: {fileID: 3481036058409734900, guid: 3a890361396004c4984181950cc0524b,
-    type: 3}
   spawnsPerSec: 0.1
   spawnDistance: 25
   spawnableEnemies:
@@ -58,3 +57,19 @@ MonoBehaviour:
   - enemyPrefab: {fileID: 7780912737094454424, guid: c2e368914b3a7b34ba4b3063bf15a739,
       type: 3}
     spawnWeight: 1
+--- !u!114 &7603020297964724639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3431627962746024347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bdd06c9f9880b847873156e8b1dfef3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scalingMode: 0
+  scalingTimeInterval_sec: 10
+  linearScalingAmountPerSec: 0.1
+  exponentialScalingFactorPerSec: 1.05

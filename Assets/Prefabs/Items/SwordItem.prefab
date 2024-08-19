@@ -155,7 +155,7 @@ PrefabInstance:
     - target: {fileID: 3464090074065360039, guid: f0347faab066ff64786cc55eb30b60df,
         type: 3}
       propertyPath: m_Name
-      value: SwordItem Variant
+      value: SwordItem
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:

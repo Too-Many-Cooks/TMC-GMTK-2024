@@ -17,6 +17,10 @@ public class CharacterMovementController : MonoBehaviour
     [SerializeField][Range(0, 5)] private float secondOrderDamping = 1;
     [SerializeField][Range(-5, 5)] private float secondOrderInitialResponse = 0;
 
+    Quaternion targetOrientationQuat;
+    [SerializeField]
+    float maxRotationDegreesPerSec = 5f;
+
     // [Header("Debug")]
 
 
@@ -43,6 +47,9 @@ public class CharacterMovementController : MonoBehaviour
     // Needs to be Update for the camera position to be updated properly.
     void Update()
     {
+        if (Time.deltaTime == 0f)
+            return;
+
         // Easing the movement input.
         Vector2 easedInput = secondOrderInputSmoother.Update(Time.deltaTime, movementInput, Vector2.zero, true);
 
@@ -58,5 +65,12 @@ public class CharacterMovementController : MonoBehaviour
 
         // Moving the character.
         characterController.Move(cameraOrientedMoveInput * characterSpeed * Time.deltaTime);
+
+        // Turn the character
+        if (cameraOrientedMoveInput != Vector3.zero)
+        {
+            targetOrientationQuat = Quaternion.LookRotation(cameraOrientedMoveInput, Vector3.up);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetOrientationQuat, maxRotationDegreesPerSec * Time.deltaTime);
+        }
     }
 }
