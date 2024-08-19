@@ -2,9 +2,6 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 using MyBox;
-using Unity.VisualScripting;
-using System.Collections;
-using UnityEditor.Search;
 
 [System.Serializable]
 public class GridInventory
@@ -32,12 +29,42 @@ public class GridInventory
                 var col = x + xi;
                 var row = y + yi;
                 if (row < 0 || row >= Rows.Count) return false;
-                if (col < 0 || col > Rows[row].Columns.Count) return false;
+                if (col < 0 || col >= Rows[row].Columns.Count) return false;
                 if (!Rows[row].Columns[col].IsEmpty() && Rows[row].Columns[col].Item != item) return false;
                 if (Rows[row].Columns[col].CellState != InventoryCell.CellStatus.Unlocked) return false;
             }
         }
         return true;
+    }
+
+    public bool CanReplaceItem(int x, int y, InventoryItem toPlaceItem, out InventoryItem toBeReplacedItem)
+    {
+        toBeReplacedItem = null;
+
+        if (toPlaceItem== null || toPlaceItem.Definition == null) return false;
+        for (int xi = 0; xi < toPlaceItem.Definition.shape.GridSize.x; xi++)
+        {
+            for (int yi = 0; yi < toPlaceItem.Definition.shape.GridSize.y; yi++)
+            {
+                if (!toPlaceItem.Definition.shape.GetCell(xi, yi))
+                    continue;
+
+                var col = x + xi;
+                var row = y + yi;
+                if (row < 0 || row >= Rows.Count) return false;
+                if (col < 0 || col >= Rows[row].Columns.Count) return false;
+                if (!Rows[row].Columns[col].IsEmpty() && Rows[row].Columns[col].Item != toPlaceItem)
+                {
+                    if (toBeReplacedItem == null)
+                        toBeReplacedItem = Rows[row].Columns[col].Item;
+                    else if(toBeReplacedItem != Rows[row].Columns[col].Item)
+                        return false;
+                }
+                if (Rows[row].Columns[col].CellState != InventoryCell.CellStatus.Unlocked) return false;
+            }
+        }
+        return true;
+
     }
 
     public bool TryAddOrMoveItem(int x, int y, InventoryItem item)
@@ -101,6 +128,27 @@ public class GridInventory
         return Rows[y].Columns[x].Item;
     }
     #nullable disable
+
+    public InventoryCell[] GetCellsWithStates(InventoryCell.CellStatus[] cellStates) {
+        var cells = new List<InventoryCell>();
+        foreach(var row in Rows) {
+            foreach(var cell in row.Columns) {
+                foreach(var cellState in cellStates) {
+                    if(cell.CellState == cellState){
+                        cells.Add(cell);
+                        break;
+                    }
+                }
+            }
+        }
+        return cells.ToArray();
+    }
+
+    public InventoryCell[] GetCellsWithState(InventoryCell.CellStatus cellState) {
+        var cellStates = new InventoryCell.CellStatus[1];
+        cellStates[0] = cellState;
+        return GetCellsWithStates(cellStates);
+    }
 
     public void ResizeGrid (int x, int y) {
         if(y > Rows.Count) {
