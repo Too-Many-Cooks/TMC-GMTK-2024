@@ -10,12 +10,23 @@ using static GridInventory.InventoryCell;
 public class InventoryTester : MonoBehaviour
 {
     public CharacterInventory CharacterInventory;
+    [Foldout("Timeline", true)]
     public float timer = 0.0f;
     public int index = 0;
     [SerializeField] public List<TimelineEvent> Timeline;
+    
+    [Foldout("InventoryStatus", true)]
     public Array2DCellStatus InventoryStatus;
 
     public RectInt UpdateRange = new RectInt(0, 0, 0, 0);
+    
+    [Foldout("Item Manipulation")]
+    public ItemManipulation ItemAction;
+
+    [ButtonMethod]
+    private void ApplyItemAction(){
+        ItemAction.Do(CharacterInventory.inventory);
+    }
 
     [ButtonMethod]
     private void MaxRange(){
@@ -81,6 +92,20 @@ public class InventoryTester : MonoBehaviour
     }
 
     [ButtonMethod]
+    private void ResfreshFromCharacterInventory()
+    {
+        var gridSize = CharacterInventory.inventory.GridSize;
+        InventoryStatus.SetGridSize(gridSize);
+        for (int y = 0; y < gridSize.y; y++)
+        {
+            for (int x = 0; x < gridSize.x; x++)
+            {
+                InventoryStatus.SetCell(x, y, CharacterInventory.inventory.GetCell(x, y).CellState);
+            }
+        }
+    }
+
+    [ButtonMethod]
     private void UpdateCharacterInventory()
     {
         if (CharacterInventory.inventory.Rows.Capacity < InventoryStatus.GridSize.y)
@@ -118,17 +143,9 @@ public class InventoryTester : MonoBehaviour
     }
 
     [System.Serializable]
-    public class TimelineEvent
+    public class ItemManipulation
     {
-        public TimelineEvent(float delay)
-        {
-            this.Delay = delay;
-        }
-
-        public TimelineEvent() : this(0) { }
         public enum ActionType { Add, Remove, Move }
-
-        public float Delay;
         public ActionType Action;
         public Vector2Int Position;
         [ConditionalField(nameof(Action), false, ActionType.Move)] public Vector2Int Position2;
@@ -153,5 +170,18 @@ public class InventoryTester : MonoBehaviour
                     break;
             }
         }
+    }
+
+    [System.Serializable]
+    public class TimelineEvent : ItemManipulation
+    {
+        public TimelineEvent(float delay)
+        {
+            this.Delay = delay;
+        }
+
+        public TimelineEvent() : this(0) { }
+
+        public float Delay;
     }
 }
