@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 432569659975984279}
   - component: {fileID: 9173149780488552434}
   - component: {fileID: -8254372430402789042}
+  - component: {fileID: 6577212654591694601}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -251,50 +252,19 @@ MonoBehaviour:
     _gridSize: {x: 10, y: 20}
     Rows:
     - Columns:
-      - CellState: 1
+      - CellState: 0
         Item:
           Definition: {fileID: 0}
-      - CellState: 1
+      - CellState: 0
         Item:
           Definition: {fileID: 0}
-      - CellState: 1
+      - CellState: 0
         Item:
           Definition: {fileID: 0}
-      - CellState: 1
+      - CellState: 0
         Item:
           Definition: {fileID: 0}
-      - CellState: 1
-        Item:
-          Definition: {fileID: 0}
-      - CellState: 1
-        Item:
-          Definition: {fileID: 0}
-      - CellState: 1
-        Item:
-          Definition: {fileID: 0}
-      - CellState: 1
-        Item:
-          Definition: {fileID: 0}
-      - CellState: 1
-        Item:
-          Definition: {fileID: 0}
-      - CellState: 1
-        Item:
-          Definition: {fileID: 0}
-    - Columns:
-      - CellState: 1
-        Item:
-          Definition: {fileID: 0}
-      - CellState: 1
-        Item:
-          Definition: {fileID: 0}
-      - CellState: 1
-        Item:
-          Definition: {fileID: 0}
-      - CellState: 1
-        Item:
-          Definition: {fileID: 0}
-      - CellState: 1
+      - CellState: 0
         Item:
           Definition: {fileID: 0}
       - CellState: 1
@@ -313,50 +283,19 @@ MonoBehaviour:
         Item:
           Definition: {fileID: 0}
     - Columns:
-      - CellState: 1
+      - CellState: 0
         Item:
           Definition: {fileID: 0}
-      - CellState: 1
+      - CellState: 0
         Item:
           Definition: {fileID: 0}
-      - CellState: 1
+      - CellState: 0
         Item:
           Definition: {fileID: 0}
-      - CellState: 1
+      - CellState: 0
         Item:
           Definition: {fileID: 0}
-      - CellState: 1
-        Item:
-          Definition: {fileID: 0}
-      - CellState: 1
-        Item:
-          Definition: {fileID: 0}
-      - CellState: 1
-        Item:
-          Definition: {fileID: 0}
-      - CellState: 1
-        Item:
-          Definition: {fileID: 0}
-      - CellState: 1
-        Item:
-          Definition: {fileID: 0}
-      - CellState: 1
-        Item:
-          Definition: {fileID: 0}
-    - Columns:
-      - CellState: 1
-        Item:
-          Definition: {fileID: 0}
-      - CellState: 1
-        Item:
-          Definition: {fileID: 0}
-      - CellState: 1
-        Item:
-          Definition: {fileID: 0}
-      - CellState: 1
-        Item:
-          Definition: {fileID: 0}
-      - CellState: 1
+      - CellState: 0
         Item:
           Definition: {fileID: 0}
       - CellState: 1
@@ -375,7 +314,19 @@ MonoBehaviour:
         Item:
           Definition: {fileID: 0}
     - Columns:
-      - CellState: 1
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
         Item:
           Definition: {fileID: 0}
       - CellState: 1
@@ -388,6 +339,56 @@ MonoBehaviour:
         Item:
           Definition: {fileID: 0}
       - CellState: 1
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 1
+        Item:
+          Definition: {fileID: 0}
+    - Columns:
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 1
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 1
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 1
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 1
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 1
+        Item:
+          Definition: {fileID: 0}
+    - Columns:
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
         Item:
           Definition: {fileID: 0}
       - CellState: 1
@@ -881,6 +882,27 @@ MonoBehaviour:
   itemVisualsAnchor: {fileID: 0}
   cellSize: 32
   Debug_worldItemDistance: 10
+--- !u!114 &6577212654591694601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7312746790141268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6a2f7e966e096e479f4719b545d6437, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterInventory: {fileID: -8254372430402789042}
+  OnAddInventorySlot:
+    m_PersistentCalls:
+      m_Calls: []
+  initialInventoryTimer: 5
+  timerIncreaseFactor: 1
+  slotBatchSize: 1
+  itemTimer: 0
+  nextItemTimer: 0
 --- !u!1 &5217444813784870959
 GameObject:
   m_ObjectHideFlags: 0
