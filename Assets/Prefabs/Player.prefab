@@ -1,0 +1,914 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7312746790141268
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3481036058409734900}
+  - component: {fileID: 4672378146985882360}
+  - component: {fileID: 1377335681107830308}
+  - component: {fileID: 6104007882628186440}
+  - component: {fileID: 6297345376305508495}
+  - component: {fileID: 4376075955744297403}
+  - component: {fileID: 432569659975984279}
+  - component: {fileID: 9173149780488552434}
+  - component: {fileID: -8254372430402789042}
+  m_Layer: 0
+  m_Name: Player
+  m_TagString: Player
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3481036058409734900
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7312746790141268}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 3510104895990057465}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &4672378146985882360
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7312746790141268}
+  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &1377335681107830308
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7312746790141268}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 578c9f2f004b02840aa8c7bc84878f9b, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!136 &6104007882628186440
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7312746790141268}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!143 &6297345376305508495
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7312746790141268}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4376075955744297403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7312746790141268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: deec1a5a56ff6854ab6004968823eb33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraTransform: {fileID: 0}
+  characterSpeed: 12.5
+  secondOrderFrequency: 1.9
+  secondOrderDamping: 0.9
+  secondOrderInitialResponse: 0.76
+--- !u!114 &432569659975984279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7312746790141268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 6020da1970cbb794093023f286e90def,
+    type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4376075955744297403}
+        m_TargetAssemblyTypeName: CharacterMovementController, Assembly-CSharp
+        m_MethodName: MovePerformed
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: c5859f63-faff-4898-8d88-4f7413246885
+    m_ActionName: Movement/Move
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Movement
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
+--- !u!114 &9173149780488552434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7312746790141268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6cb1b4125cac644eb814ca6f0ff5d0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnInventorySlotsDamaged:
+    m_PersistentCalls:
+      m_Calls: []
+  invincibleAfterReceivingDamage: 0
+  invincibilityDuration: 0.5
+  damagedCellStatus: 2
+  damageMode: 1
+--- !u!114 &-8254372430402789042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7312746790141268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3933efc7923623d47873c5d6a77b8106, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentlyDraggedItem:
+    inventoryItem:
+      Definition: {fileID: 0}
+    worldItem: {fileID: 0}
+    itemUseEffect: {fileID: 0}
+    currenctViewMode: 0
+  isDraggingItem: 0
+  LockedSlotIcon: {fileID: 21300000, guid: 55747841a2e3b47dab36dc8d5e0dc4df, type: 3}
+  EmptySlotIcon: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
+  DamagedSlotIcon: {fileID: 21300000, guid: a14e6ee680df42f4c99bf69bc3d6b9ca, type: 3}
+  BrokenSlotIcon: {fileID: 21300000, guid: cc27e95868ab32345b74b8338c01ebed, type: 3}
+  InventoryScreenPosition: {x: 0, y: 0}
+  EnableDebugGUI: 0
+  inventory:
+    _gridSize: {x: 10, y: 20}
+    Rows:
+    - Columns:
+      - CellState: 1
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 1
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 1
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 1
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 1
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 1
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 1
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 1
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 1
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 1
+        Item:
+          Definition: {fileID: 0}
+    - Columns:
+      - CellState: 1
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 1
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 1
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 1
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 1
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 1
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 1
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 1
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 1
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 1
+        Item:
+          Definition: {fileID: 0}
+    - Columns:
+      - CellState: 1
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 1
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 1
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 1
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 1
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 1
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 1
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 1
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 1
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 1
+        Item:
+          Definition: {fileID: 0}
+    - Columns:
+      - CellState: 1
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 1
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 1
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 1
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 1
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 1
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 1
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 1
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 1
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 1
+        Item:
+          Definition: {fileID: 0}
+    - Columns:
+      - CellState: 1
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 1
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 1
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 1
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 1
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 1
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 1
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 1
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 1
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 1
+        Item:
+          Definition: {fileID: 0}
+    - Columns:
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+    - Columns:
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+    - Columns:
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+    - Columns:
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+    - Columns:
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+    - Columns:
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+    - Columns:
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+    - Columns:
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+    - Columns:
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+    - Columns:
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+    - Columns:
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+    - Columns:
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+    - Columns:
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+    - Columns:
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+    - Columns:
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+      - CellState: 0
+        Item:
+          Definition: {fileID: 0}
+  Test_hideItemVisualsWhileDragging: 1
+  Test_allowReplacingItems: 1
+  gridCellVisualsPrefab: {fileID: 9036787652601822030, guid: bf85d6aaaaee1124a8abae9db38c233a,
+    type: 3}
+  inventoryItemVisualsPrefab: {fileID: 5142002623630870100, guid: 9655c1f5bfe657c4cbe0e9d94527e58d,
+    type: 3}
+  inventoryAnchor: {fileID: 0}
+  gridCellVisualsAnchor: {fileID: 0}
+  itemVisualsAnchor: {fileID: 0}
+  cellSize: 32
+  Debug_worldItemDistance: 10
+--- !u!1 &5217444813784870959
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3510104895990057465}
+  m_Layer: 0
+  m_Name: CameraPivotPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3510104895990057465
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5217444813784870959}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3481036058409734900}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be388c3a1ac5f4f4d8eafccdf2516df2, type: 3}
+  m_Name: BottomRightTestItem
+  m_EditorClassIdentifier: 
+  Name: '!!BOTTOM RIGHT TEST ITEM!!'
+  ItemModelPrefab: {fileID: 919132149155446097, guid: 9e5c36301a986c44692efc948b609ccb,
+    type: 3}
+  ItemUseEffectPrefab: {fileID: 9114937337358862937, guid: 8f9c27fd4a3343a499ae5e0832f6510c,
+    type: 3}
+  Icon: {fileID: 21300000, guid: 11e59a7fd99f1814f9a6923d5b4321bb, type: 3}
+  shape:
+    gridSize: {x: 5, y: 5}
+    cellSize: {x: 16, y: 16}
+    cells:
+    - row: 0000000000
+    - row: 0000000101
+    - row: 0000000101
+    - row: 0001010101
+    - row: 0001010101
