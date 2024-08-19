@@ -128,16 +128,16 @@ public class InventoryTester : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(index < Timeline.Count)
+        timer += Time.deltaTime;
+        while(index < Timeline.Count && timer >= Timeline[index].Delay)
         {
-            timer += Time.deltaTime;
-            if(timer >= Timeline[index].Delay)
-            {
-                timer -= Timeline[index].Delay;
-                Timeline[index].Do(CharacterInventory.inventory);
-                index++;
-            }
-        } else {
+            timer -= Timeline[index].Delay;
+            Timeline[index].Do(CharacterInventory.inventory);
+            index++;
+        }
+        if(index >= Timeline.Count)
+        {
+            index = Timeline.Count;
             timer = 0;
         }
     }
