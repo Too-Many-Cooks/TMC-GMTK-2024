@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Streetlight
+  m_Name: M_Streetlight
   m_Shader: {fileID: -6465566751694194690, guid: 21c0bf3b0c3aa5744951ed086431d9ae,
     type: 3}
   m_Parent: {fileID: 0}
