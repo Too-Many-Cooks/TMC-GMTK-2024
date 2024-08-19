@@ -148,7 +148,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7312746790141268}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: deec1a5a56ff6854ab6004968823eb33, type: 3}
   m_Name: 
@@ -231,7 +231,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7312746790141268}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3933efc7923623d47873c5d6a77b8106, type: 3}
   m_Name: 
@@ -881,8 +881,6 @@ MonoBehaviour:
   inventoryAnchor: {fileID: 0}
   gridCellVisualsAnchor: {fileID: 0}
   itemVisualsAnchor: {fileID: 0}
-  gridCellVisualsAnchor: {fileID: 0}
-  itemVisualsAnchor: {fileID: 0}
   cellSize: 32
   Debug_worldItemDistance: 10
 --- !u!114 &1732538361642628214
@@ -913,7 +911,7 @@ MonoBehaviour:
   sounds:
   - name: Hover
     clip: {fileID: 8300000, guid: 6b466c3bfcd75c743a0672b6bf56c630, type: 3}
-    volume: 0.542
+    volume: 0.02
     pitch: 1.01
     loop: 1
     source: {fileID: 0}
