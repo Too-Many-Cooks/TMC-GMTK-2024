@@ -11,6 +11,13 @@ public class SceneLoader : MonoBehaviour
 
     public void LoadScene()
     {
-        SceneManager.LoadScene(sceneToLoad.SceneName);
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(sceneToLoad.SceneName, LoadSceneMode.Single);
+    }
+
+    public void UnloadScene()
+    {
+        Time.timeScale = 1f;
+        SceneManager.UnloadSceneAsync(sceneToLoad.SceneName);
     }
 }

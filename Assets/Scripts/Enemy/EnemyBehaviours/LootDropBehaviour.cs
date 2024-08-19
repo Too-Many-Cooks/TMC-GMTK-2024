@@ -17,12 +17,6 @@ public class LootDropBehaviour : MonoBehaviour
         for(int i = 0; i < drops.Length; i++) {
             if(drops[i] == null) continue;
 
-            /*var itemObject = new GameObject(drops[i].name);
-            var dropRelativePosition = Random.insideUnitCircle;
-            itemObject.transform.position = transform.position + dropOffset + expandedDropRange * new Vector3(dropRelativePosition.x, 0, dropRelativePosition.y);
-            var worldItem = itemObject.AddComponent<WorldItem>();
-            worldItem.Definition = drops[i];*/
-
             var dropRelativePosition = Random.insideUnitCircle;
             var itemPosition = transform.position + dropOffset + expandedDropRange * new Vector3(dropRelativePosition.x, 0, dropRelativePosition.y);
 

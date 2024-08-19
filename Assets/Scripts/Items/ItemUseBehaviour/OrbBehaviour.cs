@@ -2,24 +2,22 @@
 using System.Collections;
 using UnityEngine;
 
-[RequireComponent(typeof(PlayerItemDamageSender))]
+[RequireComponent(typeof(DoRegularDamageToEnemies))]
 internal class OrbBehaviour : MonoBehaviour
 {
-    float damage;
     float orbDuration;
     float speed;
     Vector3 orbitCenter;
 
-    PlayerItemDamageSender damageSender;
+    DoRegularDamageToEnemies regularDamager;
 
     internal void Init(float damage, float orbDuration, float orbSpeed, Vector3 position)
     {
-        this.damage = damage;
+        regularDamager = GetComponent<DoRegularDamageToEnemies>();
+        this.regularDamager.damage = damage;
         this.orbDuration = orbDuration;
         this.speed = orbSpeed;
         orbitCenter = position;
-
-        damageSender = GetComponent<PlayerItemDamageSender>();
 
         StartCoroutine(OrbExpirationCoroutine());
     }
@@ -36,11 +34,4 @@ internal class OrbBehaviour : MonoBehaviour
         Vector3 newPosition = Quaternion.AngleAxis(speed * Time.deltaTime, Vector3.up) * diffToCenter + orbitCenter;
         transform.position = newPosition;
     }
-
-    private void FixedUpdate()
-    {
-        damageSender.DamageEnemiesInCollider(damage);
-    }
-
-
 }
