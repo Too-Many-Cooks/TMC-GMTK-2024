@@ -22,8 +22,6 @@ public class WorldItemPickup : MonoBehaviour
 
     private void RaycastToWorldItem()
     {
-        print("click");
-
         RaycastHit hit;
         Vector3 coor = Mouse.current.position.ReadValue();
 
@@ -33,8 +31,6 @@ public class WorldItemPickup : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, 500f, layerMask))
         {
-            print("hit");
-
             WorldItem worldItem = hit.collider.GetComponent<WorldItem>();
             if (worldItem == null)
             {
