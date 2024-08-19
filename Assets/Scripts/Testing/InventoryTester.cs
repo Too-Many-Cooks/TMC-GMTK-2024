@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Events;
 using static GridInventory.InventoryCell;
 
 public class InventoryTester : MonoBehaviour
@@ -19,6 +20,9 @@ public class InventoryTester : MonoBehaviour
     public Array2DCellStatus InventoryStatus;
 
     public RectInt UpdateRange = new RectInt(0, 0, 0, 0);
+
+    [SerializeField]
+    public UnityEvent OnInitialItemAddedToInventory;
     
     [Foldout("Item Manipulation")]
     public ItemManipulation ItemAction;
@@ -134,8 +138,10 @@ public class InventoryTester : MonoBehaviour
             timer -= Timeline[index].Delay;
             Timeline[index].Do(CharacterInventory.inventory);
             index++;
+
+            OnInitialItemAddedToInventory.Invoke();
         }
-        if(index >= Timeline.Count)
+        if (index >= Timeline.Count)
         {
             index = Timeline.Count;
             timer = 0;

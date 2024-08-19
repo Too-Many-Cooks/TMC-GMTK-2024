@@ -5,6 +5,7 @@ using System.Linq;
 using MyBox;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using static GridInventory;
 using static GridInventory.InventoryCell;
@@ -13,8 +14,8 @@ public class CharacterInventory : MonoBehaviour
 {
 
     [Foldout("Debug View", true)] 
-    [SerializeField][ReadOnly]DraggedItem currentlyDraggedItem;
-    [SerializeField][ReadOnly]bool isDraggingItem;
+    [SerializeField][ReadOnly]public DraggedItem currentlyDraggedItem;
+    [SerializeField][ReadOnly]public bool isDraggingItem;
 
     [Foldout("GUI", true)] 
     public Sprite LockedSlotIcon;
@@ -58,6 +59,11 @@ public class CharacterInventory : MonoBehaviour
     private float Debug_worldItemDistance = 10f;
 
     private bool worldItemPickedUpThisFrame = false;
+
+    [SerializeField]
+    public UnityEvent<InventoryItem> OnInventoryCellRemoved;
+    [SerializeField]
+    public UnityEvent OnItemDraggingEnded;
 
 
     [ButtonMethod(order = 0)]
@@ -257,8 +263,8 @@ public class CharacterInventory : MonoBehaviour
             }
             currentlyDraggedItem = null;
             isDraggingItem = false;
+            OnItemDraggingEnded.Invoke();
 
-            
             return dropped;
         }
         else if (Test_allowReplacingItems)
@@ -279,6 +285,7 @@ public class CharacterInventory : MonoBehaviour
                 }
 
                 isDraggingItem = false;
+                OnItemDraggingEnded.Invoke();
                 BeginDraggingItem(toBeReplacedItem);
 
                 return replaced;
@@ -381,6 +388,7 @@ public class CharacterInventory : MonoBehaviour
 
                     currentlyDraggedItem = null;
                     isDraggingItem = false;
+                    OnItemDraggingEnded.Invoke();
                 }
             }
         }
@@ -416,11 +424,13 @@ public class CharacterInventory : MonoBehaviour
                 damagedSlot.CellState = CellStatus.Locked;
                 inventory.TryRemoveItem(damagedSlot.Item);
                 removedCells.Add(damagedSlot);
+                OnInventoryCellRemoved.Invoke(damagedSlot.Item);
             }
         }
         foreach (var damagedSlot in removedCells)
         {
             damagedSlotTimers.Remove(damagedSlot);
+            
         }
     }
 
