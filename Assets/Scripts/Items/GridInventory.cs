@@ -216,9 +216,27 @@ public class GridInventory
         foreach(var row in Rows) {
             foreach(var cell in row.Columns) {
                 cell.Item = null;
-                ItemDrawPositions.Clear();
             }
         }
+        ItemDrawPositions.Clear();
+    }
+
+    public void RegenerateItemDrawPositions() {
+        ItemDrawPositions.Clear();
+        foreach(var (row, y) in Rows.Select((v, i) => (v, i))) {
+            foreach(var (cell, x) in row.Columns.Select((v, i) => (v, i))) {
+                if (cell.IsEmpty()) continue;
+                var cellPosition = new Vector2Int(x, y);
+                if(!ItemDrawPositions.ContainsKey(cell.Item)) {
+                    ItemDrawPositions.Add(cell.Item, cellPosition);
+                } else {
+                    var topLeft = ItemDrawPositions[cell.Item];
+                    topLeft = Vector2Int.Min(topLeft, cellPosition);
+                    ItemDrawPositions[cell.Item] = topLeft;
+                }
+            }
+        }
+        
     }
 
     [System.Serializable]
