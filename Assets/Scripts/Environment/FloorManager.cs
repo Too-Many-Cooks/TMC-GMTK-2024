@@ -6,7 +6,14 @@ using UnityEngine;
 
 public class FloorManager : MonoBehaviour
 {
-    [SerializeField] public GameObject[] floorTileVariations;
+    [System.Serializable]
+    public struct floorTileInfo
+    {
+        public GameObject prefab;
+        [Range(0, 1)] public float spawnMultiplier;
+    }
+
+    [SerializeField] public floorTileInfo[] floorTileVariations;
     [SerializeField] public Texture2D colorGrading;
     [SerializeField] public Transform playerTransform;
 
@@ -21,7 +28,7 @@ public class FloorManager : MonoBehaviour
     private List<Vector2Int> oldTilePositions = new List<Vector2Int>();
     private Vector2Int oldOriginPoint;
 
-    private Quaternion TileRotation => Quaternion.Euler(-90, 0, 0);
+    private Quaternion TileRotation => Quaternion.Euler(-90, 0, Random.Range(0, 3) * 90);
 
     #region Creating the tiles at Awake
 
@@ -36,7 +43,7 @@ public class FloorManager : MonoBehaviour
         // Instantiating the floor.
         for (int i = 0; i < initialFloorSize; i++)
         {
-            disabledTiles.Add(Instantiate(floorTileVariations[Random.Range(0, floorTileVariations.Length)],
+            disabledTiles.Add(Instantiate(floorTileVariations[WhatTileVariationToUse()].prefab,
                 Vector3.zero, TileRotation, this.transform).GetComponent<MeshRenderer>());
             disabledTiles[i].gameObject.SetActive(false);
         }
@@ -58,6 +65,37 @@ public class FloorManager : MonoBehaviour
         }
 
         PoolTilesToPosition(positionsToInitialized.ToArray());
+    }
+
+    private float _maxTileVariationSumChance;
+    private float MaxTileVariationSumChance
+    {
+        get
+        {
+            if (_maxTileVariationSumChance == 0)
+            {
+                for(int i = 0; i < floorTileVariations.Length; i++)
+                {
+                    _maxTileVariationSumChance += floorTileVariations[i].spawnMultiplier;
+                }
+            }
+
+            return _maxTileVariationSumChance;
+        }
+    }
+
+    private int WhatTileVariationToUse()
+    {
+        float spawnRandomValue = Random.Range(0, MaxTileVariationSumChance);
+        int tileVariationIndex = -1;
+
+        while (spawnRandomValue > 0 && tileVariationIndex < floorTileVariations.Length - 1)
+        {
+            tileVariationIndex++;
+            spawnRandomValue -= floorTileVariations[tileVariationIndex].spawnMultiplier;
+        }
+
+        return tileVariationIndex;
     }
 
     #endregion
@@ -121,7 +159,7 @@ public class FloorManager : MonoBehaviour
         // Adding tiles if we are missing them.
         for (int i = 0; i < tilesLeft; i++)
         {
-            disabledTiles.Add(Instantiate(floorTileVariations[Random.Range(0, floorTileVariations.Length)],
+            disabledTiles.Add(Instantiate(floorTileVariations[WhatTileVariationToUse()].prefab,
                 Vector3.zero, TileRotation, this.transform).GetComponent<MeshRenderer>());
         }
 
