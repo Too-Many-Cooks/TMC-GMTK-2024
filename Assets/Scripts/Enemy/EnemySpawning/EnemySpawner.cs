@@ -6,8 +6,7 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     Transform playerTransform;
-    [SerializeField]
-    float spawnsPerSec = 0.1f;
+    public float spawnsPerSec = 0.1f;
     [SerializeField]
     private float spawnDistance = 25f;
 

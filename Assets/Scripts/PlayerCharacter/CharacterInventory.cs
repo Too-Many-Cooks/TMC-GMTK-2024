@@ -3,15 +3,19 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using MyBox;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using static GridInventory;
+using static GridInventory.InventoryCell;
 
 public class CharacterInventory : MonoBehaviour
 {
 
     [Foldout("Debug View", true)] 
-    [SerializeField][ReadOnly]DraggedItem currentlyDraggedItem;
-    [SerializeField][ReadOnly]bool isDraggingItem;
+    [SerializeField][ReadOnly]public DraggedItem currentlyDraggedItem;
+    [SerializeField][ReadOnly]public bool isDraggingItem;
 
     [Foldout("GUI", true)] 
     public Sprite LockedSlotIcon;
@@ -22,7 +26,11 @@ public class CharacterInventory : MonoBehaviour
     [Foldout("GUI")] 
     public bool EnableDebugGUI = false;
 
+    [Foldout("Debug View")] 
     public GridInventory inventory;
+    public float damagedSlotStateDuration = 5f;
+
+    private Dictionary<InventoryCell, float> damagedSlotTimers = new Dictionary<InventoryCell, float>();
 
     [SerializeField]
     private bool Test_hideItemVisualsWhileDragging = true;
@@ -50,6 +58,14 @@ public class CharacterInventory : MonoBehaviour
     [SerializeField]
     private float Debug_worldItemDistance = 10f;
 
+    private bool worldItemPickedUpThisFrame = false;
+
+    [SerializeField]
+    public UnityEvent<InventoryItem> OnInventoryCellRemoved;
+    [SerializeField]
+    public UnityEvent OnItemDraggingEnded;
+
+
     [ButtonMethod(order = 0)]
     private void ResizeGrid() {
         inventory.ResizeGrid();
@@ -63,6 +79,7 @@ public class CharacterInventory : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        inventory.RegenerateItemDrawPositions();
         CreateVisuals();
     }
 
@@ -71,13 +88,13 @@ public class CharacterInventory : MonoBehaviour
 
         if (Test_hideItemVisualsWhileDragging)
         {
-            //itemVisuals.Find(x => x.inventoryItem == itemInCell).gameObject.SetActive(false);
             inventory.TryRemoveItem(inventoryItem);
         }
 
         isDraggingItem = true;
 
-        var createdWorldItem = new GameObject(inventoryItem.Definition.Name).AddComponent<WorldItem>();
+        //var createdWorldItem = new GameObject(inventoryItem.Definition.Name).AddComponent<WorldItem>();
+        var createdWorldItem = Instantiate(inventoryItem.Definition.WorldItemPrefab).GetComponent<WorldItem>();
         createdWorldItem.Definition = inventoryItem.Definition;
         createdWorldItem.gameObject.SetActive(false);
 
@@ -100,11 +117,44 @@ public class CharacterInventory : MonoBehaviour
             Debug.LogError("No itemUseEffectPrefab attached to item scriptable object");
         }
 
-        currentlyDraggedItem = new DraggedItem() { inventoryItem = inventoryItem, worldItem = createdWorldItem, itemUseEffect = itemUseEffectVisual };
+        currentlyDraggedItem = new DraggedItem() { inventoryItem = inventoryItem, worldItem = createdWorldItem, itemUseEffect = itemUseEffectVisual, currenctViewMode = DraggedItem.ViewMode.InventoryMode };
 
         return true;
     }
 
+    public bool BeginDraggingItem(WorldItem worldItem)
+    {
+        if (isDraggingItem) return false;
+
+        isDraggingItem = true;
+
+        InventoryItem createdInventoryItem = new InventoryItem(worldItem.Definition);
+        
+        ItemUseEffectBase itemUseEffectVisual = null;
+        if (worldItem.Definition.ItemUseEffectPrefab != null)
+        {
+            var itemUseEffectVisualGO = Instantiate(worldItem.Definition.ItemUseEffectPrefab);
+            itemUseEffectVisualGO.SetActive(true);
+            if (!itemUseEffectVisualGO.HasComponent<ItemUseEffectBase>())
+            {
+                Debug.LogError("ItemUseEffect Prefab does not contain an IItemUseEffectBase.");
+            }
+            else
+            {
+                itemUseEffectVisual = itemUseEffectVisualGO.GetComponent<ItemUseEffectBase>();
+            }
+        }
+        else
+        {
+            Debug.LogError("No itemUseEffectPrefab attached to item scriptable object");
+        }
+
+        currentlyDraggedItem = new DraggedItem() { inventoryItem = createdInventoryItem, worldItem = worldItem, itemUseEffect = itemUseEffectVisual, currenctViewMode = DraggedItem.ViewMode.WorldMode };
+
+        worldItemPickedUpThisFrame = true;
+
+        return true;
+    }
 
     private void CreateVisuals()
     {
@@ -213,8 +263,8 @@ public class CharacterInventory : MonoBehaviour
             }
             currentlyDraggedItem = null;
             isDraggingItem = false;
+            OnItemDraggingEnded.Invoke();
 
-            
             return dropped;
         }
         else if (Test_allowReplacingItems)
@@ -235,6 +285,7 @@ public class CharacterInventory : MonoBehaviour
                 }
 
                 isDraggingItem = false;
+                OnItemDraggingEnded.Invoke();
                 BeginDraggingItem(toBeReplacedItem);
 
                 return replaced;
@@ -251,7 +302,7 @@ public class CharacterInventory : MonoBehaviour
         else
         {
             InventoryItem itemInCell = inventory.GetInventoryItemAt(id.x, id.y);
-            if(itemInCell.Definition != null)
+            if(itemInCell?.Definition != null)
             {
                 BeginDraggingItem(itemInCell);
             }
@@ -316,28 +367,76 @@ public class CharacterInventory : MonoBehaviour
 
     private void Update()
     {
+        HandleDamagedSlots();
+
         if (currentlyDraggedItem != null && currentlyDraggedItem.currenctViewMode == DraggedItem.ViewMode.WorldMode)
         {
             var mousePosition = Mouse.current.position.ReadValue();
             var ray = Camera.main.ScreenPointToRay(new Vector3(mousePosition.x, mousePosition.y, 1f));
             Vector3 positionOnY0Plane = ray.origin - (ray.origin.y / ray.direction.y) * ray.direction;
 
-            currentlyDraggedItem.worldItem.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, Debug_worldItemDistance));
+            currentlyDraggedItem.worldItem.transform.position = positionOnY0Plane;//Camera.main.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, Debug_worldItemDistance));
             currentlyDraggedItem.itemUseEffect.UpdateTargetting(positionOnY0Plane);
 
-            if(Mouse.current.leftButton.wasPressedThisFrame)
+            if (!worldItemPickedUpThisFrame && Mouse.current.leftButton.wasPressedThisFrame)
             {
                 currentlyDraggedItem.itemUseEffect.ClickActivationTrigger(out bool destroyedOnUse);
-                if(destroyedOnUse)
+                if (destroyedOnUse)
                 {
                     Destroy(currentlyDraggedItem.worldItem.gameObject);
                     Destroy(currentlyDraggedItem.itemUseEffect.gameObject);
 
                     currentlyDraggedItem = null;
                     isDraggingItem = false;
+                    OnItemDraggingEnded.Invoke();
                 }
             }
+        }
 
+        worldItemPickedUpThisFrame = false;
+    }
+
+    private void HandleDamagedSlots()
+    {
+        for (int i = 0; i < damagedSlotTimers.Count; i++)
+        {
+            var entry = damagedSlotTimers.ElementAt(i);
+            damagedSlotTimers[entry.Key] -= Time.deltaTime;
+        }
+
+        var damagedSlots = inventory.GetCellsWithState(CellStatus.Damaged);
+        foreach (var damagedSlot in damagedSlots)
+        {
+            if (!damagedSlotTimers.ContainsKey(damagedSlot))
+            {
+                damagedSlotTimers.Add(damagedSlot, damagedSlotStateDuration);
+            }
+        }
+
+        var removedCells = new List<InventoryCell>();
+        for (int i = 0; i < damagedSlotTimers.Count; i++)
+        {
+            var entry = damagedSlotTimers.ElementAt(i);
+            var timer = entry.Value;
+            if (timer < 0)
+            {
+                var damagedSlot = entry.Key;
+                damagedSlot.CellState = CellStatus.Locked;
+                inventory.TryRemoveItem(damagedSlot.Item);
+                removedCells.Add(damagedSlot);
+                OnInventoryCellRemoved.Invoke(damagedSlot.Item);
+            }
+        }
+        foreach (var damagedSlot in removedCells)
+        {
+            damagedSlotTimers.Remove(damagedSlot);
+            
         }
     }
+
+    internal void PickUpWorldItem(WorldItem worldItem)
+    {
+        BeginDraggingItem(worldItem);
+    }
+
 }

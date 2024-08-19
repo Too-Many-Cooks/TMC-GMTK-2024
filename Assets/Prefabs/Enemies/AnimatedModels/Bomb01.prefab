@@ -61,10 +61,32 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 8b2ddc63bea025f4b830fb2c70176f59,
         type: 3}
       propertyPath: m_Name
-      value: Enemy02
+      value: Bomb01
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8b2ddc63bea025f4b830fb2c70176f59,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -6375206380658450151}
   m_SourcePrefab: {fileID: 100100000, guid: 8b2ddc63bea025f4b830fb2c70176f59, type: 3}
+--- !u!1 &4232645697602586531 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8b2ddc63bea025f4b830fb2c70176f59,
+    type: 3}
+  m_PrefabInstance: {fileID: 3926022904147163890}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &-6375206380658450151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4232645697602586531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70baaba06e890b74da2b58bdffe3941e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

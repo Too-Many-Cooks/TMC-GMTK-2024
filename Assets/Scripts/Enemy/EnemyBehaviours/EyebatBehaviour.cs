@@ -35,6 +35,7 @@ public class EyebatBehaviour : EnemyBehaviourBase
                 StartCoroutine(LaserCooldownCoroutine(laserCooldown_sec));
             }
         }
+        characterController.transform.LookAt(new Vector3(playerTransform.position.x, transform.position.y, playerTransform.position.z));
     }
 
     private IEnumerator LaserCooldownCoroutine(float laserCooldown)

@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2583651922773512971}
   - component: {fileID: -4155082316195219464}
-  m_Layer: 0
+  - component: {fileID: 8559358740833056526}
+  m_Layer: 7
   m_Name: ItemBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48,6 +49,27 @@ MonoBehaviour:
   Definition: {fileID: 0}
   ItemModel: {fileID: 7265956176968062738}
   rotationSpeed: 60
+--- !u!65 &8559358740833056526
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3464090074065360039}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2, y: 2, z: 2}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &7265956176968062738
 GameObject:
   m_ObjectHideFlags: 0

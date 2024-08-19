@@ -13,3 +13,12 @@ public abstract class EnemyBehaviourBase : MonoBehaviour
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
     }
 }
+public class lookAtPlayer : MonoBehaviour
+{
+    public Transform characterController, playerTransform;
+
+    void Update()
+    {
+        characterController.transform.LookAt(new Vector3(playerTransform.position.x, transform.position.y, playerTransform.position.z));
+    }
+}
