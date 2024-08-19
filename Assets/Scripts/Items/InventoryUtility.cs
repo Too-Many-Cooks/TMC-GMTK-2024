@@ -357,10 +357,12 @@ public static class InventoryUtility
 
     private static Vector2 RandomVector2(float maxVectorLenght)
     {
-        float magnitude = Random.Range(0, maxVectorLenght);
+        float magnitude = Random.Range(0, 1f);
 
         // Applying a higher probability to the outside of the inventory.
-        magnitude = EasingFunctions.ApplyEase(magnitude, EasingFunctions.Functions.OutQuart);
+        magnitude = EasingFunctions.ApplyEase(magnitude, EasingFunctions.Functions.OutQuart) * maxVectorLenght;
+
+        Debug.Log(magnitude);
 
         return Random.insideUnitCircle * magnitude;
     }
