@@ -6,6 +6,8 @@ using UnityEngine.Events;
 public class BombItemUseEffect : ItemUseEffectBase
 {
 
+    public UnityEvent OnDetonate;
+
     [SerializeField]
     float damageToEnemies = 50f;
     [SerializeField]
@@ -19,6 +21,7 @@ public class BombItemUseEffect : ItemUseEffectBase
     public override void ClickActivationTrigger(out bool destroyedOnUse)
     {
         bombEffectColliderTransform.GetComponent<PlayerItemDamageSender>().DamageEnemiesInCollider(damageToEnemies, damageToPlayer);
+        OnDetonate.Invoke();
         destroyedOnUse = true;
         Destroy(gameObject);
     }
