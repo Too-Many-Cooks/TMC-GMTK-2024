@@ -142,7 +142,7 @@ public class FloorManager : MonoBehaviour
             // Setting up the tile's color.
             MaterialPropertyBlock propertyBlock = new MaterialPropertyBlock();
 
-            Color newColor = colorGrading.GetPixel(newTilePosition[i].x / 8, newTilePosition[i].y / 8);
+            Color newColor = colorGrading.GetPixel(newTilePosition[i].x * 4, newTilePosition[i].y * 4);
             propertyBlock.SetVector("_ColorVariation",
                 new Vector3(newColor.r * 255, newColor.g * 255, newColor.b * 255));
 
