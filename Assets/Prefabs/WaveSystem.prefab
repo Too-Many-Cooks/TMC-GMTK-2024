@@ -84,6 +84,9 @@ MonoBehaviour:
   waveSets:
   - RepetitionMode: 0
     NumberOfRepetitions: 0
+    Definition: {fileID: 11400000, guid: b68ce09631e941f49aaa58c669e233ae, type: 2}
+  - RepetitionMode: 0
+    NumberOfRepetitions: 0
     Definition: {fileID: 11400000, guid: 98ce7284894dd89459ad6f231e11be6c, type: 2}
   - RepetitionMode: 0
     NumberOfRepetitions: 0
