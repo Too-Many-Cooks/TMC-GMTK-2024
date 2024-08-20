@@ -32,6 +32,18 @@ public class WorldItem : ItemUseEffectBase
         ItemModel.transform.Rotate(ItemModel.transform.worldToLocalMatrix * Vector3.up, rotationSpeed * Time.deltaTime);
     }
 
+    private void OnTriggerStay(Collider other) {
+        if(other.tag == "Player") {
+            var characterInventory = other.GetComponent<CharacterInventory>();
+            if(characterInventory != null) {
+                if(!characterInventory.EnableItemPickupOnCollision) return;
+                if(characterInventory.isDraggingItem && characterInventory.currentlyDraggedItem.worldItem == this) return;
+                var inventoryItem = new InventoryItem(Definition);
+                if(characterInventory.inventory.TryAddToRandomSlot(inventoryItem)) Destroy(gameObject);
+            }
+        }
+    }
+
     [ButtonMethod]
     public void UpdateItemModel() {
         var parent = this.transform;

@@ -5,6 +5,7 @@ using MyBox;
 using System.Linq;
 using System;
 using System.Data;
+using Array2DEditor;
 
 [System.Serializable]
 public class GridInventory
@@ -92,6 +93,33 @@ public class GridInventory
         }
 
         return true;
+    }
+
+    public bool TryAddToRandomSlot(InventoryItem inventoryItem)
+    {
+        var cells = GetCellIndexesWithState(InventoryCell.CellStatus.Unlocked);
+        cells = cells.Where(cell => GetCell(cell).IsEmpty()).ToArray();
+
+        var rand = new System.Random();
+        //cells = rand.Shuffle(cells); //Requires .NET 8+
+        int n = cells.Length;
+
+        for (int i = 0; i < n - 1; i++)
+        {
+            int j = rand.Next(i, n);
+
+            if (j != i)
+            {
+                var temp = cells[i];
+                cells[i] = cells[j];
+                cells[j] = temp;
+            }
+        }
+        foreach(var cell in cells) {
+            if(TryAddOrMoveItem(cell.x, cell.y, inventoryItem)) return true;
+        }
+
+        return false;
     }
 
     public bool TryRemoveItem(InventoryItem item) {
