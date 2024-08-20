@@ -67,10 +67,7 @@ public class CharacterMovementController : MonoBehaviour
         characterController.Move(cameraOrientedMoveInput * characterSpeed * Time.deltaTime);
 
         // Turn the character
-        if (cameraOrientedMoveInput != Vector3.zero)
-        {
-            targetOrientationQuat = Quaternion.LookRotation(cameraOrientedMoveInput, Vector3.up);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetOrientationQuat, maxRotationDegreesPerSec * Time.deltaTime);
-        }
+        if(cameraOrientedMoveInput != Vector3.zero)
+            transform.rotation = Quaternion.LookRotation(cameraOrientedMoveInput, Vector3.up);
     }
 }

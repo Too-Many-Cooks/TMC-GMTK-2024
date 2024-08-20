@@ -7,23 +7,52 @@ public class OrbPassiveEffect : PassiveEffect
     [SerializeField]
     GameObject passiveOrbPrefab;
     [SerializeField]
-    float damage = 1f;
+    float initialDamage = 1f;
+    float damage;
     [SerializeField]
-    float distance = 3f;
+    bool damageStacks = true;
+
     [SerializeField]
-    float anglePerSec = 10f;
+    float initialDistance = 2f;
+    float distance;
     [SerializeField]
-    float size = 0.5f;
+    bool distanceStacks = true;
+
+    [SerializeField]
+    float initialAnglePerSec = 10f;
+    float anglePerSec;
+    [SerializeField]
+    bool anglePerSecStacks = true;
+
+    [SerializeField]
+    float initialSize = 0.5f;
+    float size;
+    [SerializeField]
+    bool sizeStacks = true;
 
     List<GameObject> orbs;
 
     private void Start()
     {
+        damage = initialDamage;
+        distance = initialDistance;
+        anglePerSec = initialAnglePerSec;
+        size = initialSize;
     }
 
     public override void UpdateStacks(int numStacks)
     {
-        if(orbs == null)
+        if (damageStacks)
+            damage = initialDamage * (float)numStacks;
+        if (distanceStacks)
+            distance = initialDistance * (float)numStacks;
+        if(anglePerSecStacks)
+            anglePerSec = initialAnglePerSec * (float)numStacks;
+        if(sizeStacks)
+            size = initialSize * (float)numStacks;
+
+
+        if (orbs == null)
             orbs = new List<GameObject>();
 
         this.stacks = numStacks;
@@ -54,9 +83,9 @@ public class OrbPassiveEffect : PassiveEffect
 
         for(int i = 0; i < orbs.Count; ++i)
         {
+            orbs[i].transform.localScale = Vector3.one * size;
+            orbs[i].GetComponent<DoRegularDamageToEnemies>().damage = damage;
             orbs[i].transform.localPosition = Quaternion.AngleAxis((i * 360f / orbs.Count) + rotationAngle, Vector3.up) * new Vector3(0f, 0.5f, distance);
-
-            //orbs[i].transform.localRotation = Quaternion.AngleAxis(i * 360f / orbs.Count + rotationAngle, Vector3.up);
         }
     }
 }

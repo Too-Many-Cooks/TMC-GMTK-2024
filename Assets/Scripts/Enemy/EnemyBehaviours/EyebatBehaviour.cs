@@ -28,8 +28,7 @@ public class EyebatBehaviour : EnemyBehaviourBase
 
         Vector3 distanceToPlayer = new Vector3(-transform.position.x + playerTransform.position.x,
             0, -transform.position.z + playerTransform.position.z);
-        // Making the projectiles not move through Y space.
-        distanceToPlayer = new Vector3(distanceToPlayer.x, 0, distanceToPlayer.z);
+
 
         Vector3 directionToPlayer = distanceToPlayer.normalized;
 

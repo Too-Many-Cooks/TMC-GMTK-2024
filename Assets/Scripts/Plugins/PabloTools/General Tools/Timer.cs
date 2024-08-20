@@ -109,7 +109,7 @@ public class Timer
     /// Updates the internal Time by ADDING the desired ammount of time. 
     /// If the Time value surpases TargetTime, it sets its value to the TargetTime.
     /// </summary>
-    /// <param name="timeToAdd">Ammount of time to be ADDED to the Timer.</param>
+    /// <param name="timeToAdd">Ammount of time to be ADDED to the MyTimer.</param>
     public void Update(float timeToAdd)
     {
         if (IsComplete)
@@ -140,7 +140,7 @@ public class Timer
     /// Updates the internal Time by SUBSTRACTING the desired ammount of time. 
     /// If the Time value becomes less than 0, it sets its value to 0.
     /// </summary>
-    /// <param name="timeToSubstract">Ammount of time to be SUBSTRACTED from the Timer.</param>
+    /// <param name="timeToSubstract">Ammount of time to be SUBSTRACTED from the MyTimer.</param>
     public void NegativeUpdate(float timeToSubstract)
     {
         if (Time == 0)
