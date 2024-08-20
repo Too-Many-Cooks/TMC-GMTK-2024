@@ -1099,7 +1099,7 @@ MonoBehaviour:
   sounds:
   - name: Hover
     clip: {fileID: 8300000, guid: 6b466c3bfcd75c743a0672b6bf56c630, type: 3}
-    volume: 0.12
+    volume: 0.079
     pitch: 1.01
     loop: 1
     source: {fileID: 0}
