@@ -1,0 +1,85 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1791780996054123085
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5188060831628297010}
+  - component: {fileID: 5440362186146936770}
+  - component: {fileID: 4038065635680012397}
+  - component: {fileID: 6432277237276477852}
+  m_Layer: 0
+  m_Name: WaveSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5188060831628297010
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1791780996054123085}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 8.663495, y: 4.612182, z: -5.771473}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5440362186146936770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1791780996054123085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa55ff47ee2ac0749ab639439005c33c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnDistance: 25
+  CurrentWave:
+    SpawnGroups: []
+  waveTimer: 0
+  spawnGroupIndex: 0
+--- !u!114 &4038065635680012397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1791780996054123085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09ef86568c812ae4099b66185bd5c5f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6432277237276477852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1791780996054123085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cf664d54a4e3b34093dbd16f48b24b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waveSets:
+  - RepetitionMode: 2
+    NumberOfRepetitions: 0
+    Definition: {fileID: 11400000, guid: 1446baacf81463b46a6b92ff3b97baeb, type: 2}
+  waveSetIndex: 0
+  waveSetRepetitions: 0
+  waveIndex: 0
+  waveTimer: 0
