@@ -128,6 +128,7 @@ public class EnemyWaveSpawner : MonoBehaviour
 
     public void StartWave(EnemyWave wave, float initialTimer = 0f) {
         CurrentWave = wave;
+        spawnGroupIndex = 0;
         waveTimer = initialTimer;
     }
 

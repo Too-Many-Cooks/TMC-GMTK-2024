@@ -131,6 +131,7 @@ public class ItemWaveSpawner : MonoBehaviour
 
     public void StartWave(ItemWave wave, float initialTimer = 0f) {
         CurrentWave = wave;
+        dropGroupIndex = 0;
         waveTimer = initialTimer;
     }
 
