@@ -34,6 +34,8 @@ public class WaveSystem : MonoBehaviour
             var currentWaveSet = waveSets[waveSetIndex];
             waveIndex = 0;
             waveTimer = 0f;
+            enemyWaveSpawner.Clear();
+            itemWaveSpawner.Clear();
             switch (currentWaveSet.RepetitionMode) {
                 case WaveRepetitionMode.Once:
                     waveSetRepetitions=0;
@@ -68,11 +70,9 @@ public class WaveSystem : MonoBehaviour
         } else {
             if(enemyWaveSpawner.CurrentWave != currentWave.EnemyWave) {
                 enemyWaveSpawner.StartWave(currentWave.EnemyWave, waveTimer - currentWave.WaveStartTime);
-                enemyWaveSpawner.CurrentWave = currentWave.EnemyWave;
             }
             if(itemWaveSpawner.CurrentWave != currentWave.ItemWave) {
                 itemWaveSpawner.StartWave(currentWave.ItemWave, waveTimer - currentWave.WaveStartTime);
-                itemWaveSpawner.CurrentWave = currentWave.ItemWave;
             }
         }
 
