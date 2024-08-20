@@ -305,6 +305,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 4299348828889607474}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3952136242084482172 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -8254372430402789042, guid: 3a890361396004c4984181950cc0524b,
+    type: 3}
+  m_PrefabInstance: {fileID: 4299348828889607474}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3933efc7923623d47873c5d6a77b8106, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6853952958025527598
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -318,6 +330,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: InventoryCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 4098965718444173978, guid: 0380d2db79eb7d84fa00383dd809f231,
+        type: 3}
+      propertyPath: OnResolutionChange.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3952136242084482172}
     - target: {fileID: 8396185332800444479, guid: 0380d2db79eb7d84fa00383dd809f231,
         type: 3}
       propertyPath: m_Pivot.x

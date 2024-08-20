@@ -61,6 +61,7 @@ GameObject:
   - component: {fileID: 2418430595634000510}
   - component: {fileID: 6705559786272056800}
   - component: {fileID: 341073869872020983}
+  - component: {fileID: 4098965718444173978}
   m_Layer: 5
   m_Name: InventoryCanvas
   m_TagString: Untagged
@@ -164,6 +165,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e441b1c85435694ca62b5f8bf51943c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4098965718444173978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3249863024795741318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51468990773702d43a9eae9bf612dcb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnResolutionChange:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: CharacterInventory, Assembly-CSharp
+        m_MethodName: UpdateToNewResolution
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4911808814153363909
 GameObject:
   m_ObjectHideFlags: 0
