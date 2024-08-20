@@ -17,9 +17,9 @@ MonoBehaviour:
     ItemEntries:
     - DropWeight: 1
       Item: {fileID: 11400000, guid: 506079ee45063da43bd2985080433282, type: 2}
-  - NoDropWeight: 8
+  - NoDropWeight: 18
     ItemEntries:
-    - DropWeight: 1
+    - DropWeight: 3
       Item: {fileID: 11400000, guid: 506079ee45063da43bd2985080433282, type: 2}
     - DropWeight: 1
       Item: {fileID: 11400000, guid: bd4be08dfc2833f49be4e7a2cdf34fb2, type: 2}

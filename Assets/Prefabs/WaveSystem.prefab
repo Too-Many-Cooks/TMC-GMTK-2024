@@ -86,9 +86,15 @@ MonoBehaviour:
   - RepetitionMode: 0
     NumberOfRepetitions: 0
     Definition: {fileID: 11400000, guid: 98ce7284894dd89459ad6f231e11be6c, type: 2}
-  - RepetitionMode: 2
+  - RepetitionMode: 0
     NumberOfRepetitions: 0
     Definition: {fileID: 11400000, guid: 7372ab00d6eaa4d48b4aad3c2a24c4e9, type: 2}
+  - RepetitionMode: 0
+    NumberOfRepetitions: 0
+    Definition: {fileID: 11400000, guid: ded01aee3f2b3a440b1a97dae51b7680, type: 2}
+  - RepetitionMode: 0
+    NumberOfRepetitions: 0
+    Definition: {fileID: 11400000, guid: bca71f238063118448f8c3a03c26e648, type: 2}
   waveSetIndex: 0
   waveSetRepetitions: 0
   waveIndex: 0
