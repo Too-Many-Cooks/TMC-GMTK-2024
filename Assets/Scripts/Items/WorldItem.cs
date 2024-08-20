@@ -37,6 +37,7 @@ public class WorldItem : ItemUseEffectBase
             var characterInventory = other.GetComponent<CharacterInventory>();
             if(characterInventory != null) {
                 if(!characterInventory.EnableItemPickupOnCollision) return;
+                if(characterInventory.isDraggingItem && characterInventory.currentlyDraggedItem.worldItem == this) return;
                 var inventoryItem = new InventoryItem(Definition);
                 if(characterInventory.inventory.TryAddToRandomSlot(inventoryItem)) Destroy(gameObject);
             }
