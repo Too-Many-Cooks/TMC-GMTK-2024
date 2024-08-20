@@ -13,12 +13,6 @@ MonoBehaviour:
   m_Name: WalkerSpawnDefinition
   m_EditorClassIdentifier: 
   PossibleSpawns:
-  - SpawnWeight: 4
-    EnemyPrefab: {fileID: 580967043222428643, guid: 15260a7f9e98a0a488a19d8c4862ae72,
-      type: 3}
-  - SpawnWeight: 2
-    EnemyPrefab: {fileID: 2919480991887057869, guid: bb90fc778059eb64e9ba80b947b9e2f5,
-      type: 3}
   - SpawnWeight: 1
-    EnemyPrefab: {fileID: 7780912737094454424, guid: c2e368914b3a7b34ba4b3063bf15a739,
+    EnemyPrefab: {fileID: 580967043222428643, guid: 15260a7f9e98a0a488a19d8c4862ae72,
       type: 3}
