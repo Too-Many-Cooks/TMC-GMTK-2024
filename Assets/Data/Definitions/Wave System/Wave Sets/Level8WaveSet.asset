@@ -10,19 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4921334a80932604cbe8645899381cfe, type: 3}
-  m_Name: Level6WaveSet
+  m_Name: Level8WaveSet
   m_EditorClassIdentifier: 
   Waves:
   - WaveStartDelay: 0
-    WaveEndDelay: 25
+    WaveEndDelay: 30
     EnemyWave:
       SpawnGroups:
       - Timer: 0
-        Definition: {fileID: 11400000, guid: b6ad9a4c16a47ba4d8229bb73806ed51, type: 2}
+        Definition: {fileID: 11400000, guid: ef6c9e8dbbfac4d4aaffb7f113bbbf51, type: 2}
       - Timer: 10
-        Definition: {fileID: 11400000, guid: 86b08bddd8e711a47b227f69ea49ff40, type: 2}
-      - Timer: 15
-        Definition: {fileID: 11400000, guid: db9fc06dcadb364459d1fce3798b5406, type: 2}
+        Definition: {fileID: 11400000, guid: 6f7eec9e97bc66946864b6d94c55a17d, type: 2}
     ItemWave:
       DropGroups: []
   - WaveStartDelay: 0
