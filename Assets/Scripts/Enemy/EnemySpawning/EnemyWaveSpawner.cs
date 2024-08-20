@@ -116,7 +116,6 @@ public class EnemyWaveSpawner : MonoBehaviour
     {
         Vector3 outOfViewPosition = GetOutOfViewPosition();
         Instantiate(enemyPrefab, outOfViewPosition, Quaternion.identity, transform);
-        print(outOfViewPosition.y);
     }
 
     private Vector3 GetOutOfViewPosition()
