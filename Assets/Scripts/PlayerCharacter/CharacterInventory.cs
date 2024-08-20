@@ -176,6 +176,8 @@ public class CharacterInventory : MonoBehaviour
             rowGO.AddComponent<RectTransform>();
             rowGO.transform.SetParent(gridCellVisualsAnchor);
             rowGO.transform.localPosition = new Vector3(0f, -y * cellSize, 0f);
+            rowGO.transform.localRotation = Quaternion.identity;
+            rowGO.transform.localScale = Vector3.one;
 
             foreach (var (cell, x) in row.Columns.Select((v, i) => (v, i)))
             {
