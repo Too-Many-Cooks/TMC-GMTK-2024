@@ -13,25 +13,13 @@ MonoBehaviour:
   m_Name: TestEnemyWaveDefinition
   m_EditorClassIdentifier: 
   Waves:
-  - WaveStartDelay: 3
-    WaveEndDelay: 3
+  - WaveStartDelay: 0
+    WaveEndDelay: 5
     EnemyWave:
       SpawnGroups:
       - Timer: 0
-        Definition: {fileID: 11400000, guid: 0cc18377813e85948a51302e8f80f7eb, type: 2}
-      - Timer: 0
-        Definition: {fileID: 11400000, guid: 0cc18377813e85948a51302e8f80f7eb, type: 2}
-      - Timer: 0
-        Definition: {fileID: 11400000, guid: 0cc18377813e85948a51302e8f80f7eb, type: 2}
-      - Timer: 3
-        Definition: {fileID: 11400000, guid: 0cc18377813e85948a51302e8f80f7eb, type: 2}
-      - Timer: 0
-        Definition: {fileID: 11400000, guid: 0cc18377813e85948a51302e8f80f7eb, type: 2}
-      - Timer: 0
-        Definition: {fileID: 11400000, guid: 0cc18377813e85948a51302e8f80f7eb, type: 2}
-      - Timer: 3
-        Definition: {fileID: 11400000, guid: 0cc18377813e85948a51302e8f80f7eb, type: 2}
-      - Timer: 0
-        Definition: {fileID: 11400000, guid: 0cc18377813e85948a51302e8f80f7eb, type: 2}
-      - Timer: 0
-        Definition: {fileID: 11400000, guid: 0cc18377813e85948a51302e8f80f7eb, type: 2}
+        Definition: {fileID: 11400000, guid: 044c10dd2e9bb5b49a92979d037ef560, type: 2}
+      - Timer: 5
+        Definition: {fileID: 11400000, guid: 044c10dd2e9bb5b49a92979d037ef560, type: 2}
+    ItemWave:
+      DropGroups: []

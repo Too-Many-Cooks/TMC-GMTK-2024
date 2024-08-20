@@ -19,7 +19,7 @@ public class WaveSetDefinition : ScriptableObject
         public EnemyWave EnemyWave;
         public ItemWave ItemWave;
 
-        public float WaveDuration { get { return math.min(EnemyWave.WaveDuration, ItemWave.WaveDuration); } }
+        public float WaveDuration { get { return math.max(EnemyWave.WaveDuration, ItemWave.WaveDuration); } }
         public float WaveStartTime { get { return WaveStartDelay; } }
         public float WaveEndTime { get { return WaveStartTime + WaveDuration; } }
         public float WaveTotalTime { get { return WaveEndTime + WaveEndDelay; } }
