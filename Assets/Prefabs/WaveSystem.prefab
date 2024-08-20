@@ -63,6 +63,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09ef86568c812ae4099b66185bd5c5f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropRange: 15
+  CurrentWave:
+    DropGroups: []
+  WorldItemPrefab: {fileID: -4155082316195219464, guid: f0347faab066ff64786cc55eb30b60df,
+    type: 3}
+  waveTimer: 0
+  dropGroupIndex: 0
 --- !u!114 &6432277237276477852
 MonoBehaviour:
   m_ObjectHideFlags: 0

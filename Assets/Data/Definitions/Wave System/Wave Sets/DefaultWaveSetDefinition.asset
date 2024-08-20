@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DefaultWaveSetDefinition
   m_EditorClassIdentifier: 
   Waves:
-  - WaveStartDelay: 3
+  - WaveStartDelay: 0
     WaveEndDelay: 3
     EnemyWave:
       SpawnGroups:
@@ -37,7 +37,41 @@ MonoBehaviour:
         Definition: {fileID: 11400000, guid: 0cc18377813e85948a51302e8f80f7eb, type: 2}
       - Timer: 6
         Definition: {fileID: 11400000, guid: 0cc18377813e85948a51302e8f80f7eb, type: 2}
-  - WaveStartDelay: 30
-    WaveEndDelay: 0
+    ItemWave:
+      DropGroups:
+      - Timer: 3
+        Definition: {fileID: 11400000, guid: f9aefc0ddbafb294dada1e3b77825add, type: 2}
+      - Timer: 6
+        Definition: {fileID: 11400000, guid: f9aefc0ddbafb294dada1e3b77825add, type: 2}
+      - Timer: 6
+        Definition: {fileID: 11400000, guid: f9aefc0ddbafb294dada1e3b77825add, type: 2}
+      - Timer: 6
+        Definition: {fileID: 11400000, guid: f9aefc0ddbafb294dada1e3b77825add, type: 2}
+      - Timer: 6
+        Definition: {fileID: 11400000, guid: f9aefc0ddbafb294dada1e3b77825add, type: 2}
+      - Timer: 6
+        Definition: {fileID: 11400000, guid: f9aefc0ddbafb294dada1e3b77825add, type: 2}
+      - Timer: 6
+        Definition: {fileID: 11400000, guid: f9aefc0ddbafb294dada1e3b77825add, type: 2}
+      - Timer: 6
+        Definition: {fileID: 11400000, guid: f9aefc0ddbafb294dada1e3b77825add, type: 2}
+      - Timer: 6
+        Definition: {fileID: 11400000, guid: f9aefc0ddbafb294dada1e3b77825add, type: 2}
+      - Timer: 6
+        Definition: {fileID: 11400000, guid: f9aefc0ddbafb294dada1e3b77825add, type: 2}
+  - WaveStartDelay: 0
+    WaveEndDelay: 3
     EnemyWave:
       SpawnGroups: []
+    ItemWave:
+      DropGroups:
+      - Timer: 3
+        Definition: {fileID: 11400000, guid: f9aefc0ddbafb294dada1e3b77825add, type: 2}
+      - Timer: 6
+        Definition: {fileID: 11400000, guid: f9aefc0ddbafb294dada1e3b77825add, type: 2}
+      - Timer: 6
+        Definition: {fileID: 11400000, guid: f9aefc0ddbafb294dada1e3b77825add, type: 2}
+      - Timer: 6
+        Definition: {fileID: 11400000, guid: f9aefc0ddbafb294dada1e3b77825add, type: 2}
+      - Timer: 6
+        Definition: {fileID: 11400000, guid: f9aefc0ddbafb294dada1e3b77825add, type: 2}

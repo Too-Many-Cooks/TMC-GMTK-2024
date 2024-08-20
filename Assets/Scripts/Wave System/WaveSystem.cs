@@ -64,9 +64,16 @@ public class WaveSystem : MonoBehaviour
 
         if(waveTimer < currentWave.WaveStartTime) {
             enemyWaveSpawner.Clear();
-        } else if(enemyWaveSpawner.CurrentWave != currentWave.EnemyWave) {
-            enemyWaveSpawner.StartWave(currentWave.EnemyWave, waveTimer - currentWave.WaveStartTime);
-            enemyWaveSpawner.CurrentWave = currentWave.EnemyWave;
+            itemWaveSpawner.Clear();
+        } else {
+            if(enemyWaveSpawner.CurrentWave != currentWave.EnemyWave) {
+                enemyWaveSpawner.StartWave(currentWave.EnemyWave, waveTimer - currentWave.WaveStartTime);
+                enemyWaveSpawner.CurrentWave = currentWave.EnemyWave;
+            }
+            if(itemWaveSpawner.CurrentWave != currentWave.ItemWave) {
+                itemWaveSpawner.StartWave(currentWave.ItemWave, waveTimer - currentWave.WaveStartTime);
+                itemWaveSpawner.CurrentWave = currentWave.ItemWave;
+            }
         }
 
         if(waveTimer >= currentWave.WaveTotalTime) {

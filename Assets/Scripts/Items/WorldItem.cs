@@ -33,7 +33,7 @@ public class WorldItem : ItemUseEffectBase
     }
 
     [ButtonMethod]
-    private void UpdateItemModel() {
+    public void UpdateItemModel() {
         var parent = this.transform;
         var name = "Item Model";
         if(ItemModel != null)

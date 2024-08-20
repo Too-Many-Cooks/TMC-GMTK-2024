@@ -55,13 +55,13 @@ public class LootTableDefinition : ScriptableObject
     }
 
     [ButtonMethod]
-    private void TestRollResults() {
+    public void TestRollResults() {
         var drops = RollResults();
         Debug.Log(RollResultDebugString(drops));
     }
 
     [ButtonMethod]
-    private void TestRollDrops() {
+    public void TestRollDrops() {
         var drops = RollDrops();
         Debug.Log(RollDropDebugString(drops));
     }

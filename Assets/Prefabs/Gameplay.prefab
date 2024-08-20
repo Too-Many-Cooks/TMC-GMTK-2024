@@ -277,13 +277,19 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4069394475643212633, guid: 3a890361396004c4984181950cc0524b,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4376075955744297403, guid: 3a890361396004c4984181950cc0524b,
         type: 3}
       propertyPath: cameraTransform
       value: 
       objectReference: {fileID: 7320329087963628392}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 3039515459357500525, guid: 3a890361396004c4984181950cc0524b, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a890361396004c4984181950cc0524b, type: 3}
