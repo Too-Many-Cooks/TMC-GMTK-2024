@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 namespace SlimUI.ModernMenu{
-	[CreateAssetMenu(menuName = "ThemeSettings")]
+	[CreateAssetMenu(menuName = "Theme Settings", order = 30)]
 	[System.Serializable]
 	public class ThemedUIData : ScriptableObject {
 		[System.Serializable]

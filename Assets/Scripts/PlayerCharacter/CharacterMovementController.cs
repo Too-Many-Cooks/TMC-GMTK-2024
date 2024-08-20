@@ -17,6 +17,10 @@ public class CharacterMovementController : MonoBehaviour
     [SerializeField][Range(0, 5)] private float secondOrderDamping = 1;
     [SerializeField][Range(-5, 5)] private float secondOrderInitialResponse = 0;
 
+    Quaternion targetOrientationQuat;
+    [SerializeField]
+    float maxRotationDegreesPerSec = 350f;
+
     // [Header("Debug")]
 
 
@@ -61,5 +65,12 @@ public class CharacterMovementController : MonoBehaviour
 
         // Moving the character.
         characterController.Move(cameraOrientedMoveInput * characterSpeed * Time.deltaTime);
+
+        // Turn the character
+        if (cameraOrientedMoveInput != Vector3.zero)
+        {
+            targetOrientationQuat = Quaternion.LookRotation(cameraOrientedMoveInput, Vector3.up);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetOrientationQuat, maxRotationDegreesPerSec * Time.deltaTime);
+        }
     }
 }
