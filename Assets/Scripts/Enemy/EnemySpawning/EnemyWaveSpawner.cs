@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using MyBox;
 using Unity.Mathematics;
 using UnityEngine;
@@ -9,7 +10,7 @@ public class EnemyWaveSpawner : MonoBehaviour
 {
     public  float spawnDistance = 25f;
     public EnemyWave CurrentWave;
-    [SerializeField][ReadOnly]private float waveTimer = 0f;
+    public float waveTimer = 0f;
     [SerializeField][ReadOnly]private int spawnGroupIndex = 0;
     private Transform playerTransform;
 

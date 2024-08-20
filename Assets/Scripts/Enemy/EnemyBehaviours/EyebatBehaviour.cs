@@ -1,8 +1,13 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EyebatBehaviour : EnemyBehaviourBase
 {
+
+    public UnityEvent OnShoot;
+
+    bool laserOffCooldown = true;
     [SerializeField] protected float speed = 2f;
     [SerializeField] protected float maxShootingRange = 10f;
     [SerializeField] protected float laserCooldown_sec = 3f;
@@ -29,6 +34,7 @@ public class EyebatBehaviour : EnemyBehaviourBase
         Vector3 distanceToPlayer = new Vector3(-transform.position.x + playerTransform.position.x,
             0, -transform.position.z + playerTransform.position.z);
 
+
         Vector3 directionToPlayer = distanceToPlayer.normalized;
 
         if (distanceToPlayer.sqrMagnitude > maxShootingRange * maxShootingRange)
@@ -41,6 +47,8 @@ public class EyebatBehaviour : EnemyBehaviourBase
             {
                 ShootLaser(directionToPlayer);
                 LaserTimer.Reset();
+
+                OnShoot.Invoke();
             }
         }
 

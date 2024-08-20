@@ -15,6 +15,8 @@ public class WaveSystem : MonoBehaviour
 
     private EnemyWaveSpawner enemyWaveSpawner;
     private ItemWaveSpawner itemWaveSpawner;
+    public Rect WaveIndicatorPosition;
+    public GUIStyle WaveIndicatorStyle = new GUIStyle();
 
     [SerializeField][ReadOnly]private int waveSetIndex = 0;
     [SerializeField][ReadOnly]private int waveSetRepetitions = 0;
@@ -82,6 +84,10 @@ public class WaveSystem : MonoBehaviour
         }
     }
 
+    void OnGUI() {
+        GUI.Label(WaveIndicatorPosition, "Wave " + (waveSetIndex + 1 + waveSetRepetitions), WaveIndicatorStyle);
+    }
+
     [Serializable]
     public class WaveSet {
         public enum WaveRepetitionMode { Once, Repeat, RepeatContinual }
@@ -94,5 +100,65 @@ public class WaveSystem : MonoBehaviour
 
         public List<Wave> Waves  { get { return Definition.Waves; } }
         public int Count { get { return Waves.Count; } }
+    }
+
+    [ButtonMethod]
+    public void NextWaveSet () {
+        var currentWaveSet = waveSets[waveSetIndex];
+        waveIndex = 0;
+        waveTimer = 0f;
+        enemyWaveSpawner.Clear();
+        itemWaveSpawner.Clear();
+        switch (currentWaveSet.RepetitionMode) {
+            case WaveRepetitionMode.Once:
+                waveSetRepetitions=0;
+                waveSetIndex++;
+                break;
+            case WaveRepetitionMode.Repeat:
+                waveSetRepetitions++;
+                if(waveSetRepetitions >= currentWaveSet.NumberOfRepetitions) {
+                    waveSetRepetitions = 0;
+                    waveSetIndex++;
+                }
+                break;
+            case WaveRepetitionMode.RepeatContinual:
+                waveSetRepetitions++;
+                break;
+        }
+    }
+
+    [ButtonMethod]
+    public void Add1SToTimer () {
+        waveTimer += 1f;
+        enemyWaveSpawner.waveTimer += 1f;
+        itemWaveSpawner.waveTimer += 1f;
+    }
+
+    [ButtonMethod]
+    public void Add5SToTimer () {
+        waveTimer += 5f;
+        enemyWaveSpawner.waveTimer += 5f;
+        itemWaveSpawner.waveTimer += 5f;
+    }
+
+    [ButtonMethod]
+    public void Add10SToTimer () {
+        waveTimer += 10f;
+        enemyWaveSpawner.waveTimer += 10f;
+        itemWaveSpawner.waveTimer += 10f;
+    }
+
+    [ButtonMethod]
+    public void Add30SToTimer () {
+        waveTimer += 30f;
+        enemyWaveSpawner.waveTimer += 30f;
+        itemWaveSpawner.waveTimer += 30f;
+    }
+
+    [ButtonMethod]
+    public void Add60SToTimer () {
+        waveTimer += 60f;
+        enemyWaveSpawner.waveTimer += 60f;
+        itemWaveSpawner.waveTimer += 60f;
     }
 }

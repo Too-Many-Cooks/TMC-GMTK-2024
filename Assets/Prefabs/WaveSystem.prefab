@@ -84,6 +84,9 @@ MonoBehaviour:
   waveSets:
   - RepetitionMode: 0
     NumberOfRepetitions: 0
+    Definition: {fileID: 11400000, guid: b68ce09631e941f49aaa58c669e233ae, type: 2}
+  - RepetitionMode: 0
+    NumberOfRepetitions: 0
     Definition: {fileID: 11400000, guid: 98ce7284894dd89459ad6f231e11be6c, type: 2}
   - RepetitionMode: 0
     NumberOfRepetitions: 0
@@ -142,6 +145,79 @@ MonoBehaviour:
   - RepetitionMode: 2
     NumberOfRepetitions: 0
     Definition: {fileID: 11400000, guid: c5dfca066ae95044490f22845d1d7c52, type: 2}
+  WaveIndicatorPosition:
+    serializedVersion: 2
+    x: 8
+    y: 8
+    width: 208
+    height: 64
+  WaveIndicatorStyle:
+    m_Name: 
+    m_Normal:
+      m_Background: {fileID: 2800000, guid: 460dfdf511b398a4dbe9f934589e0b7c, type: 3}
+      m_ScaledBackgrounds: []
+      m_TextColor: {r: 1, g: 1, b: 1, a: 1}
+    m_Hover:
+      m_Background: {fileID: 0}
+      m_ScaledBackgrounds: []
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Active:
+      m_Background: {fileID: 0}
+      m_ScaledBackgrounds: []
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Focused:
+      m_Background: {fileID: 0}
+      m_ScaledBackgrounds: []
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnNormal:
+      m_Background: {fileID: 0}
+      m_ScaledBackgrounds: []
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnHover:
+      m_Background: {fileID: 0}
+      m_ScaledBackgrounds: []
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnActive:
+      m_Background: {fileID: 0}
+      m_ScaledBackgrounds: []
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnFocused:
+      m_Background: {fileID: 0}
+      m_ScaledBackgrounds: []
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Margin:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Padding:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Overflow:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Font: {fileID: 12800000, guid: 3750c318f40cab44a97d3a81beaefeb3, type: 3}
+    m_FontSize: 48
+    m_FontStyle: 1
+    m_Alignment: 4
+    m_WordWrap: 0
+    m_RichText: 1
+    m_TextClipping: 1
+    m_ImagePosition: 0
+    m_ContentOffset: {x: 0, y: 0}
+    m_FixedWidth: 0
+    m_FixedHeight: 0
+    m_StretchWidth: 1
+    m_StretchHeight: 1
   waveSetIndex: 0
   waveSetRepetitions: 0
   waveIndex: 0

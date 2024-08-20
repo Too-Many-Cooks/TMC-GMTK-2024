@@ -10,7 +10,7 @@ public class ItemWaveSpawner : MonoBehaviour
     public float dropRange = 15f;
     public Vector3 dropOffset = new Vector3(0, -1f, 0f);
     public ItemWave CurrentWave;
-    [SerializeField][ReadOnly]private float waveTimer = 0f;
+    public float waveTimer = 0f;
     [SerializeField][ReadOnly]private int dropGroupIndex = 0;
     private Transform playerTransform;
 
