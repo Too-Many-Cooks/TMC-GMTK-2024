@@ -83,9 +83,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waveSets:
+  - RepetitionMode: 0
+    NumberOfRepetitions: 0
+    Definition: {fileID: 11400000, guid: 98ce7284894dd89459ad6f231e11be6c, type: 2}
   - RepetitionMode: 2
     NumberOfRepetitions: 0
-    Definition: {fileID: 11400000, guid: 1446baacf81463b46a6b92ff3b97baeb, type: 2}
+    Definition: {fileID: 11400000, guid: 7372ab00d6eaa4d48b4aad3c2a24c4e9, type: 2}
   waveSetIndex: 0
   waveSetRepetitions: 0
   waveIndex: 0
