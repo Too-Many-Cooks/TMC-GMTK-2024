@@ -15,6 +15,8 @@ public class WaveSystem : MonoBehaviour
 
     private EnemyWaveSpawner enemyWaveSpawner;
     private ItemWaveSpawner itemWaveSpawner;
+    public Rect WaveIndicatorPosition;
+    public GUIStyle WaveIndicatorStyle = new GUIStyle();
 
     [SerializeField][ReadOnly]private int waveSetIndex = 0;
     [SerializeField][ReadOnly]private int waveSetRepetitions = 0;
@@ -80,6 +82,10 @@ public class WaveSystem : MonoBehaviour
             waveTimer -= currentWave.WaveTotalTime;
             waveIndex++;
         }
+    }
+
+    void OnGUI() {
+        GUI.Label(WaveIndicatorPosition, "Wave " + waveSetIndex + 1, WaveIndicatorStyle);
     }
 
     [Serializable]
