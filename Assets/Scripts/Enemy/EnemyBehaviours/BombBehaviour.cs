@@ -6,16 +6,11 @@ using UnityEngine;
 
 public class BombBehaviour : EnemyBehaviourBase
 {
-    [SerializeField]
-    float speed = 10f;
-    [SerializeField]
-    float bombingRange = 2f;
-    [SerializeField]
-    GameObject explosionZonePrefab;
-    [SerializeField]
-    private float timeToExplode_sec = 3f;
-    [SerializeField]
-    private float explosionSize = 5f;
+    [SerializeField] float speed = 10f;
+    [SerializeField] float bombingRange = 2f;
+    [SerializeField] GameObject explosionZonePrefab;
+    [SerializeField] private float timeToExplode_sec = 3f;
+    [SerializeField] private float explosionSize = 5f;
     //bool isExploding = false;
 
     GameObject explosionZone;

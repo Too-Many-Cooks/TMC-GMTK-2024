@@ -255,9 +255,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6a29b1c36b79134e9a4bc3431b8a561, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
-  maxShootingRange: 10
-  laserCooldown_sec: 3
+  speed: 1.5
+  maxShootingRange: 13
+  laserCooldown_sec: 3.5
   laserPrefab: {fileID: 5001261604206903819, guid: 8d5ae199d725f2148857ccf89dc533da,
     type: 3}
   laserSpawnPoint: {fileID: 4041455203154209151}

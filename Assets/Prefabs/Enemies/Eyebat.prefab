@@ -241,7 +241,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   maxShootingRange: 10
-  laserCooldown_sec: 3
+  laserCooldown_sec: 2.5
   laserPrefab: {fileID: 5001261604206903819, guid: 8d5ae199d725f2148857ccf89dc533da,
     type: 3}
   laserSpawnPoint: {fileID: 3547041478741910297}
