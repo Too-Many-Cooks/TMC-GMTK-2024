@@ -29,6 +29,7 @@ public class EyebatBehaviour : EnemyBehaviourBase
         Vector3 distanceToPlayer = new Vector3(-transform.position.x + playerTransform.position.x,
             0, -transform.position.z + playerTransform.position.z);
 
+
         Vector3 directionToPlayer = distanceToPlayer.normalized;
 
         if (distanceToPlayer.sqrMagnitude > maxShootingRange * maxShootingRange)
