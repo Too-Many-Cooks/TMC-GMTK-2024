@@ -124,9 +124,24 @@ MonoBehaviour:
   - RepetitionMode: 0
     NumberOfRepetitions: 0
     Definition: {fileID: 11400000, guid: a88b55bc084e3bc4eaad29625f069302, type: 2}
-  - RepetitionMode: 2
+  - RepetitionMode: 0
     NumberOfRepetitions: 0
     Definition: {fileID: 11400000, guid: 3552450b6afc1e947a6ff58481808fd2, type: 2}
+  - RepetitionMode: 0
+    NumberOfRepetitions: 0
+    Definition: {fileID: 11400000, guid: 97bc93b1fe0b16c49934e04d9d2398ec, type: 2}
+  - RepetitionMode: 0
+    NumberOfRepetitions: 0
+    Definition: {fileID: 11400000, guid: 2667e9409e9c13a43906683c2359ab4c, type: 2}
+  - RepetitionMode: 0
+    NumberOfRepetitions: 0
+    Definition: {fileID: 11400000, guid: a1279bf2e95e12c41a2bda9cf16a7b36, type: 2}
+  - RepetitionMode: 0
+    NumberOfRepetitions: 0
+    Definition: {fileID: 11400000, guid: d5197f91ea267494aa2c187f9acd5666, type: 2}
+  - RepetitionMode: 2
+    NumberOfRepetitions: 0
+    Definition: {fileID: 11400000, guid: c5dfca066ae95044490f22845d1d7c52, type: 2}
   waveSetIndex: 0
   waveSetRepetitions: 0
   waveIndex: 0
