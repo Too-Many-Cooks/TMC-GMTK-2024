@@ -230,6 +230,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3933efc7923623d47873c5d6a77b8106, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EnableDraggingWorldItems: 0
+  EnableItemPickupOnCollision: 1
   currentlyDraggedItem:
     inventoryItem:
       Definition: {fileID: 0}
@@ -244,7 +246,7 @@ MonoBehaviour:
   InventoryScreenPosition: {x: 0, y: 0}
   EnableDebugGUI: 0
   inventory:
-    _gridSize: {x: 10, y: 20}
+    _gridSize: {x: 10, y: 18}
     Rows:
     - Columns:
       - CellState: 0
@@ -877,6 +879,7 @@ MonoBehaviour:
   gridCellVisualsAnchor: {fileID: 0}
   itemVisualsAnchor: {fileID: 0}
   cellSize: 32
+  numCellsToFitInHeight: 18
   Debug_worldItemDistance: 10
   OnInventoryCellRemoved:
     m_PersistentCalls:

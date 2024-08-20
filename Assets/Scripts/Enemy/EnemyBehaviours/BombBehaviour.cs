@@ -37,6 +37,8 @@ public class BombBehaviour : EnemyBehaviourBase
         do
         {
             distanceToPlayer = (-transform.position + playerTransform.position);
+            distanceToPlayer.y = transform.position.y;
+
             characterController.Move(distanceToPlayer.normalized * speed * Time.deltaTime);
             characterController.transform.LookAt(new Vector3(playerTransform.position.x, transform.position.y, playerTransform.position.z));
             yield return null;

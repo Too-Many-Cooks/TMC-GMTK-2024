@@ -11,7 +11,9 @@ public class WalkerBehaviour : EnemyBehaviourBase
     // Update is called once per frame
     void Update()
     {
-        characterController.Move((-transform.position + playerTransform.position).normalized * speed * Time.deltaTime);
+        Vector3 distance = (-transform.position + playerTransform.position);
+        distance.y = transform.position.y;
+        characterController.Move(distance.normalized * speed * Time.deltaTime);
         characterController.transform.LookAt(new Vector3(playerTransform.position.x, transform.position.y, playerTransform.position.z));
     }
 }
