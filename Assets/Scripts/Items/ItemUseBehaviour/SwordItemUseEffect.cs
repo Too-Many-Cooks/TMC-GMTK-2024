@@ -15,12 +15,9 @@ public class SwordItemUseEffect : ItemUseEffectBase
 
     Transform playerTransform;
 
-    public UnityEvent OnSwing;
-
     public override void ClickActivationTrigger(out bool destroyedOnUse)
     {
         swordEffectColliderTransform.GetComponent<PlayerItemDamageSender>().DamageEnemiesInCollider(damageToEnemies);
-        OnSwing.Invoke();
         destroyedOnUse = true;
         Destroy(gameObject);
     }
