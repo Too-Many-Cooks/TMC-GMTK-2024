@@ -216,6 +216,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3933efc7923623d47873c5d6a77b8106, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EnableDraggingWorldItems: 0
+  EnableItemPickupOnCollision: 1
   currentlyDraggedItem:
     inventoryItem:
       Definition: {fileID: 0}
@@ -230,7 +232,7 @@ MonoBehaviour:
   InventoryScreenPosition: {x: 0, y: 0}
   EnableDebugGUI: 0
   inventory:
-    _gridSize: {x: 10, y: 20}
+    _gridSize: {x: 10, y: 18}
     Rows:
     - Columns:
       - CellState: 0
@@ -863,6 +865,7 @@ MonoBehaviour:
   gridCellVisualsAnchor: {fileID: 0}
   itemVisualsAnchor: {fileID: 0}
   cellSize: 32
+  numCellsToFitInHeight: 18
   Debug_worldItemDistance: 10
   OnInventoryCellRemoved:
     m_PersistentCalls:
@@ -1164,6 +1167,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5063546822175782710}
   - component: {fileID: 9199776314166046045}
+  - component: {fileID: 7296678091650401304}
   m_Layer: 0
   m_Name: PassiveEffects
   m_TagString: Untagged
@@ -1199,6 +1203,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterInventory: {fileID: -8254372430402789042}
+--- !u!1818360609 &7296678091650401304
+RotationConstraint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6434553175421164475}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Weight: 1
+  m_RotationAtRest: {x: 0, y: 0, z: 0}
+  m_RotationOffset: {x: 0, y: 45, z: 0}
+  m_AffectRotationX: 1
+  m_AffectRotationY: 1
+  m_AffectRotationZ: 1
+  m_Active: 1
+  m_IsLocked: 1
+  m_Sources:
+  - sourceTransform: {fileID: 0}
+    weight: 1
 --- !u!1001 &5025765278427425257
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1270,8 +1294,38 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7655944873253405217, guid: 1526206777b1ec5459ea03f50bae65aa,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8174006021487642306}
   m_SourcePrefab: {fileID: 100100000, guid: 1526206777b1ec5459ea03f50bae65aa, type: 3}
+--- !u!1 &3422871679344749512 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7655944873253405217, guid: 1526206777b1ec5459ea03f50bae65aa,
+    type: 3}
+  m_PrefabInstance: {fileID: 5025765278427425257}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1818360609 &8174006021487642306
+RotationConstraint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3422871679344749512}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Weight: 1
+  m_RotationAtRest: {x: -90, y: 0, z: 0}
+  m_RotationOffset: {x: -90, y: 0, z: 45}
+  m_AffectRotationX: 1
+  m_AffectRotationY: 1
+  m_AffectRotationZ: 1
+  m_Active: 1
+  m_IsLocked: 1
+  m_Sources:
+  - sourceTransform: {fileID: 0}
+    weight: 1
 --- !u!4 &6227518907268366717 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1428641187206146196, guid: 1526206777b1ec5459ea03f50bae65aa,

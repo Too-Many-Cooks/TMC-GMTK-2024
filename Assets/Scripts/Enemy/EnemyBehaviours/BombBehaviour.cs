@@ -6,16 +6,11 @@ using UnityEngine;
 
 public class BombBehaviour : EnemyBehaviourBase
 {
-    [SerializeField]
-    float speed = 10f;
-    [SerializeField]
-    float bombingRange = 2f;
-    [SerializeField]
-    GameObject explosionZonePrefab;
-    [SerializeField]
-    private float timeToExplode_sec = 3f;
-    [SerializeField]
-    private float explosionSize = 5f;
+    [SerializeField] float speed = 10f;
+    [SerializeField] float bombingRange = 2f;
+    [SerializeField] GameObject explosionZonePrefab;
+    [SerializeField] private float timeToExplode_sec = 3f;
+    [SerializeField] private float explosionSize = 5f;
     //bool isExploding = false;
 
     GameObject explosionZone;
@@ -32,6 +27,8 @@ public class BombBehaviour : EnemyBehaviourBase
         do
         {
             distanceToPlayer = (-transform.position + playerTransform.position);
+            distanceToPlayer.y = transform.position.y;
+
             characterController.Move(distanceToPlayer.normalized * speed * Time.deltaTime);
             characterController.transform.LookAt(new Vector3(playerTransform.position.x, transform.position.y, playerTransform.position.z));
             yield return null;

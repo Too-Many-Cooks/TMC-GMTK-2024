@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 1791780996054123085}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.663495, y: 4.612182, z: -5.771473}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -64,10 +64,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dropRange: 15
+  dropOffset: {x: 0, y: -1, z: 0}
   CurrentWave:
     DropGroups: []
-  WorldItemPrefab: {fileID: -4155082316195219464, guid: f0347faab066ff64786cc55eb30b60df,
-    type: 3}
   waveTimer: 0
   dropGroupIndex: 0
 --- !u!114 &6432277237276477852
@@ -83,9 +82,66 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waveSets:
+  - RepetitionMode: 0
+    NumberOfRepetitions: 0
+    Definition: {fileID: 11400000, guid: 98ce7284894dd89459ad6f231e11be6c, type: 2}
+  - RepetitionMode: 0
+    NumberOfRepetitions: 0
+    Definition: {fileID: 11400000, guid: 7372ab00d6eaa4d48b4aad3c2a24c4e9, type: 2}
+  - RepetitionMode: 0
+    NumberOfRepetitions: 0
+    Definition: {fileID: 11400000, guid: ded01aee3f2b3a440b1a97dae51b7680, type: 2}
+  - RepetitionMode: 0
+    NumberOfRepetitions: 0
+    Definition: {fileID: 11400000, guid: bca71f238063118448f8c3a03c26e648, type: 2}
+  - RepetitionMode: 0
+    NumberOfRepetitions: 0
+    Definition: {fileID: 11400000, guid: b27e096f077e941479a45fdc4d62ecbe, type: 2}
+  - RepetitionMode: 0
+    NumberOfRepetitions: 0
+    Definition: {fileID: 11400000, guid: 2698dae7ed3c2104ab2c38d65308d2f7, type: 2}
+  - RepetitionMode: 0
+    NumberOfRepetitions: 0
+    Definition: {fileID: 11400000, guid: 664bc74e9477bbc49898844a2baebf72, type: 2}
+  - RepetitionMode: 0
+    NumberOfRepetitions: 0
+    Definition: {fileID: 11400000, guid: 5bdc0627ddc28f349a43e43afd9a2516, type: 2}
+  - RepetitionMode: 0
+    NumberOfRepetitions: 0
+    Definition: {fileID: 11400000, guid: f99b698ee2c7d004f89c6d3f4069d459, type: 2}
+  - RepetitionMode: 0
+    NumberOfRepetitions: 0
+    Definition: {fileID: 11400000, guid: 2ff76e78f337dc24e91b71c02dce58b4, type: 2}
+  - RepetitionMode: 0
+    NumberOfRepetitions: 0
+    Definition: {fileID: 11400000, guid: da135a9e2c7e79644a62572c2de8d564, type: 2}
+  - RepetitionMode: 0
+    NumberOfRepetitions: 0
+    Definition: {fileID: 11400000, guid: 131539b665226ac489c4f229b7cadde9, type: 2}
+  - RepetitionMode: 0
+    NumberOfRepetitions: 0
+    Definition: {fileID: 11400000, guid: fa03d3567d198014fac2f3367be07a4e, type: 2}
+  - RepetitionMode: 0
+    NumberOfRepetitions: 0
+    Definition: {fileID: 11400000, guid: a88b55bc084e3bc4eaad29625f069302, type: 2}
+  - RepetitionMode: 0
+    NumberOfRepetitions: 0
+    Definition: {fileID: 11400000, guid: 3552450b6afc1e947a6ff58481808fd2, type: 2}
+  - RepetitionMode: 0
+    NumberOfRepetitions: 0
+    Definition: {fileID: 11400000, guid: 97bc93b1fe0b16c49934e04d9d2398ec, type: 2}
+  - RepetitionMode: 0
+    NumberOfRepetitions: 0
+    Definition: {fileID: 11400000, guid: 2667e9409e9c13a43906683c2359ab4c, type: 2}
+  - RepetitionMode: 0
+    NumberOfRepetitions: 0
+    Definition: {fileID: 11400000, guid: a1279bf2e95e12c41a2bda9cf16a7b36, type: 2}
+  - RepetitionMode: 0
+    NumberOfRepetitions: 0
+    Definition: {fileID: 11400000, guid: d5197f91ea267494aa2c187f9acd5666, type: 2}
   - RepetitionMode: 2
     NumberOfRepetitions: 0
-    Definition: {fileID: 11400000, guid: 1446baacf81463b46a6b92ff3b97baeb, type: 2}
+    Definition: {fileID: 11400000, guid: c5dfca066ae95044490f22845d1d7c52, type: 2}
   waveSetIndex: 0
   waveSetRepetitions: 0
   waveIndex: 0

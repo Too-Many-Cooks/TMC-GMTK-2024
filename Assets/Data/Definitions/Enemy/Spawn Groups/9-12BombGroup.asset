@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e78c2508b3f487458f22ac02848d0ba, type: 3}
+  m_Name: 9-12BombGroup
+  m_EditorClassIdentifier: 
+  Spawns:
+  - NoSpawnWeight: 0
+    SpawnPool: {fileID: 11400000, guid: 6298ac9546966584f9ac48a227fb9fd0, type: 2}
+  - NoSpawnWeight: 0
+    SpawnPool: {fileID: 11400000, guid: 6298ac9546966584f9ac48a227fb9fd0, type: 2}
+  - NoSpawnWeight: 0
+    SpawnPool: {fileID: 11400000, guid: 6298ac9546966584f9ac48a227fb9fd0, type: 2}
+  - NoSpawnWeight: 1
+    SpawnPool: {fileID: 11400000, guid: 6298ac9546966584f9ac48a227fb9fd0, type: 2}
+  - NoSpawnWeight: 1
+    SpawnPool: {fileID: 11400000, guid: 6298ac9546966584f9ac48a227fb9fd0, type: 2}
+  - NoSpawnWeight: 1
+    SpawnPool: {fileID: 11400000, guid: 6298ac9546966584f9ac48a227fb9fd0, type: 2}
+  - NoSpawnWeight: 2
+    SpawnPool: {fileID: 11400000, guid: 6298ac9546966584f9ac48a227fb9fd0, type: 2}
+  - NoSpawnWeight: 0
+    SpawnPool: {fileID: 11400000, guid: 6298ac9546966584f9ac48a227fb9fd0, type: 2}
+  - NoSpawnWeight: 0
+    SpawnPool: {fileID: 11400000, guid: 6298ac9546966584f9ac48a227fb9fd0, type: 2}
+  - NoSpawnWeight: 0
+    SpawnPool: {fileID: 11400000, guid: 6298ac9546966584f9ac48a227fb9fd0, type: 2}
+  - NoSpawnWeight: 0
+    SpawnPool: {fileID: 11400000, guid: 6298ac9546966584f9ac48a227fb9fd0, type: 2}
+  - NoSpawnWeight: 0
+    SpawnPool: {fileID: 11400000, guid: 6298ac9546966584f9ac48a227fb9fd0, type: 2}
