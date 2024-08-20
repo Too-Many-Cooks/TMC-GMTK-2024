@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PossibleSpawns:
   - SpawnWeight: 1
-    EnemyPrefab: {fileID: 4783913479506557551, guid: e05d7f0b9384b74448362809e96e1311,
+    EnemyPrefab: {fileID: 7780912737094454424, guid: 9a7b0ee13e837a94a823f35c9e429dd9,
       type: 3}
