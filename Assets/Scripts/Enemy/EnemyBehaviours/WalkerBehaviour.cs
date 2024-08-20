@@ -16,6 +16,7 @@ public class WalkerBehaviour : EnemyBehaviourBase
 
     protected virtual void Move()
     {
-        characterController.Move((-transform.position + playerTransform.position).normalized * walkingSpeed * Time.deltaTime);
+        characterController.Move(new Vector3(-transform.position.x + playerTransform.position.x,
+            0, -transform.position.z + playerTransform.position.z).normalized * walkingSpeed * Time.deltaTime);
     }
 }

@@ -26,7 +26,8 @@ public class EyebatBehaviour : EnemyBehaviourBase
     {
         LaserTimer.Update(Time.deltaTime);
 
-        Vector3 distanceToPlayer = (-transform.position + playerTransform.position);
+        Vector3 distanceToPlayer = new Vector3(-transform.position.x + playerTransform.position.x,
+            0, -transform.position.z + playerTransform.position.z);
         // Making the projectiles not move through Y space.
         distanceToPlayer = new Vector3(distanceToPlayer.x, 0, distanceToPlayer.z);
 
