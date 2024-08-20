@@ -367,10 +367,11 @@ public static class InventoryUtility
 
     private static float CalculateDistanceOfPointToLine(Vector2 point, Vector2 lineBeginning, Vector2 lineEnd)
     {
-        return HandleUtility.DistancePointLine(
+        /*return HandleUtility.DistancePointLine(
             new Vector3(point.x, 0, point.y),
             new Vector3(lineBeginning.x, 0, lineBeginning.y),
-            new Vector3(lineEnd.x, 0, lineEnd.y));
+            new Vector3(lineEnd.x, 0, lineEnd.y));*/
+        return ((lineBeginning - point) - (Vector3.Dot((lineBeginning - point), -lineBeginning + lineEnd)) * (-lineBeginning + lineEnd)).magnitude;
     }
 
     /// <summary>
