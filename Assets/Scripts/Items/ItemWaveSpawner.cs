@@ -7,9 +7,9 @@ using static LootTableDefinition;
 
 public class ItemWaveSpawner : MonoBehaviour
 {
-    public  float dropRange = 15f;
+    public float dropRange = 15f;
+    public Vector3 dropOffset = new Vector3(0, -1f, 0f);
     public ItemWave CurrentWave;
-    public WorldItem WorldItemPrefab;
     [SerializeField][ReadOnly]private float waveTimer = 0f;
     [SerializeField][ReadOnly]private int dropGroupIndex = 0;
     private Transform playerTransform;
@@ -116,17 +116,15 @@ public class ItemWaveSpawner : MonoBehaviour
     public void SpawnItem(ItemDefinition itemDefinition)
     {
         Vector3 dropPosition = GetDropPosition();
-        var itemDrop = Instantiate(WorldItemPrefab.gameObject, dropPosition, Quaternion.identity, transform);
-        var worldItem = itemDrop.GetComponent<WorldItem>();
-        worldItem.Definition = itemDefinition;
-        worldItem.UpdateItemModel();
+        var itemDrop = Instantiate(itemDefinition.WorldItemPrefab, dropPosition, Quaternion.identity);
+        itemDrop.GetComponent<WorldItem>().Definition = itemDefinition;
     }
 
     private Vector3 GetDropPosition()
     {
         Vector2 randomDirection = UnityEngine.Random.insideUnitCircle;
         Vector2 ranOffset = randomDirection * dropRange;
-        return playerTransform.position + new Vector3(ranOffset.x, 0f, ranOffset.y);
+        return playerTransform.position + new Vector3(ranOffset.x, 0f, ranOffset.y) + dropOffset;
     }
 
     public void StartWave(ItemWave wave, float initialTimer = 0f) {
