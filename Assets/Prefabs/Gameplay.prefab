@@ -288,6 +288,16 @@ PrefabInstance:
       propertyPath: cameraTransform
       value: 
       objectReference: {fileID: 7320329087963628392}
+    - target: {fileID: 7296678091650401304, guid: 3a890361396004c4984181950cc0524b,
+        type: 3}
+      propertyPath: m_Sources.Array.data[0].sourceTransform
+      value: 
+      objectReference: {fileID: 9120299314382154781}
+    - target: {fileID: 8174006021487642306, guid: 3a890361396004c4984181950cc0524b,
+        type: 3}
+      propertyPath: m_Sources.Array.data[0].sourceTransform
+      value: 
+      objectReference: {fileID: 9120299314382154781}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 3039515459357500525, guid: 3a890361396004c4984181950cc0524b, type: 3}
