@@ -6,7 +6,7 @@ using MyBox;
 using Unity.Mathematics;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewLootTableDefinition", menuName = "ScriptableObjects/LootTableDefinition")]
+[CreateAssetMenu(fileName = "NewLootTableDefinition", menuName = "Loot Table", order = 2001)]
 public class LootTableDefinition : ScriptableObject
 {
     [SerializeField] public List<LootTableRoll> Rolls;
@@ -55,13 +55,13 @@ public class LootTableDefinition : ScriptableObject
     }
 
     [ButtonMethod]
-    private void TestRollResults() {
+    public void TestRollResults() {
         var drops = RollResults();
         Debug.Log(RollResultDebugString(drops));
     }
 
     [ButtonMethod]
-    private void TestRollDrops() {
+    public void TestRollDrops() {
         var drops = RollDrops();
         Debug.Log(RollDropDebugString(drops));
     }

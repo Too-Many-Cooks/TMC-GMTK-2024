@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81eaee6e1a68b804eb2ac16ae507049e, type: 3}
+  m_Name: AnyEnemySpawnPoolDefinition
+  m_EditorClassIdentifier: 
+  PossibleSpawns:
+  - SpawnWeight: 1
+    EnemyPrefab: {fileID: 7780912737094454424, guid: c2e368914b3a7b34ba4b3063bf15a739,
+      type: 3}
+  - SpawnWeight: 1
+    EnemyPrefab: {fileID: 2919480991887057869, guid: bb90fc778059eb64e9ba80b947b9e2f5,
+      type: 3}
+  - SpawnWeight: 1
+    EnemyPrefab: {fileID: 580967043222428643, guid: 15260a7f9e98a0a488a19d8c4862ae72,
+      type: 3}
