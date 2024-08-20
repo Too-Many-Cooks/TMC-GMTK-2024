@@ -48,7 +48,7 @@ MonoBehaviour:
   sounds:
   - name: BombExplode
     clip: {fileID: 8300000, guid: 778540b295e684d44921fc14dc0a8963, type: 3}
-    volume: 0.451
+    volume: 0.601
     pitch: 1.11
     loop: 0
     source: {fileID: 0}
