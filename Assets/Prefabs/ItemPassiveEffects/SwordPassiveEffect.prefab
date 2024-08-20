@@ -51,7 +51,7 @@ MonoBehaviour:
   speedStacks: 0
   initialSize: 0.5
   sizeStacks: 0
-  initialSwordsPerSec: 0.5
+  initialSwordsPerSec: 20
   swordsPerSecStack: 1
   swordPassivePrefab: {fileID: 5359895012251490253, guid: 4c530ae354eff584b9fb34fb94d851c6,
     type: 3}
