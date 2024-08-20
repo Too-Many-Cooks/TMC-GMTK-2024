@@ -137,11 +137,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  bombingRange: 2
+  bombingRange: 3
   explosionZonePrefab: {fileID: 5000138064661524430, guid: a05925e51c1060940be6c7624f1cfaee,
     type: 3}
-  timeToExplode_sec: 3
-  explosionSize: 5
+  timeToExplode_sec: 2.5
+  explosionSize: 5.5
 --- !u!1001 &7540771829095438640
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -150,6 +150,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1657050480970986736}
     m_Modifications:
+    - target: {fileID: 2431271611016390262, guid: 5fe7d2ae12c31074fa52ec15c66c19ef,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8465ce29382f4564c9ef284d435fb5ba, type: 2}
+    - target: {fileID: 2431271611016390262, guid: 5fe7d2ae12c31074fa52ec15c66c19ef,
+        type: 3}
+      propertyPath: m_Materials.Array.data[3]
+      value: 
+      objectReference: {fileID: 2100000, guid: 429d8198af4d0d742802ad9fc7efc643, type: 2}
     - target: {fileID: 3600258993299152153, guid: 5fe7d2ae12c31074fa52ec15c66c19ef,
         type: 3}
       propertyPath: m_LocalScale.x
