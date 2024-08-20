@@ -137,17 +137,17 @@ PrefabInstance:
     - target: {fileID: 3074185287166051864, guid: e12e053f80cff114b9bcdec9edb1cc37,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.7401953
       objectReference: {fileID: 0}
     - target: {fileID: 3074185287166051864, guid: e12e053f80cff114b9bcdec9edb1cc37,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3074185287166051864, guid: e12e053f80cff114b9bcdec9edb1cc37,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 2.6301372
       objectReference: {fileID: 0}
     - target: {fileID: 3074185287166051864, guid: e12e053f80cff114b9bcdec9edb1cc37,
         type: 3}
@@ -220,6 +220,14 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: -8252881786268594575}
+    - targetCorrespondingSourceObject: {fileID: 6317969124517117552, guid: e12e053f80cff114b9bcdec9edb1cc37,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5343234167127112548}
+    - targetCorrespondingSourceObject: {fileID: 6317969124517117552, guid: e12e053f80cff114b9bcdec9edb1cc37,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6550244139752692893}
   m_SourcePrefab: {fileID: 100100000, guid: e12e053f80cff114b9bcdec9edb1cc37, type: 3}
 --- !u!1 &2919480991887057869 stripped
 GameObject:
@@ -239,12 +247,59 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd6d0d06cceea884595b0fb1656c7dbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnShoot:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6550244139752692893}
+        m_TargetAssemblyTypeName: EyebatAudioControler, Assembly-CSharp
+        m_MethodName: OnShoot
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   speed: 2
   maxShootingRange: 10
   laserCooldown_sec: 2.5
   laserPrefab: {fileID: 5001261604206903819, guid: 8d5ae199d725f2148857ccf89dc533da,
     type: 3}
   laserSpawnPoint: {fileID: 3547041478741910297}
+--- !u!114 &5343234167127112548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2919480991887057869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 278b544b222a1bb41bb6334bb2c70e06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Laser
+    clip: {fileID: 8300000, guid: b5221d163b3f39d40a0d3f330c2fdff9, type: 3}
+    volume: 0.493
+    pitch: 0.76
+    loop: 0
+    source: {fileID: 0}
+--- !u!114 &6550244139752692893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2919480991887057869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7587a1cd7aa7bc94f9a26003e5020a58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AudioManager: {fileID: 5343234167127112548}
 --- !u!4 &6161003681607539621 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3074185287166051864, guid: e12e053f80cff114b9bcdec9edb1cc37,

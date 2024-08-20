@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class BombItemUseEffect : ItemUseEffectBase
 {
+
     [SerializeField]
     float damageToEnemies = 50f;
     [SerializeField]
@@ -14,9 +16,13 @@ public class BombItemUseEffect : ItemUseEffectBase
     [SerializeField]
     Transform bombEffectColliderTransform;
 
+    [SerializeField]
+    GameObject explosionPrefab;
+
     public override void ClickActivationTrigger(out bool destroyedOnUse)
     {
         bombEffectColliderTransform.GetComponent<PlayerItemDamageSender>().DamageEnemiesInCollider(damageToEnemies, damageToPlayer);
+        Instantiate(explosionPrefab, transform.position, Quaternion.identity);
         destroyedOnUse = true;
         Destroy(gameObject);
     }

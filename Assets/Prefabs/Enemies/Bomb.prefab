@@ -17,17 +17,17 @@ PrefabInstance:
     - target: {fileID: 3074185287166051864, guid: e12e053f80cff114b9bcdec9edb1cc37,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -9.41
       objectReference: {fileID: 0}
     - target: {fileID: 3074185287166051864, guid: e12e053f80cff114b9bcdec9edb1cc37,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.59
       objectReference: {fileID: 0}
     - target: {fileID: 3074185287166051864, guid: e12e053f80cff114b9bcdec9edb1cc37,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.09
       objectReference: {fileID: 0}
     - target: {fileID: 3074185287166051864, guid: e12e053f80cff114b9bcdec9edb1cc37,
         type: 3}
@@ -142,6 +142,8 @@ MonoBehaviour:
     type: 3}
   timeToExplode_sec: 2.5
   explosionSize: 5.5
+  explosionPrefab: {fileID: 4068549948295855401, guid: 21b55f0420e8e7e4a8a62896d450269b,
+    type: 3}
 --- !u!1001 &7540771829095438640
 PrefabInstance:
   m_ObjectHideFlags: 0

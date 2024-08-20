@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using MyBox;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class BombBehaviour : EnemyBehaviourBase
 {
@@ -12,6 +13,9 @@ public class BombBehaviour : EnemyBehaviourBase
     [SerializeField] private float timeToExplode_sec = 3f;
     [SerializeField] private float explosionSize = 5f;
     //bool isExploding = false;
+
+    [SerializeField]
+    public GameObject explosionPrefab;
 
     GameObject explosionZone;
 
@@ -57,7 +61,8 @@ public class BombBehaviour : EnemyBehaviourBase
     {
         yield return new WaitForSeconds(timeToExplode_sec);
         bombExplosionZoneBehaviour.Explode();
-        if(gameObject.HasComponent<EnemyDamageReceiver>()) {
+        Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+        if (gameObject.HasComponent<EnemyDamageReceiver>()) {
             gameObject.GetComponent<EnemyDamageReceiver>().KillEnemy();
         } else {
             Destroy(gameObject);

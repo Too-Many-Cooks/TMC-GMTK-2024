@@ -20,6 +20,8 @@ GameObject:
   - component: {fileID: 8138141458428624030}
   - component: {fileID: 5432281383488461165}
   - component: {fileID: 5730483052155837756}
+  - component: {fileID: 1732538361642628214}
+  - component: {fileID: 3167323838061042273}
   - component: {fileID: 1067736372338194887}
   m_Layer: 0
   m_Name: Player
@@ -199,7 +201,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnInventorySlotsDamaged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1732538361642628214}
+        m_TargetAssemblyTypeName: CharacterAudioController, Assembly-CSharp
+        m_MethodName: OnTakeDamage
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   invincibleAfterReceivingDamage: 0
   invincibilityDuration: 0.5
   damagedCellStatus: 2
@@ -1057,6 +1071,44 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1732538361642628214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7312746790141268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bab6f38b5fba8641b4db2ff748a6f07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AudioManager: {fileID: 3167323838061042273}
+--- !u!114 &3167323838061042273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7312746790141268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 278b544b222a1bb41bb6334bb2c70e06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Hover
+    clip: {fileID: 8300000, guid: 6b466c3bfcd75c743a0672b6bf56c630, type: 3}
+    volume: 0.079
+    pitch: 1.01
+    loop: 1
+    source: {fileID: 0}
+  - name: TakeDamage
+    clip: {fileID: 8300000, guid: 90e31f6959a3c024da97b4afc69f71e7, type: 3}
+    volume: 0.5
+    pitch: 1.01
+    loop: 0
+    source: {fileID: 0}
 --- !u!114 &1067736372338194887
 MonoBehaviour:
   m_ObjectHideFlags: 0

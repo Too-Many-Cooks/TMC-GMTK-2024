@@ -173,6 +173,8 @@ MonoBehaviour:
   damageToPlayer: 1
   range: 10
   bombEffectColliderTransform: {fileID: 1030728687211261045}
+  explosionPrefab: {fileID: 4068549948295855401, guid: 21b55f0420e8e7e4a8a62896d450269b,
+    type: 3}
 --- !u!198 &-7520393341328001986
 ParticleSystem:
   m_ObjectHideFlags: 0
