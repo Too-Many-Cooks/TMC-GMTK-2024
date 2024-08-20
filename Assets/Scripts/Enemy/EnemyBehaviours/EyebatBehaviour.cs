@@ -1,7 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Timers;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -10,44 +7,57 @@ public class EyebatBehaviour : EnemyBehaviourBase
 
     public UnityEvent OnShoot;
 
-    [SerializeField]
-    float speed = 2f;
-    [SerializeField]
-    float maxShootingRange = 10f;
-    [SerializeField]
-    float laserCooldown_sec = 3f;
-    [SerializeField]
-    GameObject laserPrefab;
-
     bool laserOffCooldown = true;
+    [SerializeField] protected float speed = 2f;
+    [SerializeField] protected float maxShootingRange = 10f;
+    [SerializeField] protected float laserCooldown_sec = 3f;
+    [SerializeField] protected GameObject laserPrefab;
+    [SerializeField] protected Transform laserSpawnPoint;
+
+    Timer _laserTimer;
+    Timer LaserTimer
+    {
+        get
+        {
+            if (_laserTimer == null)
+                _laserTimer = new Timer(laserCooldown_sec);
+
+            return _laserTimer;
+        }
+    }
     
     // Update is called once per frame
     void Update()
     {
-        Vector3 distanceToPlayer = (-transform.position + playerTransform.position);
-        distanceToPlayer.y = transform.position.y;
+        LaserTimer.Update(Time.deltaTime);
+
+        Vector3 distanceToPlayer = new Vector3(-transform.position.x + playerTransform.position.x,
+            0, -transform.position.z + playerTransform.position.z);
+
+
         Vector3 directionToPlayer = distanceToPlayer.normalized;
+
         if (distanceToPlayer.sqrMagnitude > maxShootingRange * maxShootingRange)
         {
             characterController.Move(directionToPlayer * speed * Time.deltaTime);
         }
         else
         {
-            if(laserOffCooldown)
+            if(LaserTimer.IsComplete)
             {
-                Instantiate(laserPrefab, transform.position, Quaternion.LookRotation(directionToPlayer, Vector3.up));
-                laserOffCooldown = false;
-                StartCoroutine(LaserCooldownCoroutine(laserCooldown_sec));
+                ShootLaser(directionToPlayer);
+                LaserTimer.Reset();
 
                 OnShoot.Invoke();
             }
         }
-        characterController.transform.LookAt(new Vector3(playerTransform.position.x, transform.position.y, playerTransform.position.z));
+
+        characterController.transform.LookAt(
+            new Vector3(playerTransform.position.x, transform.position.y, playerTransform.position.z));
     }
 
-    private IEnumerator LaserCooldownCoroutine(float laserCooldown)
+    protected virtual void ShootLaser(Vector3 directionToPlayer)
     {
-        yield return new WaitForSeconds(laserCooldown);
-        laserOffCooldown = true;
+        Instantiate(laserPrefab, laserSpawnPoint.position, Quaternion.LookRotation(directionToPlayer, Vector3.up));
     }
 }
