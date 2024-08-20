@@ -85,7 +85,7 @@ public class WaveSystem : MonoBehaviour
     }
 
     void OnGUI() {
-        GUI.Label(WaveIndicatorPosition, "Wave " + waveSetIndex + 1, WaveIndicatorStyle);
+        GUI.Label(WaveIndicatorPosition, "Wave " + (waveSetIndex + 1), WaveIndicatorStyle);
     }
 
     [Serializable]
