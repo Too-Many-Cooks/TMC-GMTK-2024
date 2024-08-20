@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class ItemAudioController : AudioController
 {
-    void Start()
+   public void Start()
     {
-        
+        base.Start();
     }
 
 }

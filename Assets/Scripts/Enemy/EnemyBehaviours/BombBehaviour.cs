@@ -8,8 +8,6 @@ using UnityEngine.Events;
 public class BombBehaviour : EnemyBehaviourBase
 {
 
-    public UnityEvent OnDetonate;
-
     [SerializeField]
     float speed = 10f;
     [SerializeField]
@@ -21,6 +19,9 @@ public class BombBehaviour : EnemyBehaviourBase
     [SerializeField]
     private float explosionSize = 5f;
     //bool isExploding = false;
+
+    [SerializeField]
+    public GameObject explosionPrefab;
 
     GameObject explosionZone;
 
@@ -64,7 +65,7 @@ public class BombBehaviour : EnemyBehaviourBase
     {
         yield return new WaitForSeconds(timeToExplode_sec);
         bombExplosionZoneBehaviour.Explode();
-        OnDetonate.Invoke();
+        Instantiate(explosionPrefab, transform.position, Quaternion.identity);
         if (gameObject.HasComponent<EnemyDamageReceiver>()) {
             gameObject.GetComponent<EnemyDamageReceiver>().KillEnemy();
         } else {

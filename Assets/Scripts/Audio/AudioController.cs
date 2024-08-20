@@ -6,7 +6,7 @@ public class AudioController : MonoBehaviour
 {
     public AudioManager AudioManager;
 
-    void Start()
+    public void Start()
     {
         if (AudioManager == null)
         {

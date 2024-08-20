@@ -134,8 +134,6 @@ GameObject:
   - component: {fileID: 7859185235781639366}
   - component: {fileID: -7520393341328001986}
   - component: {fileID: -8087997082270727721}
-  - component: {fileID: -4711412973104332079}
-  - component: {fileID: -6637436474388924906}
   m_Layer: 0
   m_Name: BombItemUse
   m_TagString: Untagged
@@ -171,57 +169,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbdd4674ac901ad43b778a2b7066e69f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnDetonate:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: -4711412973104332079}
-        m_TargetAssemblyTypeName: BombItemAudioController, Assembly-CSharp
-        m_MethodName: OnDetonate
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
   damageToEnemies: 50
   damageToPlayer: 1
   range: 10
   bombEffectColliderTransform: {fileID: 1030728687211261045}
---- !u!114 &-4711412973104332079
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3258428040452275808}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 915f9afb70d45d24d8e80a7602e1b533, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AudioManager: {fileID: -6637436474388924906}
---- !u!114 &-6637436474388924906
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3258428040452275808}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 278b544b222a1bb41bb6334bb2c70e06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sounds:
-  - name: BombExplode
-    clip: {fileID: 8300000, guid: 778540b295e684d44921fc14dc0a8963, type: 3}
-    volume: 0.68
-    pitch: 0.81
-    loop: 0
-    source: {fileID: 0}
+  explosionPrefab: {fileID: 4068549948295855401, guid: 21b55f0420e8e7e4a8a62896d450269b,
+    type: 3}
 --- !u!198 &-7520393341328001986
 ParticleSystem:
   m_ObjectHideFlags: 0
