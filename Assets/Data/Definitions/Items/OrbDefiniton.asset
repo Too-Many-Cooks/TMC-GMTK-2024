@@ -19,6 +19,8 @@ MonoBehaviour:
     type: 3}
   ItemUseEffectPrefab: {fileID: 8030632996348571370, guid: cda9c3ca4b86cb0459ef8e93481c4b42,
     type: 3}
+  InventoryPassiveEffectPrefab: {fileID: 5823452954586416009, guid: 9012074748393b04d89c00f8e5aa38b5,
+    type: 3}
   Icon: {fileID: 21300000, guid: e1a3d31ab978de84dafa1d88fb2b1863, type: 3}
   shape:
     gridSize: {x: 3, y: 3}

@@ -10,6 +10,7 @@ public class ItemDefinition : ScriptableObject
     public GameObject ItemModelPrefab;
     public GameObject WorldItemPrefab;
     public GameObject ItemUseEffectPrefab;
+    public GameObject InventoryPassiveEffectPrefab;
     public Sprite Icon;
     public Array2DBool shape;
 }
