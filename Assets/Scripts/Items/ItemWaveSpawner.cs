@@ -126,7 +126,7 @@ public class ItemWaveSpawner : MonoBehaviour
     {
         Vector2 randomDirection = UnityEngine.Random.insideUnitCircle;
         Vector2 ranOffset = randomDirection * dropRange;
-        return playerTransform.position + new Vector3(ranOffset.x, 0f, ranOffset.y);
+        return playerTransform.position + new Vector3(ranOffset.x, -playerTransform.position.y, ranOffset.y);
     }
 
     public void StartWave(ItemWave wave, float initialTimer = 0f) {
