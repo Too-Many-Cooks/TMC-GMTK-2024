@@ -396,8 +396,13 @@ public class CharacterInventory : MonoBehaviour
             var mousePosition = Mouse.current.position.ReadValue();
             var ray = Camera.main.ScreenPointToRay(new Vector3(mousePosition.x, mousePosition.y, 1f));
             Vector3 positionOnY0Plane = ray.origin - (ray.origin.y / ray.direction.y) * ray.direction;
+            Vector3 positionAlmostOnY0Plane = ray.origin - (ray.origin.y / ray.direction.y) * ray.direction - ray.direction * 1.5f;
 
-            currentlyDraggedItem.worldItem.transform.position = positionOnY0Plane;//Camera.main.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, Debug_worldItemDistance));
+
+
+            BoxCollider worldItemBoxCollider = currentlyDraggedItem.worldItem.GetComponent<BoxCollider>();
+
+            currentlyDraggedItem.worldItem.transform.position = positionAlmostOnY0Plane - Vector3.up * worldItemBoxCollider.size.y / 2f;
             currentlyDraggedItem.itemUseEffect.UpdateTargetting(positionOnY0Plane);
 
             if (!worldItemPickedUpThisFrame && Mouse.current.leftButton.wasPressedThisFrame)

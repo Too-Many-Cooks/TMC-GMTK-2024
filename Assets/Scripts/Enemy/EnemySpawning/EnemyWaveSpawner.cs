@@ -123,7 +123,7 @@ public class EnemyWaveSpawner : MonoBehaviour
         Vector2 randomDirection = UnityEngine.Random.onUnitSphere;
         randomDirection = randomDirection.normalized;
         Vector2 ranOffset = randomDirection * spawnDistance;
-        return playerTransform.position + new Vector3(ranOffset.x, 0f, ranOffset.y);
+        return playerTransform.position + new Vector3(ranOffset.x, -playerTransform.position.y, ranOffset.y);
     }
 
     public void StartWave(EnemyWave wave, float initialTimer = 0f) {

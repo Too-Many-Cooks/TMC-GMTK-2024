@@ -18,7 +18,8 @@ public class LootDropBehaviour : MonoBehaviour
             if(drops[i] == null) continue;
 
             var dropRelativePosition = Random.insideUnitCircle;
-            var itemPosition = transform.position + dropOffset + expandedDropRange * new Vector3(dropRelativePosition.x, 0, dropRelativePosition.y);
+            var itemPosition = transform.position - Vector3.up * transform.position.y + dropOffset + expandedDropRange * new Vector3(dropRelativePosition.x, 0, dropRelativePosition.y);
+            
 
             var itemObject = Instantiate(drops[i].WorldItemPrefab, itemPosition, Quaternion.identity);
             itemObject.GetComponent<WorldItem>().Definition = drops[i];
