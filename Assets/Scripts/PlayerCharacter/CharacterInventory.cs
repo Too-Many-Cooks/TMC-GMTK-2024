@@ -12,6 +12,8 @@ using static GridInventory.InventoryCell;
 
 public class CharacterInventory : MonoBehaviour
 {
+    public bool EnableDraggingWorldItems = false;
+    public bool EnableItemPickupOnCollision = true;
 
     [Foldout("Debug View", true)] 
     [SerializeField][ReadOnly]public DraggedItem currentlyDraggedItem;
@@ -437,9 +439,13 @@ public class CharacterInventory : MonoBehaviour
         }
     }
 
-    internal void PickUpWorldItem(WorldItem worldItem)
+    internal bool PickUpWorldItem(WorldItem worldItem)
     {
+        if(!EnableDraggingWorldItems) return false;
+
         BeginDraggingItem(worldItem);
+        
+        return true;
     }
 
 }
