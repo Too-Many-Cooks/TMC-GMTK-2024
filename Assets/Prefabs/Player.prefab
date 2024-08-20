@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 5730483052155837756}
   - component: {fileID: 1732538361642628214}
   - component: {fileID: 3167323838061042273}
+  - component: {fileID: 1067736372338194887}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -42,6 +43,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 5063546822175782710}
   - {fileID: 3510104895990057465}
   - {fileID: 3832403949918378098}
   - {fileID: 6227518907268366717}
@@ -164,6 +166,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: c5859f63-faff-4898-8d88-4f7413246885
     m_ActionName: Movement/Move
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1067736372338194887}
+        m_TargetAssemblyTypeName: PauseMenuManager, Assembly-CSharp
+        m_MethodName: TogglePauseMenu
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: c648aeaf-f4c8-4de5-9181-b1760176b150
+    m_ActionName: Movement/OpenPauseMenu[/Keyboard/escape]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Movement
@@ -1088,6 +1106,23 @@ MonoBehaviour:
     pitch: 1.01
     loop: 0
     source: {fileID: 0}
+--- !u!114 &1067736372338194887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7312746790141268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c08571ad9e860d488d484d70388056c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseMenu:
+    Scene: {fileID: 102900000, guid: 4392dc3e3699e8a4eb4bd7b82a466e20, type: 3}
+    SceneName: PauseScene
+    sceneIndex: 3
+    sceneEnabled: 1
 --- !u!1 &3039515459357500525
 GameObject:
   m_ObjectHideFlags: 0
@@ -1171,6 +1206,51 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3481036058409734900}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6434553175421164475
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5063546822175782710}
+  - component: {fileID: 9199776314166046045}
+  m_Layer: 0
+  m_Name: PassiveEffects
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5063546822175782710
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6434553175421164475}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3481036058409734900}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9199776314166046045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6434553175421164475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6512efaa5eea9ea4d8b9752fba46f6cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterInventory: {fileID: -8254372430402789042}
 --- !u!1001 &5025765278427425257
 PrefabInstance:
   m_ObjectHideFlags: 0

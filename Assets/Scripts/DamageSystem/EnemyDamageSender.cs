@@ -22,7 +22,6 @@ public class EnemyDamageSender : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //OnDealingDamage = new UnityEvent();
         ownCollider = GetComponent<Collider>();
     }
 

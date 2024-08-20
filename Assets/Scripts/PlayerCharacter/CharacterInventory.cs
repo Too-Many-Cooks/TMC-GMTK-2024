@@ -65,6 +65,8 @@ public class CharacterInventory : MonoBehaviour
     [SerializeField]
     public UnityEvent OnItemDraggingEnded;
 
+    //[SerializeField]
+    //private Transform PlayerPassiveEffectTransform;
 
     [ButtonMethod(order = 0)]
     private void ResizeGrid() {
@@ -93,7 +95,6 @@ public class CharacterInventory : MonoBehaviour
 
         isDraggingItem = true;
 
-        //var createdWorldItem = new GameObject(inventoryItem.Definition.Name).AddComponent<WorldItem>();
         var createdWorldItem = Instantiate(inventoryItem.Definition.WorldItemPrefab).GetComponent<WorldItem>();
         createdWorldItem.Definition = inventoryItem.Definition;
         createdWorldItem.gameObject.SetActive(false);
@@ -175,6 +176,8 @@ public class CharacterInventory : MonoBehaviour
             rowGO.AddComponent<RectTransform>();
             rowGO.transform.SetParent(gridCellVisualsAnchor);
             rowGO.transform.localPosition = new Vector3(0f, -y * cellSize, 0f);
+            rowGO.transform.localRotation = Quaternion.identity;
+            rowGO.transform.localScale = Vector3.one;
 
             foreach (var (cell, x) in row.Columns.Select((v, i) => (v, i)))
             {
