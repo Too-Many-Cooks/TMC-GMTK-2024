@@ -15,20 +15,20 @@ public class CharacterInventory : MonoBehaviour
     public bool EnableDraggingWorldItems = false;
     public bool EnableItemPickupOnCollision = true;
 
-    [Foldout("Debug View", true)] 
-    [SerializeField][ReadOnly]public DraggedItem currentlyDraggedItem;
-    [SerializeField][ReadOnly]public bool isDraggingItem;
+    [Foldout("Debug View", true)]
+    [SerializeField] [ReadOnly] public DraggedItem currentlyDraggedItem;
+    [SerializeField] [ReadOnly] public bool isDraggingItem;
 
-    [Foldout("GUI", true)] 
+    [Foldout("GUI", true)]
     public Sprite LockedSlotIcon;
     public Sprite EmptySlotIcon;
     public Sprite DamagedSlotIcon;
     public Sprite BrokenSlotIcon;
     public Vector2 InventoryScreenPosition;
-    [Foldout("GUI")] 
+    [Foldout("GUI")]
     public bool EnableDebugGUI = false;
 
-    [Foldout("Debug View")] 
+    [Foldout("Debug View")]
     public GridInventory inventory;
     public float damagedSlotStateDuration = 5f;
 
@@ -45,12 +45,17 @@ public class CharacterInventory : MonoBehaviour
     private GameObject inventoryItemVisualsPrefab;
     [SerializeField]
     private RectTransform inventoryAnchor;
+    //[SerializeField]
+    //private RectTransform inventoryCanvas;
     [SerializeField]
     private RectTransform gridCellVisualsAnchor;
     [SerializeField]
     private RectTransform itemVisualsAnchor;
     [SerializeField]
     private float cellSize = 32f;
+    [SerializeField]
+    private int numCellsToFitInHeight = 18; 
+
     private InventoryGridCell[,] gridCellVisuals;
     private List<InventoryItemVisual> itemVisuals;
 
@@ -88,7 +93,7 @@ public class CharacterInventory : MonoBehaviour
     }
 
     public bool BeginDraggingItem(InventoryItem inventoryItem) {
-        if(isDraggingItem) return false;
+        if (isDraggingItem) return false;
 
         if (Test_hideItemVisualsWhileDragging)
         {
@@ -106,7 +111,7 @@ public class CharacterInventory : MonoBehaviour
         {
             var itemUseEffectVisualGO = Instantiate(inventoryItem.Definition.ItemUseEffectPrefab);
             itemUseEffectVisualGO.SetActive(false);
-            if(!itemUseEffectVisualGO.HasComponent<ItemUseEffectBase>())
+            if (!itemUseEffectVisualGO.HasComponent<ItemUseEffectBase>())
             {
                 Debug.LogError("ItemUseEffect Prefab does not contain an IItemUseEffectBase.");
             }
@@ -132,7 +137,7 @@ public class CharacterInventory : MonoBehaviour
         isDraggingItem = true;
 
         InventoryItem createdInventoryItem = new InventoryItem(worldItem.Definition);
-        
+
         ItemUseEffectBase itemUseEffectVisual = null;
         if (worldItem.Definition.ItemUseEffectPrefab != null)
         {
@@ -161,6 +166,8 @@ public class CharacterInventory : MonoBehaviour
 
     private void CreateVisuals()
     {
+        UpdateCellSize();
+
         foreach (Transform child in gridCellVisualsAnchor)
             Destroy(child.gameObject);
         foreach (Transform child in itemVisualsAnchor)
@@ -184,7 +191,7 @@ public class CharacterInventory : MonoBehaviour
             foreach (var (cell, x) in row.Columns.Select((v, i) => (v, i)))
             {
                 GameObject gridCell = Instantiate(gridCellVisualsPrefab, rowGO.transform);
-                gridCell.transform.localPosition = new Vector3((x+1) * cellSize, 0f, 0f);
+                gridCell.transform.localPosition = new Vector3((x + 1) * cellSize, 0f, 0f);
                 InventoryGridCell invGridCell = gridCell.GetComponent<InventoryGridCell>();
                 gridCellVisuals[x, y] = invGridCell;
 
@@ -194,10 +201,15 @@ public class CharacterInventory : MonoBehaviour
         itemVisuals = new List<InventoryItemVisual>();
     }
 
+    private void UpdateCellSize()
+    {
+        cellSize = Screen.height / (float) numCellsToFitInHeight;
+    }
+
     private void UpdateInventoryCellVisuals()
     {
         // If something nasty changes -> Redo all visuals
-        if(cachedCellSize != cellSize || cachedGridSize != inventory.GridSize)
+        if (cachedCellSize != cellSize || cachedGridSize != inventory.GridSize)
         {
             CreateVisuals();
             return;
@@ -220,7 +232,7 @@ public class CharacterInventory : MonoBehaviour
         // Check if new items were added
         foreach (var (item, pos) in inventory.ItemDrawPositions)
         {
-            if(!itemVisuals.Exists(x => x.inventoryItem == item))
+            if (!itemVisuals.Exists(x => x.inventoryItem == item))
             {
                 GameObject inventoryItem = Instantiate(inventoryItemVisualsPrefab, itemVisualsAnchor);
                 inventoryItem.transform.localPosition = new Vector3(pos.x * cellSize, -pos.y * cellSize, 0f);
@@ -239,12 +251,12 @@ public class CharacterInventory : MonoBehaviour
         // Check if items were removed
         foreach (InventoryItemVisual itemVisual in itemVisuals)
         {
-            if(!inventory.ItemDrawPositions.ContainsKey(itemVisual.inventoryItem))
+            if (!inventory.ItemDrawPositions.ContainsKey(itemVisual.inventoryItem))
             {
                 deletedItems.Add(itemVisual);
             }
         }
-        foreach(var deletedItem in deletedItems)
+        foreach (var deletedItem in deletedItems)
         {
             itemVisuals.Remove(deletedItem);
             Destroy(deletedItem.gameObject);
@@ -253,7 +265,7 @@ public class CharacterInventory : MonoBehaviour
 
     private bool DropDraggedItemOnCell(Vector2 cell)
     {
-        if(!isDraggingItem) return false;
+        if (!isDraggingItem) return false;
 
         if (inventory.CanAddOrMoveItem(cell.x.RoundToInt(), cell.y.RoundToInt(), currentlyDraggedItem.inventoryItem))
         {
@@ -301,18 +313,17 @@ public class CharacterInventory : MonoBehaviour
 
     private void OnCellClick(Vector2Int id)
     {
-        if(isDraggingItem) {
+        if (isDraggingItem) {
             DropDraggedItemOnCell(id);
         }
         else
         {
             InventoryItem itemInCell = inventory.GetInventoryItemAt(id.x, id.y);
-            if(itemInCell?.Definition != null)
+            if (itemInCell?.Definition != null)
             {
                 BeginDraggingItem(itemInCell);
             }
         }
-        //print("Cell " + id + " clicked");
     }
 
     private void OnCellHoverChange(Vector2Int id, bool enter)
@@ -329,7 +340,6 @@ public class CharacterInventory : MonoBehaviour
 
     private void ChangeHoverCellHighlights(Vector2Int id, bool activate)
     {
-
         Array2DEditor.Array2DBool draggedItemShape = currentlyDraggedItem.inventoryItem.Definition.shape;
         bool possibleToPlace = inventory.CanAddOrMoveItem(id.x, id.y, currentlyDraggedItem.inventoryItem);
         if (Test_allowReplacingItems)
@@ -347,6 +357,13 @@ public class CharacterInventory : MonoBehaviour
                 gridCellVisuals[id.x + shapeX, id.y + shapeY].SetHighlight(activate, possibleToPlace);
             }
         }
+    }
+
+    public void UpdateToNewResolution()
+    {
+        UpdateCellSize();
+        UpdateInventoryCellVisuals();
+        UpdateInventoryItemVisuals();
     }
 
     void OnGUI()
