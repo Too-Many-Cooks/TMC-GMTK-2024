@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class SwordItemUseEffect : ItemUseEffectBase
 {
@@ -14,9 +15,12 @@ public class SwordItemUseEffect : ItemUseEffectBase
 
     Transform playerTransform;
 
+    public UnityEvent OnSwing;
+
     public override void ClickActivationTrigger(out bool destroyedOnUse)
     {
         swordEffectColliderTransform.GetComponent<PlayerItemDamageSender>().DamageEnemiesInCollider(damageToEnemies);
+        OnSwing.Invoke();
         destroyedOnUse = true;
         Destroy(gameObject);
     }
