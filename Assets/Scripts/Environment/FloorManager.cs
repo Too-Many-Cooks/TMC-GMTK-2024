@@ -7,13 +7,13 @@ using UnityEngine;
 public class FloorManager : MonoBehaviour
 {
     [System.Serializable]
-    public struct floorTileInfo
+    public struct SpawnablePrefabs
     {
         public GameObject prefab;
         [Range(0, 1)] public float spawnMultiplier;
     }
 
-    [SerializeField] public floorTileInfo[] floorTileVariations;
+    [SerializeField] public SpawnablePrefabs[] floorTileVariations;
     [SerializeField] public Texture2D colorGrading;
     [SerializeField] public Transform playerTransform;
 
@@ -144,12 +144,12 @@ public class FloorManager : MonoBehaviour
     #endregion
 
 
-    private Vector2Int NearestTileToPlayer
-        => new Vector2Int((int)playerTransform.transform.position.x / 2 * 2, (int)playerTransform.transform.position.z / 2 * 2);
+    public static Vector2Int NearestTileToPlayer(Transform player)
+        => new Vector2Int((int) player.position.x / 2 * 2, (int) player.position.z / 2 * 2);
 
     // Calculating the origin location of the pool.  
     // We want to move half of the distance in poolSizeAroundPlayer, but that is cancelled by tiles been 2x2m.
-    private Vector2Int OriginPoint => NearestTileToPlayer - poolSizeAroundPlayer + poolPositionDisplacement;
+    private Vector2Int OriginPoint => NearestTileToPlayer(playerTransform) - poolSizeAroundPlayer + poolPositionDisplacement;
 
 
     private void PoolTilesToPosition(Vector2Int[] newTilePosition)
