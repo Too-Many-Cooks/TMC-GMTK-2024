@@ -64,10 +64,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dropRange: 15
+  dropOffset: {x: 0, y: -1, z: 0}
   CurrentWave:
     DropGroups: []
-  WorldItemPrefab: {fileID: -4155082316195219464, guid: f0347faab066ff64786cc55eb30b60df,
-    type: 3}
   waveTimer: 0
   dropGroupIndex: 0
 --- !u!114 &6432277237276477852
@@ -95,6 +94,15 @@ MonoBehaviour:
   - RepetitionMode: 0
     NumberOfRepetitions: 0
     Definition: {fileID: 11400000, guid: bca71f238063118448f8c3a03c26e648, type: 2}
+  - RepetitionMode: 0
+    NumberOfRepetitions: 0
+    Definition: {fileID: 11400000, guid: b27e096f077e941479a45fdc4d62ecbe, type: 2}
+  - RepetitionMode: 0
+    NumberOfRepetitions: 0
+    Definition: {fileID: 11400000, guid: 2698dae7ed3c2104ab2c38d65308d2f7, type: 2}
+  - RepetitionMode: 2
+    NumberOfRepetitions: 0
+    Definition: {fileID: 11400000, guid: 664bc74e9477bbc49898844a2baebf72, type: 2}
   waveSetIndex: 0
   waveSetRepetitions: 0
   waveIndex: 0

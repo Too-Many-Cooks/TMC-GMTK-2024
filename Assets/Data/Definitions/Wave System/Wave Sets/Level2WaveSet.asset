@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Level2WaveSet
   m_EditorClassIdentifier: 
   Waves:
-  - WaveStartDelay: 10
+  - WaveStartDelay: 0
     WaveEndDelay: 20
     EnemyWave:
       SpawnGroups:

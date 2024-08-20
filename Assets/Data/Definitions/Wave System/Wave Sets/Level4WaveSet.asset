@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: Level4WaveSet
   m_EditorClassIdentifier: 
   Waves:
-  - WaveStartDelay: 10
-    WaveEndDelay: 20
+  - WaveStartDelay: 0
+    WaveEndDelay: 40
     EnemyWave:
       SpawnGroups:
       - Timer: 0
-        Definition: {fileID: 11400000, guid: 86b08bddd8e711a47b227f69ea49ff40, type: 2}
-      - Timer: 20
-        Definition: {fileID: 11400000, guid: 86b08bddd8e711a47b227f69ea49ff40, type: 2}
+        Definition: {fileID: 11400000, guid: db9fc06dcadb364459d1fce3798b5406, type: 2}
+      - Timer: 0
+        Definition: {fileID: 11400000, guid: db9fc06dcadb364459d1fce3798b5406, type: 2}
     ItemWave:
       DropGroups: []
   - WaveStartDelay: 0
